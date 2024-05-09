@@ -41,9 +41,9 @@ public partial class App : Application
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>
-    private void OnStartup(object sender, StartupEventArgs e)
+    private async void OnStartup(object sender, StartupEventArgs e)
     {
-        Host.Start();
+        await Host.StartAsync();
     }
 
     /// <summary>
