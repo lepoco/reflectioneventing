@@ -36,7 +36,7 @@ public class MyService(IEventBus eventBus)
 }
 ```
 
-You can listen for the event
+Now you can listen for the event
 
 ```csharp
 public partial class MainWindowViewModel : ObservableObject, IConsumer<BackgroundTicked>

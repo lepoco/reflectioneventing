@@ -14,10 +14,13 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
     private int _currentTick = 0;
 
     /// <inheritdoc />
-    public Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
+    public async Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
     {
-        CurrentTick = payload.Value;
+        int tickValue = payload.Value;
 
-        return Task.CompletedTask;
+        await Application.Current.Dispatcher.InvokeAsync(() =>
+        {
+            CurrentTick = tickValue;
+        });
     }
 }

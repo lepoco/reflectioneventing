@@ -19,19 +19,21 @@ public class EventBus(IServiceProvider serviceProvider, IConsumerProvider consum
     {
         using CancellationTokenSource cancellationSource = new();
 
-        PublishAsync(eventItem, cancellationSource.Token).GetAwaiter().GetResult();
+        PublishAsync(eventItem, cancellationSource.Token)
+            .ConfigureAwait(false)
+            .GetAwaiter()
+            .GetResult();
     }
 
     /// <inheritdoc />
     public async Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken)
     {
-        foreach (Type serviceType in consumerProvider.GetConsumers<TEvent>())
-        {
-            // NOTE: Here we activate the model instances that are listening for events but are not active yet. Is this a desirable result? I don't know, at the moment it fulfills basic functionalities.
-            if (serviceProvider.GetRequiredService(serviceType) is IConsumer<TEvent> consumer)
-            {
-                await consumer.ConsumeAsync(eventItem, cancellationToken);
-            }
-        }
+        IEnumerable<Task> tasks = consumerProvider
+            .GetConsumers<TEvent>()
+            .Select(serviceProvider.GetRequiredService)
+            .OfType<IConsumer<TEvent>>()
+            .Select(consumer => consumer.ConsumeAsync(eventItem, cancellationToken));
+
+        await Task.WhenAll(tasks).ConfigureAwait(false);
     }
 }
