@@ -3,10 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
 namespace ReflectionEventing.Demo.Wpf.Services;
 
 internal sealed class ApplicationHostService(IServiceProvider serviceProvider) : IHostedService

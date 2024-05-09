@@ -3,7 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Microsoft.Extensions.Hosting;
 using ReflectionEventing.Demo.Wpf.Events;
 
 namespace ReflectionEventing.Demo.Wpf.Services;

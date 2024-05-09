@@ -3,11 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using System.IO;
-using System.Windows;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using ReflectionEventing.Demo.Wpf.Services;
 using ReflectionEventing.Demo.Wpf.ViewModels;
 
