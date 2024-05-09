@@ -1,4 +1,4 @@
-name: openapi-client-cd-nuget
+name: reflection-events-client-cd-nuget
 
 on:
   push:
