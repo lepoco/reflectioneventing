@@ -26,7 +26,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build src\ReflectionEvents\ReflectionEvents.csproj --configuration Release --no-restore -p:SourceLinkEnabled=true
+        run: dotnet build src\ReflectionEventing\ReflectionEventing.csproj --configuration Release --no-restore -p:SourceLinkEnabled=true
 
       - name: Publish the package to NuGet.org
         run: nuget push **\*.nupkg -NonInteractive -SkipDuplicate -Source 'https://api.nuget.org/v3/index.json'
