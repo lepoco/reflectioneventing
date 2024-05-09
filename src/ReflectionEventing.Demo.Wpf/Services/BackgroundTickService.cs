@@ -9,7 +9,7 @@ namespace ReflectionEventing.Demo.Wpf.Services;
 
 internal sealed class BackgroundTickService(IEventBus eventBus) : IHostedService
 {
-    private const int TickRateInMilliseconds = 1000;
+    private const int TickRateInMilliseconds = 100;
 
     /// <inheritdoc />
     public Task StartAsync(CancellationToken cancellationToken)

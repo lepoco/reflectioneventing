@@ -15,6 +15,7 @@ public interface IEventBus
     /// </summary>
     /// <typeparam name="TEvent">The type of the event to publish.</typeparam>
     /// <param name="eventItem">The event to publish.</param>
+    [Obsolete($"May cause deadlock on UI threads, use {nameof(PublishAsync)} instead.")]
     void Publish<TEvent>(TEvent eventItem);
 
     /// <summary>
