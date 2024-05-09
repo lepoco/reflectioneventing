@@ -18,10 +18,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>(c) lepo.co | Leszek Pomianowski and Contributors. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/lepoco/reflection.eventing</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/lepoco/reflection.eventing/releases</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/lepoco/reflectioneventing</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/lepoco/reflectioneventing/releases</PackageReleaseNotes>
     <PackageIcon>Icon.png</PackageIcon>
-    <PackageIconUrl>https://github.com/lepoco/reflection.eventing/main/build/nuget.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/lepoco/reflectioneventing/main/build/nuget.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup>

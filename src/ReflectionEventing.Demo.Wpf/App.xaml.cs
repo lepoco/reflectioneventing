@@ -17,22 +17,22 @@ public partial class App : Application
         .Extensions.Hosting.Host.CreateDefaultBuilder()
         .ConfigureAppConfiguration(c =>
         {
-            c.SetBasePath(Directory.GetCurrentDirectory());
-            c.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            _ = c.SetBasePath(Directory.GetCurrentDirectory());
+            _ = c.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
         })
         .ConfigureServices(
             (context, services) =>
             {
-                services.AddHostedService<ApplicationHostService>();
-                services.AddHostedService<BackgroundTickService>();
+                _ = services.AddHostedService<ApplicationHostService>();
+                _ = services.AddHostedService<BackgroundTickService>();
 
-                services.AddSingleton<MainWindow>();
-                services.AddSingleton<MainWindowViewModel>();
+                _ = services.AddSingleton<MainWindow>();
+                _ = services.AddSingleton<MainWindowViewModel>();
 
-                services.AddEventBus(e =>
+                _ = services.AddEventBus(e =>
                 {
-                    //e.AddAllConsumers(Assembly.GetExecutingAssembly());
-                    e.AddConsumer<MainWindowViewModel>();
+                    // _ = e.AddAllConsumers(Assembly.GetExecutingAssembly());
+                    _ = e.AddConsumer<MainWindowViewModel>();
                 });
             }
         )

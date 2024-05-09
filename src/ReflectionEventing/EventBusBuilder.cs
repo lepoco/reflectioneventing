@@ -3,6 +3,8 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace ReflectionEventing;
 
 /// <summary>
@@ -35,7 +37,12 @@ public sealed class EventBusBuilder(IServiceCollection services)
     /// It then gets the interfaces of the consumer that are generic and have a generic type definition of <see cref="IConsumer{TEvent}"/>.
     /// For each of these interfaces, it gets the generic argument and adds it to the consumers dictionary.
     /// </remarks>
-    public void AddConsumer(Type consumerType)
+    public void AddConsumer(
+#if NET5_0_OR_GREATER
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces)]
+#endif
+        Type consumerType
+    )
     {
         ServiceDescriptor? descriptor = services.FirstOrDefault(d => d.ServiceType == consumerType);
 
