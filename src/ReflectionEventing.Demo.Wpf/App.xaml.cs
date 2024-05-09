@@ -31,6 +31,7 @@ public partial class App : Application
 
                 services.AddEventBus(e =>
                 {
+                    //e.AddAllConsumers(Assembly.GetExecutingAssembly());
                     e.AddConsumer<MainWindowViewModel>();
                 });
             }
