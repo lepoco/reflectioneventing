@@ -32,6 +32,11 @@ internal sealed class BackgroundTickService(IEventBus eventBus) : IHostedService
 
         while (true)
         {
+            if (cancellationToken.IsCancellationRequested)
+            {
+                break;
+            }
+
             await eventBus.PublishAsync(
                 new BackgroundTicked(random.Next(10, 1001)),
                 cancellationToken
