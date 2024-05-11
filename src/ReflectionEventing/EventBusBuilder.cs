@@ -14,7 +14,7 @@ namespace ReflectionEventing;
 /// <remarks>
 /// This class uses a dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
 /// </remarks>
-public sealed class EventBusBuilder(IServiceCollection services)
+public class EventBusBuilder
 {
     private readonly IDictionary<Type, IEnumerable<Type>> consumers =
         new Dictionary<Type, IEnumerable<Type>>();
@@ -37,27 +37,13 @@ public sealed class EventBusBuilder(IServiceCollection services)
     /// It then gets the interfaces of the consumer that are generic and have a generic type definition of <see cref="IConsumer{TEvent}"/>.
     /// For each of these interfaces, it gets the generic argument and adds it to the consumers dictionary.
     /// </remarks>
-    public void AddConsumer(
+    public virtual void AddConsumer(
 #if NET5_0_OR_GREATER
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces)]
 #endif
         Type consumerType
     )
     {
-        ServiceDescriptor? descriptor = services.FirstOrDefault(d => d.ServiceType == consumerType);
-
-        if (descriptor is null)
-        {
-            throw new InvalidOperationException(
-                "Event consumer must be registered in the service collection."
-            );
-        }
-
-        if (descriptor.Lifetime == ServiceLifetime.Transient)
-        {
-            throw new InvalidOperationException("Transient consumers are not supported.");
-        }
-
         IEnumerable<Type> consumerInterfaces = consumerType
             .GetInterfaces()
             .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IConsumer<>));

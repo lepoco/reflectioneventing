@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Autofac", "src\ReflectionEventing.Autofac\ReflectionEventing.Autofac.csproj", "{6023E50F-2B4D-4315-B85D-9E8A12746045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.DependencyInjection", "src\ReflectionEventing.DependencyInjection\ReflectionEventing.DependencyInjection.csproj", "{09F0D6A2-3791-4173-A612-98E6EA92FCC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{898865CB-C39C-4E69-9FF8-E96AAD7FF0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{898865CB-C39C-4E69-9FF8-E96AAD7FF0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{898865CB-C39C-4E69-9FF8-E96AAD7FF0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6023E50F-2B4D-4315-B85D-9E8A12746045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6023E50F-2B4D-4315-B85D-9E8A12746045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6023E50F-2B4D-4315-B85D-9E8A12746045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6023E50F-2B4D-4315-B85D-9E8A12746045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F0D6A2-3791-4173-A612-98E6EA92FCC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F0D6A2-3791-4173-A612-98E6EA92FCC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F0D6A2-3791-4173-A612-98E6EA92FCC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F0D6A2-3791-4173-A612-98E6EA92FCC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

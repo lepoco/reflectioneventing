@@ -5,18 +5,7 @@
 
 namespace ReflectionEventing;
 
-/// <summary>
-/// Defines a contract for a provider that can supply consumers for a specific event type.
-/// </summary>
-/// <remarks>
-/// Implementations of this interface are expected to provide a mechanism to retrieve consumers that can handle a specific event type.
-/// </remarks>
 public interface IConsumerProvider
 {
-    /// <summary>
-    /// Gets the consumers for the specified event type.
-    /// </summary>
-    /// <typeparam name="TEvent">The type of the event to get the consumers for.</typeparam>
-    /// <returns>A collection of consumer types that can handle the specified event type.</returns>
-    IEnumerable<Type> GetConsumers<TEvent>();
+    IEnumerable<object> GetConsumerTypes(Type consumerType);
 }

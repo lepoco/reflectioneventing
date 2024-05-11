@@ -28,5 +28,11 @@ jobs:
       - name: Build
         run: dotnet build src\ReflectionEventing\ReflectionEventing.csproj --configuration Release --no-restore -p:SourceLinkEnabled=true
 
+      - name: Build
+        run: dotnet build src\ReflectionEventing.Autofac\ReflectionEventing.Autofac.csproj --configuration Release --no-restore -p:SourceLinkEnabled=true
+
+      - name: Build
+        run: dotnet build src\ReflectionEventing.DependencyInjection\ReflectionEventing.DependencyInjection.csproj --configuration Release --no-restore -p:SourceLinkEnabled=true
+
       - name: Publish the package to NuGet.org
         run: nuget push **\*.nupkg -NonInteractive -SkipDuplicate -Source 'https://api.nuget.org/v3/index.json'

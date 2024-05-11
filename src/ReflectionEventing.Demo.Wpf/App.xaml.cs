@@ -5,6 +5,7 @@
 
 using ReflectionEventing.Demo.Wpf.Services;
 using ReflectionEventing.Demo.Wpf.ViewModels;
+using ReflectionEventing.DependencyInjection;
 
 namespace ReflectionEventing.Demo.Wpf;
 

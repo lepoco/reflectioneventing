@@ -12,11 +12,11 @@ namespace ReflectionEventing;
 /// <remarks>
 /// This class uses a dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
 /// </remarks>
-public class StaticConsumerProvider(IDictionary<Type, IEnumerable<Type>> consumers)
-    : IConsumerProvider
+public class HashedConsumerTypesProvider(IDictionary<Type, IEnumerable<Type>> consumers)
+    : IConsumerTypesProvider
 {
     /// <inheritdoc />
-    public IEnumerable<Type> GetConsumers<TEvent>()
+    public IEnumerable<Type> GetConsumerTypes<TEvent>()
     {
         return consumers.Where(x => x.Value.Contains(typeof(TEvent))).Select(x => x.Key);
     }

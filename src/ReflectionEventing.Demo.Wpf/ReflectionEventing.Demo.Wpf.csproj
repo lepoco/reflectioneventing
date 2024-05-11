@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReflectionEventing\ReflectionEventing.csproj" />
+    <ProjectReference Include="..\ReflectionEventing.DependencyInjection\ReflectionEventing.DependencyInjection.csproj" />
   </ItemGroup>
 
   <ItemGroup>

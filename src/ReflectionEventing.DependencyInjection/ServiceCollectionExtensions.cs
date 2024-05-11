@@ -3,7 +3,7 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-namespace ReflectionEventing;
+namespace ReflectionEventing.DependencyInjection;
 
 /// <summary>
 /// Provides extension methods for the <see cref="IServiceCollection"/> interface.
@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
     /// <param name="configure">A delegate that configures the <see cref="EventBusBuilder"/>.</param>
     /// <returns>The same service collection so that multiple calls can be chained.</returns>
     /// <remarks>
-    /// This method adds a singleton service of type <see cref="IConsumerProvider"/> that uses a <see cref="StaticConsumerProvider"/> with the consumers from the event bus builder.
+    /// This method adds a singleton service of type <see cref="IConsumerTypesProvider"/> that uses a <see cref="HashedConsumerTypesProvider"/> with the consumers from the event bus builder.
     /// It also adds a scoped service of type <see cref="IEventBus"/> that uses the <see cref="EventBus"/> class.
     /// </remarks>
     public static IServiceCollection AddEventBus(
@@ -25,13 +25,14 @@ public static class ServiceCollectionExtensions
         Action<EventBusBuilder> configure
     )
     {
-        EventBusBuilder builder = new(services);
+        DependencyInjectionEventBusBuilder builder = new(services);
 
         configure(builder);
 
-        _ = services.AddSingleton<IConsumerProvider>(
-            new StaticConsumerProvider(builder.GetConsumers())
+        _ = services.AddSingleton<IConsumerTypesProvider>(
+            new HashedConsumerTypesProvider(builder.GetConsumers())
         );
+        _ = services.AddScoped<IConsumerProvider, DependencyInjectionConsumerProvider>();
         _ = services.AddScoped<IEventBus, EventBus>();
 
         return services;

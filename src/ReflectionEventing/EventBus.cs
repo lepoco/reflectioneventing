@@ -11,16 +11,23 @@ namespace ReflectionEventing;
 /// <remarks>
 /// This class uses a service provider to get required services and a consumer provider to get consumers for a specific event type.
 /// </remarks>
-public class EventBus(IServiceProvider serviceProvider, IConsumerProvider consumerProvider)
-    : IEventBus
+public class EventBus(
+    IConsumerProvider consumerProviders,
+    IConsumerTypesProvider consumerTypesProvider
+) : IEventBus
 {
     /// <inheritdoc />
     public void Publish<TEvent>(TEvent eventItem)
     {
-        using CancellationTokenSource cancellationSource = new();
+        Task.Run(() =>
+            {
+                using CancellationTokenSource cancellationSource = new();
 
-        PublishAsync(eventItem, cancellationSource.Token)
-            .ConfigureAwait(false)
+                PublishAsync(eventItem, cancellationSource.Token)
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+            })
             .GetAwaiter()
             .GetResult();
     }
@@ -28,11 +35,19 @@ public class EventBus(IServiceProvider serviceProvider, IConsumerProvider consum
     /// <inheritdoc />
     public async Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken)
     {
-        IEnumerable<Task> tasks = consumerProvider
-            .GetConsumers<TEvent>()
-            .Select(serviceProvider.GetRequiredService)
-            .OfType<IConsumer<TEvent>>()
-            .Select(consumer => consumer.ConsumeAsync(eventItem, cancellationToken));
+        List<Task> tasks = new();
+        IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes<TEvent>();
+
+        foreach (Type consumerType in consumerTypes)
+        {
+            IEnumerable<IConsumer<TEvent>> consumerObjects = consumerProviders
+                .GetConsumerTypes(consumerType)
+                .OfType<IConsumer<TEvent>>();
+
+            tasks.AddRange(
+                consumerObjects.Select(x => x.ConsumeAsync(eventItem, cancellationToken))
+            );
+        }
 
         await Task.WhenAll(tasks).ConfigureAwait(false);
     }
