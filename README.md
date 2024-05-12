@@ -1,13 +1,13 @@
 # 🚎 ReflectionEventing
 
 [Created with ❤ in Poland by lepo.co](https://dev.lepo.co/)  
-Unleash the power of decoupled design with eventing. ReflectionEventing empowers developers to create simple events between services using DI in WPF, WinForms, or CLI applications. By facilitating better Inversion of Control, ReflectionEventing helps reduce coupling, enhancing the modularity and flexibility of your applications.
+ReflectionEventing is a powerful tool for developers looking to create decoupled designs in WPF, WinForms, or CLI applications. By leveraging the power of Dependency Injection (DI) and eventing, ReflectionEventing promotes better Inversion of Control (IoC), reducing coupling and enhancing the modularity and flexibility of your applications.
 
 [![GitHub license](https://img.shields.io/github/license/lepoco/reflectioneventing)](https://github.com/lepoco/reflectioneventing/blob/master/LICENSE) [![Nuget](https://img.shields.io/nuget/v/ReflectionEventing)](https://www.nuget.org/packages/ReflectionEventing/) [![Nuget](https://img.shields.io/nuget/dt/ReflectionEventing?label=nuget)](https://www.nuget.org/packages/ReflectionEventing/) [![Sponsors](https://img.shields.io/github/sponsors/lepoco)](https://github.com/sponsors/lepoco)
 
 ## 👀 What does this repo contain?
 
-The repository contains NuGet package source code, which uses C# reflection to register services that can be used to listen for local events.
+This repository houses the source code for the ReflectionEventing NuGet package. The package utilizes C# reflection to register services that can listen for and respond to local events.
 
 ## Gettings started
 
@@ -28,25 +28,29 @@ dotnet add package ReflectionEventing.DependencyInjection
 NuGet\Install-Package ReflectionEventing.DependencyInjection
 ```
 
-### Usage
+### 🛠️ How to Use ReflectionEventing
 
-#### Register consumers and bus
+#### 1. Register Consumers and the Event Bus
+
+In this step, we register our ViewModel as a singleton and add it as a consumer to the event bus. This allows the ViewModel to listen for events published on the bus.
 
 ```csharp
 IHost host = Host.CreateDefaultBuilder()
   .ConfigureServices((context, services) =>
     {
-      _ = services.AddSingleton<MainWindowViewModel>();
-      _ = services.AddEventBus(e =>
+      services.AddSingleton<MainWindowViewModel>();
+      services.AddEventBus(e =>
       {
-        _ = e.AddConsumer<MainWindowViewModel>();
+        e.AddConsumer<MainWindowViewModel>();
       });
     }
   )
   .Build();
 ```
 
-#### Publish your event
+#### 2. Publish Events
+
+Here, we create a background service that publishes an event on the event bus. This event could be anything - in this case, we're publishing a `BackgroundTicked` event.
 
 ```csharp
 public class MyBackgroundService(IEventBus eventBus)
@@ -58,7 +62,9 @@ public class MyBackgroundService(IEventBus eventBus)
 }
 ```
 
-#### Now you can listen for the event
+#### 3. Listen for Events
+
+Finally, we implement the `IConsumer<T>` interface in our ViewModel. This allows the ViewModel to consume `BackgroundTicked` events. When a `BackgroundTicked` event is published, the `ConsumeAsync` method is called, and we update the `CurrentTick` property.
 
 ```csharp
 public partial class MainWindowViewModel : ObservableObject, IConsumer<BackgroundTicked>
@@ -77,7 +83,7 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
 
 ## Compilation
 
-Use Visual Studio 2022 and invoke the .sln.
+To build the project, use Visual Studio 2022 and open the .sln file.
 
 Visual Studio  
 **ReflectionEventing** is an Open Source project. You are entitled to download and use the freely available Visual Studio Community Edition to build, run or develop for ReflectionEventing. As per the Visual Studio Community Edition license, this applies regardless of whether you are an individual or a corporate user.
