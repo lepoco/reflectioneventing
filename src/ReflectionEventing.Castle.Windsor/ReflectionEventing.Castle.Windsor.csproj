@@ -1,11 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageId>ReflectionEventing.Ninject</PackageId>
-    <TargetFrameworks>net462;net472;net481</TargetFrameworks>
+    <PackageId>ReflectionEventing.Castle.Windsor</PackageId>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PublishAot>true</PublishAot>
+    <StripSymbols>true</StripSymbols>
+    <OptimizationPreference>Speed</OptimizationPreference>
   </PropertyGroup>
 
   <!-- Necessary polyfills -->
@@ -24,9 +30,9 @@
       System.Runtime.CompilerServices.SkipLocalsInitAttribute;
     </PolySharpIncludeGeneratedTypes>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <PackageReference Include="Ninject" />
+    <PackageReference Include="Castle.Windsor" />
   </ItemGroup>
 
   <ItemGroup>

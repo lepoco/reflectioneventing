@@ -29,13 +29,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionEventing.Autofac.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionEventing.DependencyInjection.UnitTests", "tests\ReflectionEventing.DependencyInjection.UnitTests\ReflectionEventing.DependencyInjection.UnitTests.csproj", "{CF2E3E06-48A3-47F7-B152-E86F25C9A182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Ninject", "src\ReflectionEventing.Ninject\ReflectionEventing.Ninject.csproj", "{194CA822-C3D6-4FBC-989A-039A0B97F2A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionEventing.Ninject", "src\ReflectionEventing.Ninject\ReflectionEventing.Ninject.csproj", "{194CA822-C3D6-4FBC-989A-039A0B97F2A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Ninject.UnitTests", "tests\ReflectionEventing.Ninject.UnitTests\ReflectionEventing.Ninject.UnitTests.csproj", "{A741FC02-03AE-4A34-AAA0-FBFBAB93377D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionEventing.Ninject.UnitTests", "tests\ReflectionEventing.Ninject.UnitTests\ReflectionEventing.Ninject.UnitTests.csproj", "{A741FC02-03AE-4A34-AAA0-FBFBAB93377D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Unity", "src\ReflectionEventing.Unity\ReflectionEventing.Unity.csproj", "{EBE050AC-CE99-49E0-9836-361D9F0DB515}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionEventing.Unity", "src\ReflectionEventing.Unity\ReflectionEventing.Unity.csproj", "{EBE050AC-CE99-49E0-9836-361D9F0DB515}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Unity.UnitTests", "tests\ReflectionEventing.Unity.UnitTests\ReflectionEventing.Unity.UnitTests.csproj", "{772AA314-8522-4A95-A99B-E69A867704DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReflectionEventing.Unity.UnitTests", "tests\ReflectionEventing.Unity.UnitTests\ReflectionEventing.Unity.UnitTests.csproj", "{772AA314-8522-4A95-A99B-E69A867704DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Castle.Windsor", "src\ReflectionEventing.Castle.Windsor\ReflectionEventing.Castle.Windsor.csproj", "{DEBBE7D1-7F8A-4013-9BA7-C721AB8A1E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReflectionEventing.Castle.Windsor.UnitTests", "tests\ReflectionEventing.Castle.Windsor.UnitTests\ReflectionEventing.Castle.Windsor.UnitTests.csproj", "{8D24CF24-984D-4500-B99E-711DFBF64A92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +91,14 @@ Global
 		{772AA314-8522-4A95-A99B-E69A867704DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772AA314-8522-4A95-A99B-E69A867704DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{772AA314-8522-4A95-A99B-E69A867704DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBBE7D1-7F8A-4013-9BA7-C721AB8A1E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBBE7D1-7F8A-4013-9BA7-C721AB8A1E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBBE7D1-7F8A-4013-9BA7-C721AB8A1E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBBE7D1-7F8A-4013-9BA7-C721AB8A1E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D24CF24-984D-4500-B99E-711DFBF64A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D24CF24-984D-4500-B99E-711DFBF64A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D24CF24-984D-4500-B99E-711DFBF64A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D24CF24-984D-4500-B99E-711DFBF64A92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +109,7 @@ Global
 		{CF2E3E06-48A3-47F7-B152-E86F25C9A182} = {7A58AE12-65AA-4E1B-B5DB-CBD2732D1AE7}
 		{A741FC02-03AE-4A34-AAA0-FBFBAB93377D} = {7A58AE12-65AA-4E1B-B5DB-CBD2732D1AE7}
 		{772AA314-8522-4A95-A99B-E69A867704DC} = {7A58AE12-65AA-4E1B-B5DB-CBD2732D1AE7}
+		{8D24CF24-984D-4500-B99E-711DFBF64A92} = {7A58AE12-65AA-4E1B-B5DB-CBD2732D1AE7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B017BA78-67A5-4D0F-92A3-671B0D8A2911}
