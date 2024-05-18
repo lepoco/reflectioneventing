@@ -3,11 +3,11 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Autofac;
+using Unity;
 
-namespace ReflectionEventing.Autofac;
+namespace ReflectionEventing.Unity;
 
 /// <summary>
-/// Represents a builder for configuring the event bus with Autofac.
+/// Represents a builder for configuring the event bus with Unity.
 /// </summary>
-public class AutofacEventBusBuilder(ContainerBuilder builder) : EventBusBuilder;
+public class UnityEventBusBuilder(IUnityContainer container) : EventBusBuilder;

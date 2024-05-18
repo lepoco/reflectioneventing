@@ -3,14 +3,14 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Autofac;
+using Unity;
 
-namespace ReflectionEventing.Autofac;
+namespace ReflectionEventing.Unity;
 
 /// <summary>
-/// Provides event consumers for Autofac.
+/// Provides event consumers for Unity.
 /// </summary>
-public class AutofacConsumerProvider(ILifetimeScope lifetimeScope) : IConsumerProvider
+public class UnityConsumerProvider(IUnityContainer container) : IConsumerProvider
 {
     /// <inheritdoc />
     public IEnumerable<object> GetConsumerTypes(Type consumerType)
@@ -20,6 +20,6 @@ public class AutofacConsumerProvider(ILifetimeScope lifetimeScope) : IConsumerPr
             throw new ArgumentNullException(nameof(consumerType));
         }
 
-        return new List<object> { lifetimeScope.Resolve(consumerType) };
+        return container.ResolveAll(consumerType);
     }
 }

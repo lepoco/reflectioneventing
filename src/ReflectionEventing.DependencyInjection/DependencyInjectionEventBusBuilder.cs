@@ -7,8 +7,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace ReflectionEventing.DependencyInjection;
 
+/// <summary>
+/// Represents a builder for configuring the event bus with .NET Core's built-in dependency injection.
+/// </summary>
 public class DependencyInjectionEventBusBuilder(IServiceCollection services) : EventBusBuilder
 {
+    /// <inheritdoc />
     public override void AddConsumer(
 #if NET5_0_OR_GREATER
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces)]

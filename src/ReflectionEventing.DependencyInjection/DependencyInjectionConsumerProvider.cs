@@ -5,9 +5,13 @@
 
 namespace ReflectionEventing.DependencyInjection;
 
+/// <summary>
+/// Represents a provider for retrieving event consumers from .NET Core's built-in dependency injection container.
+/// </summary>
 public class DependencyInjectionConsumerProvider(IServiceProvider serviceProvider)
     : IConsumerProvider
 {
+    /// <inheritdoc />
     public IEnumerable<object> GetConsumerTypes(Type consumerType)
     {
         if (consumerType is null)

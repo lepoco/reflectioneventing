@@ -14,7 +14,9 @@ This repository houses the source code for the ReflectionEventing NuGet package.
 ReflectionEventing is available as NuGet package on NuGet.org:  
 https://www.nuget.org/packages/ReflectionEventing  
 https://www.nuget.org/packages/ReflectionEventing.Autofac  
-https://www.nuget.org/packages/ReflectionEventing.DependencyInjection
+https://www.nuget.org/packages/ReflectionEventing.DependencyInjection  
+https://www.nuget.org/packages/ReflectionEventing.Ninject  
+https://www.nuget.org/packages/ReflectionEventing.Unity
 
 You can add it to your project using .NET CLI:
 

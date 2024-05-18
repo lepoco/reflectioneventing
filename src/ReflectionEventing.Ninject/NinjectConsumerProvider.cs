@@ -3,14 +3,14 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Autofac;
+using Ninject;
 
-namespace ReflectionEventing.Autofac;
+namespace ReflectionEventing.Ninject;
 
 /// <summary>
-/// Provides event consumers for Autofac.
+/// Provides event consumers for Ninject.
 /// </summary>
-public class AutofacConsumerProvider(ILifetimeScope lifetimeScope) : IConsumerProvider
+public class NinjectConsumerProvider(IKernel kernel) : IConsumerProvider
 {
     /// <inheritdoc />
     public IEnumerable<object> GetConsumerTypes(Type consumerType)
@@ -20,6 +20,6 @@ public class AutofacConsumerProvider(ILifetimeScope lifetimeScope) : IConsumerPr
             throw new ArgumentNullException(nameof(consumerType));
         }
 
-        return new List<object> { lifetimeScope.Resolve(consumerType) };
+        return kernel.GetAll(consumerType);
     }
 }

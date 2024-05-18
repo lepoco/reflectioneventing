@@ -5,7 +5,25 @@
 
 namespace ReflectionEventing;
 
+/// <summary>
+/// Defines a provider for retrieving types of event consumers.
+/// </summary>
+/// <remarks>
+/// An implementation of this interface should be able to provide all types that are consumers of a specific event type.
+/// The consumers are not necessarily instances, but rather the types that can be used to create instances of consumers.
+/// </remarks>
 public interface IConsumerProvider
 {
+    /// <summary>
+    /// Gets the types of all consumers for the specified event type.
+    /// </summary>
+    /// <param name="consumerType">The type of the event that the consumers handle.</param>
+    /// <returns>An enumerable of <see cref="Type"/>'s that are consumers of the specified event type.</returns>
+    /// <example>
+    /// <code>
+    /// Type consumerType = typeof(MyEvent);
+    /// IEnumerable&lt;object&gt; consumerTypes = consumerProvider.GetConsumerTypes(consumerType);
+    /// </code>
+    /// </example>
     IEnumerable<object> GetConsumerTypes(Type consumerType);
 }

@@ -9,7 +9,6 @@ namespace ReflectionEventing;
 
 /// <summary>
 /// Represents a class that builds an event bus with a specific set of consumers.
-/// This class is sealed and cannot be inherited.
 /// </summary>
 /// <remarks>
 /// This class uses a dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
@@ -44,6 +43,11 @@ public class EventBusBuilder
         Type consumerType
     )
     {
+        if (consumerType is null)
+        {
+            throw new ArgumentNullException(nameof(consumerType));
+        }
+
         IEnumerable<Type> consumerInterfaces = consumerType
             .GetInterfaces()
             .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IConsumer<>));

@@ -3,7 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using System.Linq;
 using Autofac;
 
 namespace ReflectionEventing.Autofac.UnitTests;

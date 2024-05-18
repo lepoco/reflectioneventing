@@ -3,11 +3,10 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Autofac;
-
-namespace ReflectionEventing.Autofac;
-
-/// <summary>
-/// Represents a builder for configuring the event bus with Autofac.
-/// </summary>
-public class AutofacEventBusBuilder(ContainerBuilder builder) : EventBusBuilder;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using FluentAssertions;
+global using Xunit;

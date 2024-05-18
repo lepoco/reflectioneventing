@@ -6,8 +6,7 @@
 namespace ReflectionEventing;
 
 /// <summary>
-/// Represents a class that provides consumers for a specific event type.
-/// This class is sealed and cannot be inherited.
+/// Provides a mechanism for retrieving types of event consumers based on a specific event type.
 /// </summary>
 /// <remarks>
 /// This class uses a dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
