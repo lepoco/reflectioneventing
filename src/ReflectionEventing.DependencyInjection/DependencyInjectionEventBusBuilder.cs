@@ -25,11 +25,6 @@ public class DependencyInjectionEventBusBuilder(IServiceCollection services) : E
             );
         }
 
-        if (descriptor.Lifetime == ServiceLifetime.Transient)
-        {
-            throw new InvalidOperationException("Transient consumers are not supported.");
-        }
-
         base.AddConsumer(consumerType);
     }
 }

@@ -3,8 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using FluentAssertions;
-
 namespace ReflectionEventing.UnitTests;
 
 public sealed class EventBusBuilderTests

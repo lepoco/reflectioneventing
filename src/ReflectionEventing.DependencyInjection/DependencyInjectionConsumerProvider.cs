@@ -15,19 +15,6 @@ public class DependencyInjectionConsumerProvider(IServiceProvider serviceProvide
             throw new ArgumentNullException(nameof(consumerType));
         }
 
-        IServiceScopeFactory? scopeFactory = serviceProvider.GetService<IServiceScopeFactory>();
-
-        if (scopeFactory is null)
-        {
-            return GetConsumersFromComputedScope(consumerType);
-        }
-
         return serviceProvider.GetServices(consumerType);
-    }
-
-    private IEnumerable<object> GetConsumersFromComputedScope(Type consumerType)
-    {
-        using IServiceScope scope = serviceProvider.CreateScope();
-        return scope.ServiceProvider.GetServices(consumerType);
     }
 }
