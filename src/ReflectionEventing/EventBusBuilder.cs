@@ -56,7 +56,7 @@ public class EventBusBuilder
         {
             Type consumedEventType = consumerInterface.GetGenericArguments()[0];
 
-            if (!consumers.ContainsKey(consumedEventType))
+            if (!consumers.ContainsKey(consumerType))
             {
                 consumers[consumerType] = new HashSet<Type>();
             }

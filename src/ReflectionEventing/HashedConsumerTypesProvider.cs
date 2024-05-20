@@ -15,8 +15,31 @@ public class HashedConsumerTypesProvider(IDictionary<Type, IEnumerable<Type>> co
     : IConsumerTypesProvider
 {
     /// <inheritdoc />
-    public IEnumerable<Type> GetConsumerTypes<TEvent>()
+    public IEnumerable<Type> GetConsumerTypes(Type eventType)
     {
-        return consumers.Where(x => x.Value.Contains(typeof(TEvent))).Select(x => x.Key);
+        foreach (KeyValuePair<Type, IEnumerable<Type>> consumer in consumers)
+        {
+            if (consumer.Value.Contains(eventType))
+            {
+                yield return consumer.Key;
+
+                continue;
+            }
+
+            // Fallback reflection
+            if (!consumer.Value.Any(x => ExtendsEvent(x, eventType)))
+            {
+                continue;
+            }
+
+            _ = ((HashSet<Type>)consumer.Value)?.Add(eventType);
+
+            yield return consumer.Key;
+        }
+    }
+
+    private static bool ExtendsEvent(Type consumerType, Type eventType)
+    {
+        return consumerType.IsAssignableFrom(eventType);
     }
 }

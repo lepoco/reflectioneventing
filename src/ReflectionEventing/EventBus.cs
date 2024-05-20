@@ -36,7 +36,7 @@ public class EventBus(
     public async Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken)
     {
         List<Task> tasks = new();
-        IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes<TEvent>();
+        IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes(typeof(TEvent));
 
         foreach (Type consumerType in consumerTypes)
         {

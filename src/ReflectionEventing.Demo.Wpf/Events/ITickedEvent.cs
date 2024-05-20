@@ -5,4 +5,7 @@
 
 namespace ReflectionEventing.Demo.Wpf.Events;
 
-public sealed record BackgroundTicked(int Value) : ITickedEvent;
+public interface ITickedEvent
+{
+    int Value { get; }
+}

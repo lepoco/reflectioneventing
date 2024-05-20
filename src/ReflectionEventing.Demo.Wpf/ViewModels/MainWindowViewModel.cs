@@ -8,13 +8,16 @@ using ReflectionEventing.Demo.Wpf.Events;
 
 namespace ReflectionEventing.Demo.Wpf.ViewModels;
 
-public partial class MainWindowViewModel : ObservableObject, IConsumer<BackgroundTicked>
+public partial class MainWindowViewModel
+    : ObservableObject,
+        IConsumer<ITickedEvent>,
+        IConsumer<OtherEvent>
 {
     [ObservableProperty]
     private int _currentTick = 0;
 
     /// <inheritdoc />
-    public async Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
+    public async Task ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
     {
         int tickValue = payload.Value;
 
@@ -22,5 +25,11 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
         {
             CurrentTick = tickValue;
         });
+    }
+
+    /// <inheritdoc />
+    public async Task ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
+    {
+        await Task.CompletedTask;
     }
 }
