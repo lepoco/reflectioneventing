@@ -26,7 +26,7 @@ public sealed class EventBusTests
         IConsumer<TestEvent> consumer = Substitute.For<IConsumer<TestEvent>>();
 
         _ = _consumerTypesProvider.GetConsumerTypes<TestEvent>().Returns([consumerType]);
-        _ = _consumerProvider.GetConsumerTypes(consumerType).Returns([consumer]);
+        _ = _consumerProvider.GetConsumers(consumerType).Returns([consumer]);
 
         await _eventBus.PublishAsync(testEvent, CancellationToken.None);
 
@@ -34,6 +34,7 @@ public sealed class EventBusTests
     }
 
     [Fact]
+#pragma warning disable CS0618 // Type or member is obsolete
     public async Task Publish_ShouldCallPublishAsync()
     {
         TestEvent testEvent = new();
@@ -41,12 +42,13 @@ public sealed class EventBusTests
         IConsumer<TestEvent> consumer = Substitute.For<IConsumer<TestEvent>>();
 
         _ = _consumerTypesProvider.GetConsumerTypes<TestEvent>().Returns([consumerType]);
-        _ = _consumerProvider.GetConsumerTypes(consumerType).Returns([consumer]);
+        _ = _consumerProvider.GetConsumers(consumerType).Returns([consumer]);
 
         _eventBus.Publish(testEvent);
 
         await consumer.Received().ConsumeAsync(testEvent, Arg.Any<CancellationToken>());
     }
+#pragma warning restore CS0618 // Type or member is obsolete
 
     public sealed record TestEvent;
 }

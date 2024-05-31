@@ -14,7 +14,7 @@ namespace ReflectionEventing.Castle.Windsor;
 public class WindsorEventBusBuilder(IWindsorContainer container) : EventBusBuilder
 {
     /// <inheritdoc />
-    public override void AddConsumer(
+    public override EventBusBuilder AddConsumer(
 #if NET5_0_OR_GREATER
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces)]
 #endif
@@ -28,6 +28,6 @@ public class WindsorEventBusBuilder(IWindsorContainer container) : EventBusBuild
             );
         }
 
-        base.AddConsumer(consumerType);
+        return base.AddConsumer(consumerType);
     }
 }

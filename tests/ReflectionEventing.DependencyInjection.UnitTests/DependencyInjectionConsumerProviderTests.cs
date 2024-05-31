@@ -15,7 +15,7 @@ public sealed class DependencyInjectionConsumerProviderTests
         IServiceProvider serviceProvider = Substitute.For<IServiceProvider>();
         DependencyInjectionConsumerProvider consumerProvider = new(serviceProvider);
 
-        Action act = () => consumerProvider.GetConsumerTypes(null!);
+        Action act = () => consumerProvider.GetConsumers(null!);
 
         _ = act.Should()
             .Throw<ArgumentNullException>()
@@ -30,9 +30,7 @@ public sealed class DependencyInjectionConsumerProviderTests
         _ = services.AddSingleton<TestConsumer>();
         DependencyInjectionConsumerProvider consumerProvider = new(services.BuildServiceProvider());
 
-        IEnumerable<object> actualConsumers = consumerProvider.GetConsumerTypes(
-            typeof(TestConsumer)
-        );
+        IEnumerable<object> actualConsumers = consumerProvider.GetConsumers(typeof(TestConsumer));
 
         _ = actualConsumers.Should().HaveCount(2);
     }

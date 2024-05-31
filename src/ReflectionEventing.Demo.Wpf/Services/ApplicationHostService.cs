@@ -20,9 +20,9 @@ internal sealed class ApplicationHostService(IServiceProvider serviceProvider) :
     /// Triggered when the application host is performing a graceful shutdown.
     /// </summary>
     /// <param name="cancellationToken">Indicates that the shutdown process should no longer be graceful.</param>
-    public async Task StopAsync(CancellationToken cancellationToken)
+    public Task StopAsync(CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
+        return Task.CompletedTask;
     }
 
     /// <summary>

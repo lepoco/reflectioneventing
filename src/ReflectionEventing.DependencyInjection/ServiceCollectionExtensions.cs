@@ -29,9 +29,7 @@ public static class ServiceCollectionExtensions
 
         configure(builder);
 
-        _ = services.AddSingleton<IConsumerTypesProvider>(
-            new HashedConsumerTypesProvider(builder.GetConsumers())
-        );
+        _ = services.AddSingleton(builder.BuildTypesProvider());
         _ = services.AddScoped<IConsumerProvider, DependencyInjectionConsumerProvider>();
         _ = services.AddScoped<IEventBus, EventBus>();
 

@@ -15,7 +15,7 @@ public sealed class AutofacConsumerProviderTests
         ILifetimeScope lifetimeScope = Substitute.For<ILifetimeScope>();
         AutofacConsumerProvider consumerProvider = new AutofacConsumerProvider(lifetimeScope);
 
-        Action act = () => consumerProvider.GetConsumerTypes(null!);
+        Action act = () => consumerProvider.GetConsumers(null!);
 
         _ = act.Should()
             .Throw<ArgumentNullException>()
@@ -34,9 +34,7 @@ public sealed class AutofacConsumerProviderTests
 
         AutofacConsumerProvider consumerProvider = new AutofacConsumerProvider(scope);
 
-        IEnumerable<object> actualConsumers = consumerProvider.GetConsumerTypes(
-            typeof(TestConsumer)
-        );
+        IEnumerable<object> actualConsumers = consumerProvider.GetConsumers(typeof(TestConsumer));
 
         _ = actualConsumers.First().Should().Be(testInstance);
     }

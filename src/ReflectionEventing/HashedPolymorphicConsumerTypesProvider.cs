@@ -11,22 +11,51 @@ namespace ReflectionEventing;
 /// <remarks>
 /// This class uses a dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
 /// </remarks>
-public class HashedConsumerTypesProvider(IDictionary<Type, IEnumerable<Type>> consumers)
+public class HashedPolymorphicConsumerTypesProvider(IDictionary<Type, IEnumerable<Type>> consumers)
     : IConsumerTypesProvider
 {
     /// <inheritdoc />
     public IEnumerable<Type> GetConsumerTypes(Type eventType)
     {
-        // ReSharper disable once LoopCanBeConvertedToQuery
         foreach (KeyValuePair<Type, IEnumerable<Type>> consumer in consumers)
         {
+            bool consumerHasRelatedType = false;
+
             foreach (Type consumedEventType in consumer.Value)
             {
                 if (consumedEventType == eventType)
                 {
                     yield return consumer.Key;
+
+                    continue;
+                }
+
+                if (AreTypesRelated(consumedEventType, eventType))
+                {
+                    consumerHasRelatedType = true;
                 }
             }
+
+            if (!consumerHasRelatedType)
+            {
+                continue;
+            }
+
+            if (consumer.Value is HashSet<Type> consumersHashSet)
+            {
+                _ = consumersHashSet.Add(eventType);
+            }
+            else if (consumer.Value is ICollection<Type> consumersCollection)
+            {
+                consumersCollection.Add(eventType);
+            }
+
+            yield return consumer.Key;
         }
+    }
+
+    private static bool AreTypesRelated(Type type1, Type type2)
+    {
+        return type1.IsAssignableFrom(type2) || type2.IsAssignableFrom(type1);
     }
 }

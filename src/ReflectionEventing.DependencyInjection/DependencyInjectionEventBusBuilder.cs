@@ -13,7 +13,7 @@ namespace ReflectionEventing.DependencyInjection;
 public class DependencyInjectionEventBusBuilder(IServiceCollection services) : EventBusBuilder
 {
     /// <inheritdoc />
-    public override void AddConsumer(
+    public override EventBusBuilder AddConsumer(
 #if NET5_0_OR_GREATER
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces)]
 #endif
@@ -29,6 +29,6 @@ public class DependencyInjectionEventBusBuilder(IServiceCollection services) : E
             );
         }
 
-        base.AddConsumer(consumerType);
+        return base.AddConsumer(consumerType);
     }
 }

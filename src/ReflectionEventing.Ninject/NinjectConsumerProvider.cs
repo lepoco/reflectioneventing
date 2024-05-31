@@ -13,7 +13,7 @@ namespace ReflectionEventing.Ninject;
 public class NinjectConsumerProvider(IKernel kernel) : IConsumerProvider
 {
     /// <inheritdoc />
-    public IEnumerable<object> GetConsumerTypes(Type consumerType)
+    public IEnumerable<object> GetConsumers(Type consumerType)
     {
         if (consumerType is null)
         {

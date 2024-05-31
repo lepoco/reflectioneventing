@@ -11,8 +11,13 @@
     d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=True}"
     mc:Ignorable="d">
-    <StackPanel>
-        <TextBlock Text="Current tick:" />
-        <TextBlock Text="{Binding ViewModel.CurrentTick, Mode=OneWay}" />
-    </StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Text="Current tick:" />
+        <TextBlock Grid.Column="1" Text="{Binding ViewModel.CurrentTick, Mode=OneWay}" />
+    </Grid>
 </Window>

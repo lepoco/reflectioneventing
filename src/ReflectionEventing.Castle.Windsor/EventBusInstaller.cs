@@ -33,7 +33,7 @@ public class EventBusInstaller(Action<WindsorEventBusBuilder> configure) : IWind
         _ = container.Register(
             Component
                 .For<IConsumerTypesProvider>()
-                .Instance(new HashedConsumerTypesProvider(builder.GetConsumers()))
+                .Instance(builder.BuildTypesProvider())
                 .LifestyleScoped(),
             Component
                 .For<IConsumerProvider>()

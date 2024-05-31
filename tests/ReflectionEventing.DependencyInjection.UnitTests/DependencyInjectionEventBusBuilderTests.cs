@@ -13,9 +13,7 @@ public sealed class DependencyInjectionEventBusBuilderTests
     public void AddConsumer_ShouldThrowExceptionWhenConsumerNotRegistered()
     {
         IServiceCollection services = new ServiceCollection();
-        DependencyInjectionEventBusBuilder eventBusBuilder = new DependencyInjectionEventBusBuilder(
-            services
-        );
+        DependencyInjectionEventBusBuilder eventBusBuilder = new(services);
 
         Action act = () => eventBusBuilder.AddConsumer(typeof(TestConsumer));
 
@@ -29,17 +27,20 @@ public sealed class DependencyInjectionEventBusBuilderTests
     {
         IServiceCollection services = new ServiceCollection();
         _ = services.AddSingleton<TestConsumer>();
-        DependencyInjectionEventBusBuilder eventBusBuilder = new DependencyInjectionEventBusBuilder(
-            services
-        );
+        DependencyInjectionEventBusBuilder eventBusBuilder = new(services);
 
         eventBusBuilder.AddConsumer(typeof(TestConsumer));
 
-        IDictionary<Type, IEnumerable<Type>> consumers = eventBusBuilder.GetConsumers();
-        _ = consumers.Should().ContainKey(typeof(TestConsumer));
+        IConsumerTypesProvider consumerTypesProvider = eventBusBuilder.BuildTypesProvider();
+        _ = consumerTypesProvider
+            .GetConsumerTypes(typeof(TestEvent))
+            .Should()
+            .Contain(typeof(TestConsumer));
     }
 
-    public record TestEvent;
+    public interface ITestEvent;
+
+    public record TestEvent : ITestEvent;
 
     public class TestConsumer : IConsumer<TestEvent>
     {

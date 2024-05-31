@@ -13,7 +13,7 @@ namespace ReflectionEventing.Autofac;
 public class AutofacConsumerProvider(ILifetimeScope lifetimeScope) : IConsumerProvider
 {
     /// <inheritdoc />
-    public IEnumerable<object> GetConsumerTypes(Type consumerType)
+    public IEnumerable<object> GetConsumers(Type consumerType)
     {
         if (consumerType is null)
         {

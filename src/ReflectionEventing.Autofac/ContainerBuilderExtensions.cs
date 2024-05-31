@@ -32,9 +32,8 @@ public static class ContainerBuilderExtensions
         configure(autofacBuilder);
 
         _ = builder
-            .RegisterType<HashedConsumerTypesProvider>()
+            .RegisterInstance(autofacBuilder.BuildTypesProvider())
             .As<IConsumerTypesProvider>()
-            .WithParameter("consumers", autofacBuilder.GetConsumers())
             .SingleInstance();
 
         _ = builder

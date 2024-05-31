@@ -3,33 +3,37 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using CommunityToolkit.Mvvm.ComponentModel;
 using ReflectionEventing.Demo.Wpf.Events;
 
 namespace ReflectionEventing.Demo.Wpf.ViewModels;
 
-public partial class MainWindowViewModel
-    : ObservableObject,
+public partial class MainWindowViewModel(ILogger<MainWindowViewModel> logger)
+    : ViewModel,
         IConsumer<ITickedEvent>,
         IConsumer<OtherEvent>
 {
     [ObservableProperty]
-    private int _currentTick = 0;
+    private int _currentTick;
 
     /// <inheritdoc />
     public async Task ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
     {
         int tickValue = payload.Value;
 
-        await Application.Current.Dispatcher.InvokeAsync(() =>
-        {
-            CurrentTick = tickValue;
-        });
+        await DispatchAsync(
+            () =>
+            {
+                CurrentTick = tickValue;
+            },
+            cancellationToken
+        );
     }
 
     /// <inheritdoc />
     public async Task ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
     {
+        logger.LogInformation("Received {Event} event.", nameof(OtherEvent));
+
         await Task.CompletedTask;
     }
 }

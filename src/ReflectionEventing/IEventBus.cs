@@ -11,14 +11,6 @@ namespace ReflectionEventing;
 public interface IEventBus
 {
     /// <summary>
-    /// Publishes the specified event synchronously.
-    /// </summary>
-    /// <typeparam name="TEvent">The type of the event to publish.</typeparam>
-    /// <param name="eventItem">The event to publish.</param>
-    [Obsolete($"May cause deadlock on UI threads, use {nameof(PublishAsync)} instead.")]
-    void Publish<TEvent>(TEvent eventItem);
-
-    /// <summary>
     /// Publishes the specified event asynchronously.
     /// </summary>
     /// <typeparam name="TEvent">The type of the event to publish.</typeparam>
@@ -29,5 +21,6 @@ public interface IEventBus
     /// This method gets the consumers for the specified event type from the consumer provider and then uses the service provider to get the required service for each consumer.
     /// Each consumer is then used to consume the event asynchronously.
     /// </remarks>
-    Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken);
+    Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken)
+        where TEvent : class;
 }

@@ -13,7 +13,7 @@ namespace ReflectionEventing.Castle.Windsor;
 public class WindsorConsumerProvider(IWindsorContainer container) : IConsumerProvider
 {
     /// <inheritdoc />
-    public IEnumerable<object> GetConsumerTypes(Type consumerType)
+    public IEnumerable<object> GetConsumers(Type consumerType)
     {
         if (consumerType is null)
         {

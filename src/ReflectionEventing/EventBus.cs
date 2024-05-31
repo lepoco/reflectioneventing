@@ -17,36 +17,24 @@ public class EventBus(
 ) : IEventBus
 {
     /// <inheritdoc />
-    public void Publish<TEvent>(TEvent eventItem)
-    {
-        Task.Run(() =>
-            {
-                using CancellationTokenSource cancellationSource = new();
-
-                PublishAsync(eventItem, cancellationSource.Token)
-                    .ConfigureAwait(false)
-                    .GetAwaiter()
-                    .GetResult();
-            })
-            .GetAwaiter()
-            .GetResult();
-    }
-
-    /// <inheritdoc />
     public async Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken)
+        where TEvent : class
     {
-        List<Task> tasks = new();
-        IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes(typeof(TEvent));
+        if (eventItem is null)
+        {
+            throw new ArgumentNullException(nameof(eventItem));
+        }
+
+        Type eventType = typeof(TEvent);
+        List<Task> tasks = [];
+        IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes(eventType);
 
         foreach (Type consumerType in consumerTypes)
         {
-            IEnumerable<IConsumer<TEvent>> consumerObjects = consumerProviders
-                .GetConsumerTypes(consumerType)
-                .OfType<IConsumer<TEvent>>();
-
-            tasks.AddRange(
-                consumerObjects.Select(x => x.ConsumeAsync(eventItem, cancellationToken))
-            );
+            foreach (object consumer in consumerProviders.GetConsumers(consumerType))
+            {
+                tasks.Add(((IConsumer<TEvent>)consumer).ConsumeAsync(eventItem, cancellationToken));
+            }
         }
 
         await Task.WhenAll(tasks).ConfigureAwait(false);

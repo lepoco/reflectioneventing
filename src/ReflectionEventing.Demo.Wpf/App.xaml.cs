@@ -32,8 +32,9 @@ public partial class App : Application
 
                 _ = services.AddEventBus(e =>
                 {
-                    // _ = e.AddAllConsumers(Assembly.GetExecutingAssembly());
-                    _ = e.AddConsumer<MainWindowViewModel>();
+                    e.Options.UseEventPolymorphism = true;
+
+                    _ = e.AddAllConsumers(Assembly.GetExecutingAssembly());
                 });
             }
         )

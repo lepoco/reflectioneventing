@@ -13,7 +13,7 @@ namespace ReflectionEventing.Unity;
 public class UnityConsumerProvider(IUnityContainer container) : IConsumerProvider
 {
     /// <inheritdoc />
-    public IEnumerable<object> GetConsumerTypes(Type consumerType)
+    public IEnumerable<object> GetConsumers(Type consumerType)
     {
         if (consumerType is null)
         {

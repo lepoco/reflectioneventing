@@ -3,39 +3,107 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
+using FluentAssertions.Collections;
+
 namespace ReflectionEventing.UnitTests;
 
 public sealed class EventBusBuilderTests
 {
-    private readonly EventBusBuilder _eventBusBuilder = new EventBusBuilder();
-
     [Fact]
     public void AddConsumer_ShouldAddConsumerToDictionary()
     {
         Type consumerType = typeof(MySampleConsumer);
 
-        _eventBusBuilder.AddConsumer(consumerType);
+        EventBusBuilder eventBusBuilder = new();
+        eventBusBuilder.AddConsumer(consumerType);
 
-        IDictionary<Type, IEnumerable<Type>> consumers = _eventBusBuilder.GetConsumers();
-        _ = consumers.Should().ContainKey(consumerType);
+        IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
+        _ = typesProvider.GetConsumerTypes(typeof(TestEvent)).Should().Contain(consumerType);
+        _ = typesProvider.GetConsumerTypes(typeof(SecondaryEvent)).Should().Contain(consumerType);
     }
 
     [Fact]
-    public void AddConsumer_ShouldAddEventTypeToConsumerInDictionary()
+    public void AddConsumer_ShouldNotReturnConsumersTypes_WithoutPolymorphismEnabled()
     {
         Type consumerType = typeof(MySampleConsumer);
 
-        _eventBusBuilder.AddConsumer(consumerType);
+        EventBusBuilder eventBusBuilder = new();
+        eventBusBuilder.AddConsumer(consumerType);
 
-        IDictionary<Type, IEnumerable<Type>> consumers = _eventBusBuilder.GetConsumers();
-        _ = consumers[consumerType].Should().Contain(typeof(TestEvent));
+        IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
+        GenericCollectionAssertions<Type>? consumers = typesProvider
+            .GetConsumerTypes(typeof(ITestEvent))
+            .Should();
+        consumers.HaveCount(0);
     }
 
-    public sealed record TestEvent;
+    [Fact]
+    public void AddConsumer_ShouldReturnConsumersTypes_WhenPolymorphismEnabled()
+    {
+        Type consumerType = typeof(MySampleConsumer);
 
-    public sealed record MySampleConsumer : IConsumer<TestEvent>
+        EventBusBuilder eventBusBuilder = new();
+        eventBusBuilder.Options.UseEventPolymorphism = true;
+        eventBusBuilder.AddConsumer(consumerType);
+
+        IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
+
+        GenericCollectionAssertions<Type>? consumers = typesProvider
+            .GetConsumerTypes(typeof(ITestEvent))
+            .Should();
+        consumers.HaveCount(1).And.Contain(consumerType);
+    }
+
+    [Fact]
+    public void AddConsumer_ShouldReturnMultipleConsumersTypes_WhenPolymorphismEnabled()
+    {
+        Type primaryConsumerType = typeof(MySampleConsumer);
+        Type secondaryConsumerType = typeof(MySecondarySampleConsumer);
+
+        EventBusBuilder eventBusBuilder = new();
+        eventBusBuilder.Options.UseEventPolymorphism = true;
+        eventBusBuilder.AddConsumer(primaryConsumerType);
+        eventBusBuilder.AddConsumer(secondaryConsumerType);
+
+        IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
+
+        GenericCollectionAssertions<Type>? consumers = typesProvider
+            .GetConsumerTypes(typeof(IBaseEvent))
+            .Should();
+        consumers.HaveCount(2).And.Contain(primaryConsumerType).And.Contain(secondaryConsumerType);
+    }
+
+    public interface IBaseEvent;
+
+    public interface ITestEvent;
+
+    public sealed record TestEvent : ITestEvent, IBaseEvent;
+
+    public sealed record SecondaryEvent : IBaseEvent;
+
+    public sealed record MySampleConsumer : IConsumer<TestEvent>, IConsumer<SecondaryEvent>
     {
         public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+
+        /// <inheritdoc />
+        public Task ConsumeAsync(SecondaryEvent payload, CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+    }
+
+    public sealed record MySecondarySampleConsumer : IConsumer<SecondaryEvent>
+    {
+        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        {
+            return Task.CompletedTask;
+        }
+
+        /// <inheritdoc />
+        public Task ConsumeAsync(SecondaryEvent payload, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }

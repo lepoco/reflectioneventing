@@ -14,28 +14,42 @@ public sealed class HashedConsumerTypesProviderTests
             new(
                 new Dictionary<Type, IEnumerable<Type>>
                 {
-                    { typeof(PrimarySampleConsumer), [typeof(TestEvent)] },
-                    { typeof(SecondarySampleConsumer), [typeof(TestEvent)] },
+                    { typeof(PrimarySampleConsumer), [typeof(PrimaryTestEvent)] },
+                    { typeof(SecondarySampleConsumer), [typeof(PrimaryTestEvent)] },
+                    { typeof(TertiarySampleConsumer), [typeof(SecondaryTestEvent)] }
                 }
             );
 
-        IEnumerable<Type> consumers = testEvent.GetConsumerTypes<TestEvent>();
+        IEnumerable<Type> consumers = testEvent.GetConsumerTypes<PrimaryTestEvent>();
 
-        _ = consumers.Should().HaveCount(2);
-        _ = consumers.Should().Contain(typeof(PrimarySampleConsumer));
+        _ = consumers
+            .Should()
+            .HaveCount(2)
+            .And.Contain(typeof(PrimarySampleConsumer))
+            .And.Contain(typeof(SecondarySampleConsumer));
     }
 
-    public sealed record TestEvent;
+    private interface ITestEvent;
 
-    public sealed record PrimarySampleConsumer : IConsumer<TestEvent>
+    private sealed record PrimaryTestEvent : ITestEvent;
+
+    private sealed record SecondaryTestEvent : ITestEvent;
+
+    private sealed record PrimarySampleConsumer : IConsumer<PrimaryTestEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken) =>
+        public Task ConsumeAsync(PrimaryTestEvent payload, CancellationToken cancellationToken) =>
             Task.CompletedTask;
     }
 
-    public sealed record SecondarySampleConsumer : IConsumer<TestEvent>
+    private sealed record SecondarySampleConsumer : IConsumer<PrimaryTestEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken) =>
+        public Task ConsumeAsync(PrimaryTestEvent payload, CancellationToken cancellationToken) =>
+            Task.CompletedTask;
+    }
+
+    private sealed record TertiarySampleConsumer : IConsumer<SecondaryTestEvent>
+    {
+        public Task ConsumeAsync(SecondaryTestEvent payload, CancellationToken cancellationToken) =>
             Task.CompletedTask;
     }
 }

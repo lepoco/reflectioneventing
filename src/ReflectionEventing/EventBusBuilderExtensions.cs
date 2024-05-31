@@ -3,9 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
-
 namespace ReflectionEventing;
 
 /// <summary>
@@ -56,15 +53,30 @@ public static class EventBusBuilderExtensions
     [RequiresUnreferencedCode("Calls System.Reflection.Assembly.GetTypes()")]
     private static IEnumerable<Type> ExtractConsumersFromAssembly(Assembly assembly)
     {
-        return assembly
-            .GetTypes()
-            .Where(t =>
-                t is { IsClass: true, IsAbstract: false }
-                && t.GetInterfaces()
-                    .Any(i =>
-                        i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IConsumer<>)
-                    )
-            );
+        Type[] types = assembly.GetTypes();
+
+        foreach (Type type in types)
+        {
+            Type[] typeInterfaces = type.GetInterfaces();
+
+            if (type.IsAbstract || !type.IsClass)
+            {
+                continue;
+            }
+
+            foreach (Type typeInterface in typeInterfaces)
+            {
+                if (!typeInterface.IsGenericType)
+                {
+                    continue;
+                }
+
+                if (typeInterface.GetGenericTypeDefinition() == typeof(IConsumer<>))
+                {
+                    yield return type;
+                }
+            }
+        }
     }
 
     private static void RegisterAllConsumers(EventBusBuilder builder, IEnumerable<Type> consumers)

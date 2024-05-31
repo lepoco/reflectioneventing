@@ -13,13 +13,13 @@ namespace ReflectionEventing.Ninject;
 public class NinjectEventBusBuilder(IKernel kernel) : EventBusBuilder
 {
     /// <inheritdoc />
-    public override void AddConsumer(Type consumerType)
+    public override EventBusBuilder AddConsumer(Type consumerType)
     {
         if (!kernel.GetBindings(consumerType).Any())
         {
             throw new InvalidOperationException("Event consumer must be registered in the kernel.");
         }
 
-        base.AddConsumer(consumerType);
+        return base.AddConsumer(consumerType);
     }
 }

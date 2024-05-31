@@ -15,15 +15,15 @@ namespace ReflectionEventing;
 public interface IConsumerProvider
 {
     /// <summary>
-    /// Gets the types of all consumers for the specified event type.
+    /// Gets the consumers objects for the specified event type.
     /// </summary>
     /// <param name="consumerType">The type of the event that the consumers handle.</param>
-    /// <returns>An enumerable of <see cref="Type"/>'s that are consumers of the specified event type.</returns>
+    /// <returns>An enumerable of <see cref="object"/>'s that are consumers of the specified event type.</returns>
     /// <example>
     /// <code>
     /// Type consumerType = typeof(MyEvent);
-    /// IEnumerable&lt;object&gt; consumerTypes = consumerProvider.GetConsumerTypes(consumerType);
+    /// IEnumerable&lt;object&gt; consumerTypes = consumerProvider.GetConsumers(consumerType);
     /// </code>
     /// </example>
-    IEnumerable<object> GetConsumerTypes(Type consumerType);
+    IEnumerable<object> GetConsumers(Type consumerType);
 }

@@ -3,28 +3,39 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace ReflectionEventing;
 
 /// <summary>
-/// Represents a class that builds an event bus with a specific set of consumers.
+/// Represents a class that builds an event bus with a specific set of classConsumers.
 /// </summary>
 /// <remarks>
-/// This class uses a dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
+/// This class uses a dictionary of classConsumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.
 /// </remarks>
 public class EventBusBuilder
 {
-    private readonly IDictionary<Type, IEnumerable<Type>> consumers =
+    private readonly IDictionary<Type, IEnumerable<Type>> classConsumers =
         new Dictionary<Type, IEnumerable<Type>>();
 
     /// <summary>
-    /// Gets the consumers that have been added to the builder.
+    /// Gets or sets a value indicating whether the event bus should use event polymorphism.
+    /// If set to true, the event bus will deliver events to classConsumers that handle the event type or any of its base types.
+    /// If set to false, the event bus will only deliver events to classConsumers that handle the exact event type.
+    /// The default value is false.
     /// </summary>
-    /// <returns>A dictionary of consumers where the key is the consumer type and the value is a collection of event types that the consumer can handle.</returns>
-    public IDictionary<Type, IEnumerable<Type>> GetConsumers()
+    public EventBusBuilderOptions Options { get; } = new();
+
+    /// <summary>
+    /// Builds and returns an instance of <see cref="IConsumerTypesProvider"/> based on the current configuration.
+    /// </summary>
+    /// <returns>
+    /// An instance of <see cref="IConsumerTypesProvider"/>. If <see cref="EventBusBuilderOptions.UseEventPolymorphism"/> is set to true,
+    /// it returns an instance of <see cref="HashedPolymorphicConsumerTypesProvider"/>, otherwise it returns an instance of <see cref="HashedConsumerTypesProvider"/>.
+    /// </returns>
+    public IConsumerTypesProvider BuildTypesProvider()
     {
-        return consumers;
+        return Options.UseEventPolymorphism
+            ? new HashedPolymorphicConsumerTypesProvider(classConsumers)
+            : new HashedConsumerTypesProvider(classConsumers);
     }
 
     /// <summary>
@@ -34,9 +45,9 @@ public class EventBusBuilder
     /// <remarks>
     /// This method checks if the consumer is registered in the service collection and if it is not transient.
     /// It then gets the interfaces of the consumer that are generic and have a generic type definition of <see cref="IConsumer{TEvent}"/>.
-    /// For each of these interfaces, it gets the generic argument and adds it to the consumers dictionary.
+    /// For each of these interfaces, it gets the generic argument and adds it to the classConsumers dictionary.
     /// </remarks>
-    public virtual void AddConsumer(
+    public virtual EventBusBuilder AddConsumer(
 #if NET5_0_OR_GREATER
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.Interfaces)]
 #endif
@@ -56,12 +67,14 @@ public class EventBusBuilder
         {
             Type consumedEventType = consumerInterface.GetGenericArguments()[0];
 
-            if (!consumers.ContainsKey(consumerType))
+            if (!classConsumers.ContainsKey(consumerType))
             {
-                consumers[consumerType] = new HashSet<Type>();
+                classConsumers[consumerType] = new HashSet<Type>();
             }
 
-            _ = ((HashSet<Type>)consumers[consumerType]).Add(consumedEventType);
+            _ = ((HashSet<Type>)classConsumers[consumerType]).Add(consumedEventType);
         }
+
+        return this;
     }
 }

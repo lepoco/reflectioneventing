@@ -28,12 +28,12 @@ public static class UnityContainerExtensions
         Action<UnityEventBusBuilder> configure
     )
     {
-        UnityEventBusBuilder builder = new UnityEventBusBuilder(container);
+        UnityEventBusBuilder builder = new(container);
 
         configure(builder);
 
-        _ = container.RegisterInstance<IConsumerTypesProvider>(
-            new HashedConsumerTypesProvider(builder.GetConsumers()),
+        _ = container.RegisterInstance(
+            builder.BuildTypesProvider(),
             new ContainerControlledLifetimeManager()
         );
 

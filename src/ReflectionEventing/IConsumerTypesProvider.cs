@@ -14,7 +14,7 @@ namespace ReflectionEventing;
 public interface IConsumerTypesProvider
 {
     /// <summary>
-    /// Gets the consumers for the specified event type.
+    /// Gets the consumer types for the specified event type.
     /// </summary>
     /// <returns>A collection of consumer types that can handle the specified event type.</returns>
     IEnumerable<Type> GetConsumerTypes(Type eventType);

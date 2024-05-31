@@ -17,14 +17,18 @@ public class EventBusModule(Action<NinjectEventBusBuilder> configure) : NinjectM
     /// </summary>
     public override void Load()
     {
+        if (Kernel is null)
+        {
+            throw new InvalidOperationException("The kernel is not set.");
+        }
+
         NinjectEventBusBuilder builder = new(Kernel);
 
         configure(builder);
 
         _ = Bind<IConsumerTypesProvider>()
-            .To<HashedConsumerTypesProvider>()
-            .InSingletonScope()
-            .WithConstructorArgument("consumers", builder.GetConsumers());
+            .ToConstant(builder.BuildTypesProvider())
+            .InSingletonScope();
 
         _ = Bind<IConsumerProvider>().To<NinjectConsumerProvider>().InTransientScope();
 
