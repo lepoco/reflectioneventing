@@ -13,7 +13,7 @@
     <Company>lepo.co</Company>
     <Authors>lepo.co</Authors>
     <Product>ReflectionEventing</Product>
-    <CommonTags>lepoco;events;eventing;reflection;client;toolkit</CommonTags>
+    <CommonTags>lepoco;events;eventing;reflection;client;toolkit;extensions;bus;eventbus;messages</CommonTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>(c) lepo.co | Leszek Pomianowski and Contributors. All rights reserved.</Copyright>
