@@ -18,8 +18,8 @@ public sealed class EventBusBuilderTests
         eventBusBuilder.AddConsumer(consumerType);
 
         IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
-        _ = typesProvider.GetConsumerTypes(typeof(TestEvent)).Should().Contain(consumerType);
-        _ = typesProvider.GetConsumerTypes(typeof(SecondaryEvent)).Should().Contain(consumerType);
+        _ = typesProvider.GetConsumerTypes(typeof(ITestEvent)).Should().Contain(consumerType);
+        _ = typesProvider.GetConsumerTypes(typeof(IBaseEvent)).Should().Contain(consumerType);
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public sealed class EventBusBuilderTests
 
         IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
         GenericCollectionAssertions<Type>? consumers = typesProvider
-            .GetConsumerTypes(typeof(ITestEvent))
+            .GetConsumerTypes(typeof(TestEvent))
             .Should();
         consumers.HaveCount(0);
     }
@@ -49,7 +49,7 @@ public sealed class EventBusBuilderTests
         IConsumerTypesProvider typesProvider = eventBusBuilder.BuildTypesProvider();
 
         GenericCollectionAssertions<Type>? consumers = typesProvider
-            .GetConsumerTypes(typeof(ITestEvent))
+            .GetConsumerTypes(typeof(TestEvent))
             .Should();
         consumers.HaveCount(1).And.Contain(consumerType);
     }
@@ -81,29 +81,24 @@ public sealed class EventBusBuilderTests
 
     public sealed record SecondaryEvent : IBaseEvent;
 
-    public sealed record MySampleConsumer : IConsumer<TestEvent>, IConsumer<SecondaryEvent>
+    public sealed record MySampleConsumer : IConsumer<ITestEvent>, IConsumer<IBaseEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        public Task ConsumeAsync(ITestEvent payload, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }
 
         /// <inheritdoc />
-        public Task ConsumeAsync(SecondaryEvent payload, CancellationToken cancellationToken)
+        public Task ConsumeAsync(IBaseEvent payload, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }
     }
 
-    public sealed record MySecondarySampleConsumer : IConsumer<SecondaryEvent>
+    public sealed record MySecondarySampleConsumer : IConsumer<IBaseEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
-        {
-            return Task.CompletedTask;
-        }
-
         /// <inheritdoc />
-        public Task ConsumeAsync(SecondaryEvent payload, CancellationToken cancellationToken)
+        public Task ConsumeAsync(IBaseEvent payload, CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
         }

@@ -25,6 +25,8 @@ public class HashedConsumerTypesProvider(IDictionary<Type, IEnumerable<Type>> co
                 if (consumedEventType == eventType)
                 {
                     yield return consumer.Key;
+
+                    break;
                 }
             }
         }

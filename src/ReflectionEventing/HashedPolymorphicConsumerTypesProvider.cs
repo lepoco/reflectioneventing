@@ -27,7 +27,7 @@ public class HashedPolymorphicConsumerTypesProvider(IDictionary<Type, IEnumerabl
                 {
                     yield return consumer.Key;
 
-                    continue;
+                    break;
                 }
 
                 if (AreTypesRelated(consumedEventType, eventType))
@@ -56,6 +56,6 @@ public class HashedPolymorphicConsumerTypesProvider(IDictionary<Type, IEnumerabl
 
     private static bool AreTypesRelated(Type type1, Type type2)
     {
-        return type1.IsAssignableFrom(type2) || type2.IsAssignableFrom(type1);
+        return type1.IsAssignableFrom(type2);
     }
 }
