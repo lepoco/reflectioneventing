@@ -1,15 +1,13 @@
-name: cqs-pr-validator
+name: reflection-events-client-cd-nuget
 
 on:
-  pull_request:
-    branches: [development]
   push:
-    branches: [development]
+    branches: [main]
 
   workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +17,6 @@ jobs:
       - uses: nuget/setup-nuget@v2
         with:
           nuget-api-key: ${{ secrets.NUGET_API_KEY }}
-
       - name: Setup .NET Core SDK 8.x
         uses: actions/setup-dotnet@v4
         with:
@@ -29,7 +26,10 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build CommandQuerySegregation.sln --configuration Release --no-restore
+        run: dotnet build ReflectionEventing.sln --configuration Release --no-restore -p:SourceLinkEnabled=true
 
       - name: Run tests
-        run: dotnet test CommandQuerySegregation.sln --configuration Release --no-restore --no-build --verbosity quiet
+        run: dotnet test ReflectionEventing.sln --configuration Release --no-restore --no-build --verbosity quiet
+
+      - name: Publish the package to NuGet.org
+        run: nuget push **\*.nupkg -NonInteractive -SkipDuplicate -Source 'https://api.nuget.org/v3/index.json'

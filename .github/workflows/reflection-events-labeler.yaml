@@ -1,4 +1,4 @@
-name: cqs-labeler
+name: reflection-events-labeler
 
 on:
   - pull_request_target

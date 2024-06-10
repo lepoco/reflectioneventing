@@ -45,7 +45,7 @@ insert_final_newline = true
 [*.cs]
 
 #### File Header Template ####
-file_header_template = This Source Code Form is subject to the terms of the MIT License.\nIf a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.\nCopyright (C) Leszek Pomianowski and CommandQuerySegregation Contributors.\nAll Rights Reserved.
+file_header_template = This Source Code Form is subject to the terms of the MIT License.\nIf a copy of the MIT was not distributed with this file, You can obtain one at https://opensource.org/licenses/MIT.\nCopyright (C) Leszek Pomianowski and ReflectionEventing Contributors.\nAll Rights Reserved.
 
 #### .NET Coding Conventions ####
 

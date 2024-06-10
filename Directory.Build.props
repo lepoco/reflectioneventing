@@ -6,22 +6,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
-    <PackageVersion>1.0.0-preview.1</PackageVersion>
+    <Version>3.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <Company>lepo.co</Company>
     <Authors>lepo.co</Authors>
-    <Product>CommandQuerySegregation</Product>
-    <CommonTags>lepoco;commands;queries;bus;messages</CommonTags>
+    <Product>ReflectionEventing</Product>
+    <CommonTags>lepoco;events;eventing;reflection;client;toolkit;extensions;bus;eventbus;messages</CommonTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>(c) lepo.co | Leszek Pomianowski and Contributors. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/lepoco/cqs</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/lepoco/cqs/releases</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/lepoco/reflectioneventing</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/lepoco/reflectioneventing/releases</PackageReleaseNotes>
     <PackageIcon>Icon.png</PackageIcon>
-    <PackageIconUrl>https://github.com/lepoco/cqs/main/build/nuget.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/lepoco/reflectioneventing/main/build/nuget.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup>
