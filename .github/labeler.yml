@@ -22,7 +22,7 @@ update:
 
 NuGet:
 - changed-files:
-  - any-glob-to-any-file: [ 'src/ReflectionEventing/**', 'src/Directory.Packages.props' ]
+  - any-glob-to-any-file: [ 'src/CommandQuerySegregation/**', 'src/Directory.Packages.props' ]
 
 dependencies:
 - changed-files:

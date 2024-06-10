@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageId>ReflectionEventing.Autofac</PackageId>
+    <PackageId>CommandQuerySegregation</PackageId>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0;net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
-    <CommonTags>$(CommonTags);autofac;module</CommonTags>
-    <Description>Autofac Container module with ReflectionEventing, which promotes better Inversion of Control (IoC), reducing coupling and enhancing the modularity and flexibility of your applications.</Description>
+    <Description>About
+      Elevate your application's command and query responsibilities. CommandQuerySegregation provides intuitive interfaces and classes for implementing Command Query Responsibility Segregation (CQRS) in .NET applications. It facilitates clear separation of command and query operations, promoting clean architecture and enhanced maintainability.</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
@@ -32,13 +32,5 @@
       System.Runtime.CompilerServices.SkipLocalsInitAttribute;
     </PolySharpIncludeGeneratedTypes>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Autofac" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ReflectionEventing\ReflectionEventing.csproj" />
-  </ItemGroup>
 
 </Project>
