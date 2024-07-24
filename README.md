@@ -86,7 +86,7 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
 
 ## Special thanks
 
-JetBrains was kind enough to lend a license for the open-source dotUltimate for __ReflectionEventing_ development.  
+JetBrains was kind enough to lend a license for the open-source **dotUltimate** for _ReflectionEventing_ development.  
 Learn more here:
 
  - https://www.jetbrains.com/dotnet/
