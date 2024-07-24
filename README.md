@@ -84,6 +84,14 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
 }
 ```
 
+## Special thanks
+
+JetBrains was kind enough to lend a license for the open-source dotUltimate for __ReflectionEventing_ development.  
+Learn more here:
+
+https://www.jetbrains.com/dotnet/
+https://www.jetbrains.com/opensource/
+
 ## Compilation
 
 To build the project, use Visual Studio 2022 and open the .sln file.
