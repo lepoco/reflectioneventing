@@ -6,6 +6,7 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using ReflectionEventing.Queues;
 
 namespace ReflectionEventing.Castle.Windsor;
 
@@ -35,6 +36,7 @@ public class EventBusInstaller(Action<WindsorEventBusBuilder> configure) : IWind
                 .For<IConsumerTypesProvider>()
                 .Instance(builder.BuildTypesProvider())
                 .LifestyleScoped(),
+            Component.For<IEventsQueue>().ImplementedBy<EventsQueue>().LifestyleSingleton(),
             Component
                 .For<IConsumerProvider>()
                 .ImplementedBy<WindsorConsumerProvider>()

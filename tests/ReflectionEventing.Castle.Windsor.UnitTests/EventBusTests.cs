@@ -18,22 +18,21 @@ public sealed class EventBusTests : IDisposable
         _container = new WindsorContainer();
         _ = _container.Register(Component.For<TestConsumer>().LifestyleScoped());
 
-        EventBusInstaller installer =
-            new(builder =>
-            {
-                _ = builder.AddConsumer<TestConsumer>();
-            });
+        EventBusInstaller installer = new(builder =>
+        {
+            _ = builder.AddConsumer<TestConsumer>();
+        });
 
         installer.Install(_container, null!);
     }
 
     [Fact]
-    public async Task PublishAsync_ShouldCallConsumeAsyncOnAllConsumers()
+    public async Task SendAsync_ShouldCallConsumeAsyncOnAllConsumers()
     {
         using IDisposable scope = _container.BeginScope();
         IEventBus eventBus = _container.Resolve<IEventBus>();
 
-        await eventBus.PublishAsync(new TestEvent(), CancellationToken.None);
+        await eventBus.SendAsync(new TestEvent(), CancellationToken.None);
 
         _ = _container.Resolve<TestConsumer>().ReceivedEvents.Should().Be(1);
     }

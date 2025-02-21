@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>3.1.0</Version>
-    <AssemblyVersion>3.0.0</AssemblyVersion>
+    <Version>4.0.0</Version>
+    <AssemblyVersion>4.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -37,7 +37,7 @@
 
   <PropertyGroup>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>12.0</LangVersion>
+    <LangVersion>13.0</LangVersion>
     <Nullable>enable</Nullable>
 
     <!--
@@ -52,12 +52,24 @@
     <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
     <IsCoreProject Condition="$(IsTestProject)">False</IsCoreProject>
     <IsCoreProject Condition="'$(IsCoreProject)' == ''">True</IsCoreProject>
+    <IsBelowNet8 Condition="'$(TargetFramework)' == 'netstandard2.0'
+                 Or '$(TargetFramework)' == 'netstandard2.1'
+                 Or '$(TargetFramework)' == 'net462'
+                 Or '$(TargetFramework)' == 'net472'
+                 Or '$(TargetFramework)' == 'net481'
+                 Or '$(TargetFramework)' == 'net5.0'
+                 Or '$(TargetFramework)' == 'net6.0'
+                 Or '$(TargetFramework)' == 'net7.0'">True</IsBelowNet8>
   </PropertyGroup>
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <IsPublishable>true</IsPublishable>
     <ContinuousIntegrationBuild>$(TF_BUILD)</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsBelowNet8)' == 'false'">
+    <DefineConstants>$(DefineConstants);NET8_0_OR_GREATER</DefineConstants>
   </PropertyGroup>
 
   <Choose>

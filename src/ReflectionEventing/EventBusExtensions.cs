@@ -11,12 +11,40 @@ namespace ReflectionEventing;
 public static class EventBusExtensions
 {
     /// <summary>
+    /// Sends the specified event synchronously.
+    /// </summary>
+    /// <typeparam name="TEvent">The type of the event to publish.</typeparam>
+    /// <param name="eventBus">The event bus to extend.</param>
+    /// <param name="eventItem">The event to publish.</param>
+    [Obsolete($"May cause deadlock on UI threads, use {nameof(IEventBus.SendAsync)} instead.")]
+    public static void Send<TEvent>(this IEventBus eventBus, TEvent eventItem)
+        where TEvent : class
+    {
+        using CancellationTokenSource cancellationSource = new();
+
+        Task.Run(
+                () =>
+                {
+                    // ReSharper disable once AccessToDisposedClosure
+                    eventBus
+                        .SendAsync(eventItem, cancellationSource.Token)
+                        .ConfigureAwait(false)
+                        .GetAwaiter()
+                        .GetResult();
+                },
+                cancellationSource.Token
+            )
+            .GetAwaiter()
+            .GetResult();
+    }
+
+    /// <summary>
     /// Publishes the specified event synchronously.
     /// </summary>
     /// <typeparam name="TEvent">The type of the event to publish.</typeparam>
     /// <param name="eventBus">The event bus to extend.</param>
     /// <param name="eventItem">The event to publish.</param>
-    [Obsolete($"May cause deadlock on UI threads, use {nameof(IEventBus.PublishAsync)} instead.")]
+    [Obsolete($"May cause deadlock on UI threads, use {nameof(IEventBus.SendAsync)} instead.")]
     public static void Publish<TEvent>(this IEventBus eventBus, TEvent eventItem)
         where TEvent : class
     {

@@ -18,11 +18,10 @@ public sealed class EventBusInstallerTests
 
         _ = container.Register(Component.For<TestConsumer>().LifestyleScoped());
 
-        EventBusInstaller installer =
-            new(builder =>
-            {
-                _ = builder.AddConsumer<TestConsumer>();
-            });
+        EventBusInstaller installer = new(builder =>
+        {
+            _ = builder.AddConsumer<TestConsumer>();
+        });
 
         installer.Install(container, null!);
 

@@ -4,6 +4,7 @@
 // All Rights Reserved.
 
 using Ninject.Modules;
+using ReflectionEventing.Queues;
 
 namespace ReflectionEventing.Ninject;
 
@@ -29,6 +30,8 @@ public class EventBusModule(Action<NinjectEventBusBuilder> configure) : NinjectM
         _ = Bind<IConsumerTypesProvider>()
             .ToConstant(builder.BuildTypesProvider())
             .InSingletonScope();
+
+        _ = Bind<IEventsQueue>().To<EventsQueue>().InSingletonScope();
 
         _ = Bind<IConsumerProvider>().To<NinjectConsumerProvider>().InTransientScope();
 

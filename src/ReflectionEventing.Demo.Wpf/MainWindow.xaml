@@ -12,12 +12,34 @@
                                      IsDesignTimeCreatable=True}"
     mc:Ignorable="d">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Text="Current tick:" />
-        <TextBlock Grid.Column="1" Text="{Binding ViewModel.CurrentTick, Mode=OneWay}" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Text="Current tick:" />
+            <TextBlock Grid.Column="1" Text="{Binding ViewModel.CurrentTick, Mode=OneWay}" />
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,24,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Button
+                HorizontalAlignment="Left"
+                Command="{Binding ViewModel.SendToQueueCommand, Mode=OneWay}"
+                Content="Add to queue" />
+
+            <TextBlock Grid.Row="1" Text="{Binding ViewModel.QueueCount, Mode=OneWay}" />
+        </Grid>
     </Grid>
 </Window>

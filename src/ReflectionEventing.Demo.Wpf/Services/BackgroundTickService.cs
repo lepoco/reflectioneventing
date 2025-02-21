@@ -28,13 +28,13 @@ internal sealed class BackgroundTickService(IEventBus eventBus) : IHostedService
 
     private async Task TickInBackground(CancellationToken cancellationToken)
     {
-        await eventBus.PublishAsync(new OtherEvent(), cancellationToken);
+        await eventBus.SendAsync(new OtherEvent(), cancellationToken);
 
         Random random = new();
 
         while (!cancellationToken.IsCancellationRequested)
         {
-            await eventBus.PublishAsync(
+            await eventBus.SendAsync(
                 new BackgroundTicked(random.Next(10, 1001)),
                 cancellationToken
             );

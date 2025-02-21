@@ -12,7 +12,7 @@ public sealed class ServiceCollectionExtensionsTests
     [Fact]
     public void AddEventBus_RegistersServicesAndAddsConsumer()
     {
-        ServiceCollection services = new ServiceCollection();
+        ServiceCollection services = new();
 
         _ = services.AddScoped<TestConsumer>();
         _ = services.AddEventBus(builder =>

@@ -4,6 +4,7 @@
 // All Rights Reserved.
 
 using Autofac;
+using ReflectionEventing.Queues;
 
 namespace ReflectionEventing.Autofac;
 
@@ -35,6 +36,8 @@ public static class ContainerBuilderExtensions
             .RegisterInstance(autofacBuilder.BuildTypesProvider())
             .As<IConsumerTypesProvider>()
             .SingleInstance();
+
+        _ = builder.RegisterType<EventsQueue>().As<IEventsQueue>().SingleInstance();
 
         _ = builder
             .RegisterType<AutofacConsumerProvider>()

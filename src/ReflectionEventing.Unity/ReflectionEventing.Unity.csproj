@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>ReflectionEventing.Unity</PackageId>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0;net462;net472</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
@@ -10,7 +10,7 @@
     <Description>Unity container extensions with ReflectionEventing, which promotes better Inversion of Control (IoC), reducing coupling and enhancing the modularity and flexibility of your applications.</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  <PropertyGroup Condition="'$(IsBelowNet8)' == 'false'">
     <PublishAot>true</PublishAot>
     <StripSymbols>true</StripSymbols>
     <OptimizationPreference>Speed</OptimizationPreference>

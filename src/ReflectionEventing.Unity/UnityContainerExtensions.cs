@@ -3,6 +3,7 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
+using ReflectionEventing.Queues;
 using Unity;
 using Unity.Lifetime;
 
@@ -34,6 +35,10 @@ public static class UnityContainerExtensions
 
         _ = container.RegisterInstance(
             builder.BuildTypesProvider(),
+            new ContainerControlledLifetimeManager()
+        );
+
+        _ = container.RegisterType<IEventsQueue, EventsQueue>(
             new ContainerControlledLifetimeManager()
         );
 

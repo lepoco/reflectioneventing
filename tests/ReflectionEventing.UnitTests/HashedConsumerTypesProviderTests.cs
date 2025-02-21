@@ -10,15 +10,14 @@ public sealed class HashedConsumerTypesProviderTests
     [Fact]
     public void GetConsumerTypes_ShouldReturnCollectionOfConsumers()
     {
-        HashedConsumerTypesProvider testEvent =
-            new(
-                new Dictionary<Type, IEnumerable<Type>>
-                {
-                    { typeof(PrimarySampleConsumer), [typeof(PrimaryTestEvent)] },
-                    { typeof(SecondarySampleConsumer), [typeof(PrimaryTestEvent)] },
-                    { typeof(TertiarySampleConsumer), [typeof(SecondaryTestEvent)] }
-                }
-            );
+        HashedConsumerTypesProvider testEvent = new(
+            new Dictionary<Type, IEnumerable<Type>>
+            {
+                { typeof(PrimarySampleConsumer), [typeof(PrimaryTestEvent)] },
+                { typeof(SecondarySampleConsumer), [typeof(PrimaryTestEvent)] },
+                { typeof(TertiarySampleConsumer), [typeof(SecondaryTestEvent)] },
+            }
+        );
 
         IEnumerable<Type> consumers = testEvent.GetConsumerTypes<PrimaryTestEvent>();
 

@@ -4,18 +4,23 @@
     <PackageVersion Include="Castle.Windsor" Version="6.0.0" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />
-    <PackageVersion Include="FluentAssertions" Version="6.12.0" />
+    <PackageVersion Include="AwesomeAssertions" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
     <PackageVersion Include="Ninject" Version="3.0.1.10" />
     <PackageVersion Include="NSubstitute" Version="5.1.0" />
-    <PackageVersion Include="PolySharp" Version="1.13.1" />
+    <PackageVersion Include="PolySharp" Version="1.15.0" />
+    <PackageVersion Include="System.Collections.Concurrent" Version="4.3.0" />
+    <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="6.0.0" />
+    <PackageVersion Include="System.Threading.Channels" Version="9.0.0" />
     <PackageVersion Include="Unity" Version="5.11.10" />
     <PackageVersion Include="Unity.Abstractions" Version="4.0.0" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.4" />
     <PackageVersion Include="xunit" Version="2.6.2" />
+    <PackageVersion Include="WPF-UI" Version="4.0.1" />
   </ItemGroup>
 </Project>

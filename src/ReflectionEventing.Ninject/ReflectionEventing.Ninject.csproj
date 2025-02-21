@@ -2,11 +2,17 @@
 
   <PropertyGroup>
     <PackageId>ReflectionEventing.Ninject</PackageId>
-    <TargetFrameworks>net462;net472;net481</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0;net462;net472</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <Description>Ninject module with ReflectionEventing, which promotes better Inversion of Control (IoC), reducing coupling and enhancing the modularity and flexibility of your applications.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsBelowNet8)' == 'false'">
+    <PublishAot>true</PublishAot>
+    <StripSymbols>true</StripSymbols>
+    <OptimizationPreference>Speed</OptimizationPreference>
   </PropertyGroup>
 
   <!-- Necessary polyfills -->

@@ -5,6 +5,14 @@
 
 global using System;
 global using System.Collections.Generic;
+global using System.Diagnostics;
 global using System.Diagnostics.CodeAnalysis;
+global using System.Diagnostics.Metrics;
 global using System.Linq;
+global using System.Reflection;
+global using System.Threading;
+global using System.Threading.Channels;
+global using System.Threading.Tasks;
 global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
+global using Microsoft.Extensions.Logging;

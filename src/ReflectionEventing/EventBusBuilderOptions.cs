@@ -18,4 +18,22 @@ public class EventBusBuilderOptions
     /// The default value is false.
     /// </summary>
     public bool UseEventPolymorphism { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets the rate at which the event queue is processed.
+    /// The default value is 20ms.
+    /// </summary>
+    /// <remarks>
+    /// Adjust this value to control how frequently the event queue is processed.
+    /// </remarks>
+    public TimeSpan QueueTickRate { get; set; } = TimeSpan.FromMilliseconds(20); // NOTE: There are 10,000 ticks in a millisecond.
+
+    /// <summary>
+    /// Gets or sets the rate at which the error queue is processed when default queue consumption fails.
+    /// The default value is 20ms.
+    /// </summary>
+    /// <remarks>
+    /// Adjust this value to control how frequently the error queue is processed.
+    /// </remarks>
+    public TimeSpan ErrorTickRate { get; set; } = TimeSpan.FromMilliseconds(20); // NOTE: There are 10,000 ticks in a millisecond.
 }

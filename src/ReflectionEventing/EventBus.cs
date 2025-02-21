@@ -3,6 +3,8 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
+using ReflectionEventing.Queues;
+
 namespace ReflectionEventing;
 
 /// <summary>
@@ -13,13 +15,31 @@ namespace ReflectionEventing;
 /// </remarks>
 public class EventBus(
     IConsumerProvider consumerProviders,
-    IConsumerTypesProvider consumerTypesProvider
+    IConsumerTypesProvider consumerTypesProvider,
+    IEventsQueue queue
 ) : IEventBus
 {
+    private static readonly ActivitySource ActivitySource = new("ReflectionEventing.EventBus");
+
+    private static readonly Meter Meter = new("ReflectionEventing.EventBus");
+
+    private static readonly Counter<long> SentCounter = Meter.CreateCounter<long>("bus.sent");
+
+    private static readonly Counter<long> PublishedCounter = Meter.CreateCounter<long>(
+        "bus.published"
+    );
+
     /// <inheritdoc />
-    public async Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken)
+    public async Task SendAsync<TEvent>(
+        TEvent eventItem,
+        CancellationToken cancellationToken = default
+    )
         where TEvent : class
     {
+        using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
+
+        activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
+
         if (eventItem is null)
         {
             throw new ArgumentNullException(nameof(eventItem));
@@ -38,5 +58,26 @@ public class EventBus(
         }
 
         await Task.WhenAll(tasks).ConfigureAwait(false);
+
+        SentCounter.Add(1, new KeyValuePair<string, object?>("message_type", eventType.Name));
+    }
+
+    /// <inheritdoc />
+    public async Task PublishAsync<TEvent>(
+        TEvent eventItem,
+        CancellationToken cancellationToken = default
+    )
+        where TEvent : class
+    {
+        using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
+
+        activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
+
+        await queue.EnqueueAsync(eventItem, cancellationToken);
+
+        PublishedCounter.Add(
+            1,
+            new KeyValuePair<string, object?>("message_type", typeof(TEvent).Name)
+        );
     }
 }

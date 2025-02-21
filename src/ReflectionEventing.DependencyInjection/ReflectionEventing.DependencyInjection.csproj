@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PackageId>ReflectionEventing.DependencyInjection</PackageId>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net9.0;net8.0;net6.0;netstandard2.0;net462;net472</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
@@ -10,7 +10,7 @@
     <Description>Micosoft Dependency Injection service extensions with ReflectionEventing, which promotes better Inversion of Control (IoC), reducing coupling and enhancing the modularity and flexibility of your applications.</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+  <PropertyGroup Condition="'$(IsBelowNet8)' == 'false'">
     <PublishAot>true</PublishAot>
     <StripSymbols>true</StripSymbols>
     <OptimizationPreference>Speed</OptimizationPreference>
@@ -27,14 +27,24 @@
       System.Diagnostics.CodeAnalysis.NotNullWhenAttribute;
       System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute;
       System.Diagnostics.CodeAnalysis.UnconditionalSuppressMessageAttribute;
+      System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute;
       System.Runtime.CompilerServices.CallerArgumentExpressionAttribute;
       System.Runtime.CompilerServices.IsExternalInit;
       System.Runtime.CompilerServices.SkipLocalsInitAttribute;
+      System.Runtime.CompilerServices.RequiredMemberAttribute;
+      System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute;
     </PolySharpIncludeGeneratedTypes>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net462' or '$(TargetFramework)' == 'net472'">
+    <PackageReference Include="System.Threading.Channels" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net8.0' or '$(TargetFramework)' == 'net9.0'">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" VersionOverride="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" VersionOverride="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
