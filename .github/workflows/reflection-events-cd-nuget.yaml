@@ -1,3 +1,4 @@
+name: reflection-events-cd-nuget
 
 on:
   push:
