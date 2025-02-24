@@ -1,0 +1,412 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.IEventBus
+  commentId: T:ReflectionEventing.IEventBus
+  id: IEventBus
+  parent: ReflectionEventing
+  children:
+  - ReflectionEventing.IEventBus.PublishAsync``1(``0,System.Threading.CancellationToken)
+  - ReflectionEventing.IEventBus.SendAsync``1(``0,System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: IEventBus
+  nameWithType: IEventBus
+  fullName: ReflectionEventing.IEventBus
+  type: Interface
+  source:
+    remote:
+      path: src/ReflectionEventing/IEventBus.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: IEventBus
+    path: ../src/ReflectionEventing/IEventBus.cs
+    startLine: 10
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing
+  summary: Provides event publishing capabilities.
+  example: []
+  syntax:
+    content: public interface IEventBus
+    content.vb: Public Interface IEventBus
+  extensionMethods:
+  - ReflectionEventing.IEventBus.ReflectionEventing.EventBusExtensions.Publish``1({TEvent})
+  - ReflectionEventing.IEventBus.ReflectionEventing.EventBusExtensions.Send``1({TEvent})
+- uid: ReflectionEventing.IEventBus.SendAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.IEventBus.SendAsync``1(``0,System.Threading.CancellationToken)
+  id: SendAsync``1(``0,System.Threading.CancellationToken)
+  parent: ReflectionEventing.IEventBus
+  langs:
+  - csharp
+  - vb
+  name: SendAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType: IEventBus.SendAsync<TEvent>(TEvent, CancellationToken)
+  fullName: ReflectionEventing.IEventBus.SendAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing/IEventBus.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: SendAsync
+    path: ../src/ReflectionEventing/IEventBus.cs
+    startLine: 23
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing
+  summary: Sends the specified event asynchronously within the current scope, waiting for its execution.
+  remarks: >-
+    This method gets the consumers for the specified event type from the consumer provider and then uses the service provider to get the required service for each consumer.
+
+    Each consumer is then used to consume the event asynchronously.
+  example: []
+  syntax:
+    content: 'Task SendAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken = default) where TEvent : class'
+    parameters:
+    - id: eventItem
+      type: '{TEvent}'
+      description: The event to send.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token that can be used to cancel the operation.
+    typeParameters:
+    - id: TEvent
+      description: The type of the event to send.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that represents the asynchronous operation.
+    content.vb: Function SendAsync(Of TEvent As Class)(eventItem As TEvent, cancellationToken As CancellationToken = Nothing) As Task
+  overload: ReflectionEventing.IEventBus.SendAsync*
+  nameWithType.vb: IEventBus.SendAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName.vb: ReflectionEventing.IEventBus.SendAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  name.vb: SendAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: ReflectionEventing.IEventBus.PublishAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.IEventBus.PublishAsync``1(``0,System.Threading.CancellationToken)
+  id: PublishAsync``1(``0,System.Threading.CancellationToken)
+  parent: ReflectionEventing.IEventBus
+  langs:
+  - csharp
+  - vb
+  name: PublishAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType: IEventBus.PublishAsync<TEvent>(TEvent, CancellationToken)
+  fullName: ReflectionEventing.IEventBus.PublishAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing/IEventBus.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: PublishAsync
+    path: ../src/ReflectionEventing/IEventBus.cs
+    startLine: 36
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing
+  summary: Adds the specified event to the queue.Another scope will take over execution as configured.
+  remarks: The method only adds the event to the execution queue, it does not wait for its successful execution.
+  example: []
+  syntax:
+    content: 'Task PublishAsync<TEvent>(TEvent eventItem, CancellationToken cancellationToken = default) where TEvent : class'
+    parameters:
+    - id: eventItem
+      type: '{TEvent}'
+      description: The event to publish.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A cancellation token that can be used to cancel the operation.
+    typeParameters:
+    - id: TEvent
+      description: The type of the event to publish.
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that represents the asynchronous operation.
+    content.vb: Function PublishAsync(Of TEvent As Class)(eventItem As TEvent, cancellationToken As CancellationToken = Nothing) As Task
+  overload: ReflectionEventing.IEventBus.PublishAsync*
+  nameWithType.vb: IEventBus.PublishAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName.vb: ReflectionEventing.IEventBus.PublishAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  name.vb: PublishAsync(Of TEvent)(TEvent, CancellationToken)
+references:
+- uid: ReflectionEventing
+  commentId: N:ReflectionEventing
+  href: ReflectionEventing.html
+  name: ReflectionEventing
+  nameWithType: ReflectionEventing
+  fullName: ReflectionEventing
+- uid: ReflectionEventing.IEventBus.ReflectionEventing.EventBusExtensions.Publish``1({TEvent})
+  commentId: M:ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+  parent: ReflectionEventing.EventBusExtensions
+  definition: ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+  href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Publish__1_ReflectionEventing_IEventBus___0_
+  name: Publish<TEvent>(IEventBus, TEvent)
+  nameWithType: EventBusExtensions.Publish<TEvent>(IEventBus, TEvent)
+  fullName: ReflectionEventing.EventBusExtensions.Publish<TEvent>(ReflectionEventing.IEventBus, TEvent)
+  nameWithType.vb: EventBusExtensions.Publish(Of TEvent)(IEventBus, TEvent)
+  fullName.vb: ReflectionEventing.EventBusExtensions.Publish(Of TEvent)(ReflectionEventing.IEventBus, TEvent)
+  name.vb: Publish(Of TEvent)(IEventBus, TEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+    name: Publish
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Publish__1_ReflectionEventing_IEventBus___0_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+    name: Publish
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Publish__1_ReflectionEventing_IEventBus___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: ReflectionEventing.IEventBus.ReflectionEventing.EventBusExtensions.Send``1({TEvent})
+  commentId: M:ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+  parent: ReflectionEventing.EventBusExtensions
+  definition: ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+  href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Send__1_ReflectionEventing_IEventBus___0_
+  name: Send<TEvent>(IEventBus, TEvent)
+  nameWithType: EventBusExtensions.Send<TEvent>(IEventBus, TEvent)
+  fullName: ReflectionEventing.EventBusExtensions.Send<TEvent>(ReflectionEventing.IEventBus, TEvent)
+  nameWithType.vb: EventBusExtensions.Send(Of TEvent)(IEventBus, TEvent)
+  fullName.vb: ReflectionEventing.EventBusExtensions.Send(Of TEvent)(ReflectionEventing.IEventBus, TEvent)
+  name.vb: Send(Of TEvent)(IEventBus, TEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+    name: Send
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Send__1_ReflectionEventing_IEventBus___0_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+    name: Send
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Send__1_ReflectionEventing_IEventBus___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+  commentId: M:ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+  href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Publish__1_ReflectionEventing_IEventBus___0_
+  name: Publish<TEvent>(IEventBus, TEvent)
+  nameWithType: EventBusExtensions.Publish<TEvent>(IEventBus, TEvent)
+  fullName: ReflectionEventing.EventBusExtensions.Publish<TEvent>(ReflectionEventing.IEventBus, TEvent)
+  nameWithType.vb: EventBusExtensions.Publish(Of TEvent)(IEventBus, TEvent)
+  fullName.vb: ReflectionEventing.EventBusExtensions.Publish(Of TEvent)(ReflectionEventing.IEventBus, TEvent)
+  name.vb: Publish(Of TEvent)(IEventBus, TEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+    name: Publish
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Publish__1_ReflectionEventing_IEventBus___0_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusExtensions.Publish``1(ReflectionEventing.IEventBus,``0)
+    name: Publish
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Publish__1_ReflectionEventing_IEventBus___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: ReflectionEventing.EventBusExtensions
+  commentId: T:ReflectionEventing.EventBusExtensions
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusExtensions.html
+  name: EventBusExtensions
+  nameWithType: EventBusExtensions
+  fullName: ReflectionEventing.EventBusExtensions
+- uid: ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+  commentId: M:ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+  href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Send__1_ReflectionEventing_IEventBus___0_
+  name: Send<TEvent>(IEventBus, TEvent)
+  nameWithType: EventBusExtensions.Send<TEvent>(IEventBus, TEvent)
+  fullName: ReflectionEventing.EventBusExtensions.Send<TEvent>(ReflectionEventing.IEventBus, TEvent)
+  nameWithType.vb: EventBusExtensions.Send(Of TEvent)(IEventBus, TEvent)
+  fullName.vb: ReflectionEventing.EventBusExtensions.Send(Of TEvent)(ReflectionEventing.IEventBus, TEvent)
+  name.vb: Send(Of TEvent)(IEventBus, TEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+    name: Send
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Send__1_ReflectionEventing_IEventBus___0_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusExtensions.Send``1(ReflectionEventing.IEventBus,``0)
+    name: Send
+    href: ReflectionEventing.EventBusExtensions.html#ReflectionEventing_EventBusExtensions_Send__1_ReflectionEventing_IEventBus___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    href: ReflectionEventing.IEventBus.html
+  - name: ','
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: ReflectionEventing.IEventBus.SendAsync*
+  commentId: Overload:ReflectionEventing.IEventBus.SendAsync
+  href: ReflectionEventing.IEventBus.html#ReflectionEventing_IEventBus_SendAsync__1___0_System_Threading_CancellationToken_
+  name: SendAsync
+  nameWithType: IEventBus.SendAsync
+  fullName: ReflectionEventing.IEventBus.SendAsync
+- uid: '{TEvent}'
+  commentId: '!:TEvent'
+  definition: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: ReflectionEventing.IEventBus.PublishAsync*
+  commentId: Overload:ReflectionEventing.IEventBus.PublishAsync
+  href: ReflectionEventing.IEventBus.html#ReflectionEventing_IEventBus_PublishAsync__1___0_System_Threading_CancellationToken_
+  name: PublishAsync
+  nameWithType: IEventBus.PublishAsync
+  fullName: ReflectionEventing.IEventBus.PublishAsync

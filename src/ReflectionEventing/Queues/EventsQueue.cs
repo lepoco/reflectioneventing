@@ -22,19 +22,19 @@ public class EventsQueue : IEventsQueue
     }
 
     /// <inheritdoc />
-    public ChannelReader<object> GetReader()
+    public IAsyncEnumerable<object> ReadEventsAsync(CancellationToken cancellationToken)
     {
-        return events.Reader;
+        return events.Reader.ReadAllAsync(cancellationToken);
     }
 
     /// <inheritdoc />
-    public void EnqueueError(object @event, Exception exception)
+    public void EnqueueError(FailedEvent fail)
     {
-        errorQueue.Enqueue(new FailedEvent { Data = @event, Exception = exception });
+        errorQueue.Enqueue(fail);
     }
 
     /// <inheritdoc />
-    public IEnumerable<FailedEvent> GetErrorQueue()
+    public IEnumerable<FailedEvent> GetErrors()
     {
         return errorQueue;
     }

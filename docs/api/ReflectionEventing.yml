@@ -1,0 +1,142 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing
+  commentId: N:ReflectionEventing
+  id: ReflectionEventing
+  children:
+  - ReflectionEventing.ConsumerTypesProviderExtensions
+  - ReflectionEventing.EventBus
+  - ReflectionEventing.EventBusBuilder
+  - ReflectionEventing.EventBusBuilderExtensions
+  - ReflectionEventing.EventBusBuilderOptions
+  - ReflectionEventing.EventBusException
+  - ReflectionEventing.EventBusExtensions
+  - ReflectionEventing.HashedConsumerTypesProvider
+  - ReflectionEventing.HashedPolymorphicConsumerTypesProvider
+  - ReflectionEventing.IConsumerProvider
+  - ReflectionEventing.IConsumerTypesProvider
+  - ReflectionEventing.IConsumer`1
+  - ReflectionEventing.IEventBus
+  langs:
+  - csharp
+  - vb
+  name: ReflectionEventing
+  nameWithType: ReflectionEventing
+  fullName: ReflectionEventing
+  type: Namespace
+  assemblies:
+  - ReflectionEventing
+references:
+- uid: ReflectionEventing.ConsumerTypesProviderExtensions
+  commentId: T:ReflectionEventing.ConsumerTypesProviderExtensions
+  parent: ReflectionEventing
+  href: ReflectionEventing.ConsumerTypesProviderExtensions.html
+  name: ConsumerTypesProviderExtensions
+  nameWithType: ConsumerTypesProviderExtensions
+  fullName: ReflectionEventing.ConsumerTypesProviderExtensions
+- uid: ReflectionEventing.EventBus
+  commentId: T:ReflectionEventing.EventBus
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBus.html
+  name: EventBus
+  nameWithType: EventBus
+  fullName: ReflectionEventing.EventBus
+- uid: ReflectionEventing.EventBusBuilder
+  commentId: T:ReflectionEventing.EventBusBuilder
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusBuilder.html
+  name: EventBusBuilder
+  nameWithType: EventBusBuilder
+  fullName: ReflectionEventing.EventBusBuilder
+- uid: ReflectionEventing.EventBusBuilderExtensions
+  commentId: T:ReflectionEventing.EventBusBuilderExtensions
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusBuilderExtensions.html
+  name: EventBusBuilderExtensions
+  nameWithType: EventBusBuilderExtensions
+  fullName: ReflectionEventing.EventBusBuilderExtensions
+- uid: ReflectionEventing.EventBusBuilderOptions
+  commentId: T:ReflectionEventing.EventBusBuilderOptions
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusBuilderOptions.html
+  name: EventBusBuilderOptions
+  nameWithType: EventBusBuilderOptions
+  fullName: ReflectionEventing.EventBusBuilderOptions
+- uid: ReflectionEventing.EventBusException
+  commentId: T:ReflectionEventing.EventBusException
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusException.html
+  name: EventBusException
+  nameWithType: EventBusException
+  fullName: ReflectionEventing.EventBusException
+- uid: ReflectionEventing.EventBusExtensions
+  commentId: T:ReflectionEventing.EventBusExtensions
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusExtensions.html
+  name: EventBusExtensions
+  nameWithType: EventBusExtensions
+  fullName: ReflectionEventing.EventBusExtensions
+- uid: ReflectionEventing.HashedConsumerTypesProvider
+  commentId: T:ReflectionEventing.HashedConsumerTypesProvider
+  href: ReflectionEventing.HashedConsumerTypesProvider.html
+  name: HashedConsumerTypesProvider
+  nameWithType: HashedConsumerTypesProvider
+  fullName: ReflectionEventing.HashedConsumerTypesProvider
+- uid: ReflectionEventing.HashedPolymorphicConsumerTypesProvider
+  commentId: T:ReflectionEventing.HashedPolymorphicConsumerTypesProvider
+  href: ReflectionEventing.HashedPolymorphicConsumerTypesProvider.html
+  name: HashedPolymorphicConsumerTypesProvider
+  nameWithType: HashedPolymorphicConsumerTypesProvider
+  fullName: ReflectionEventing.HashedPolymorphicConsumerTypesProvider
+- uid: ReflectionEventing.IConsumer`1
+  commentId: T:ReflectionEventing.IConsumer`1
+  href: ReflectionEventing.IConsumer-1.html
+  name: IConsumer<TEvent>
+  nameWithType: IConsumer<TEvent>
+  fullName: ReflectionEventing.IConsumer<TEvent>
+  nameWithType.vb: IConsumer(Of TEvent)
+  fullName.vb: ReflectionEventing.IConsumer(Of TEvent)
+  name.vb: IConsumer(Of TEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.IConsumer`1
+    name: IConsumer
+    href: ReflectionEventing.IConsumer-1.html
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: ReflectionEventing.IConsumer`1
+    name: IConsumer
+    href: ReflectionEventing.IConsumer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: ReflectionEventing.IConsumerProvider
+  commentId: T:ReflectionEventing.IConsumerProvider
+  parent: ReflectionEventing
+  href: ReflectionEventing.IConsumerProvider.html
+  name: IConsumerProvider
+  nameWithType: IConsumerProvider
+  fullName: ReflectionEventing.IConsumerProvider
+- uid: ReflectionEventing.IConsumerTypesProvider
+  commentId: T:ReflectionEventing.IConsumerTypesProvider
+  parent: ReflectionEventing
+  href: ReflectionEventing.IConsumerTypesProvider.html
+  name: IConsumerTypesProvider
+  nameWithType: IConsumerTypesProvider
+  fullName: ReflectionEventing.IConsumerTypesProvider
+- uid: ReflectionEventing.IEventBus
+  commentId: T:ReflectionEventing.IEventBus
+  parent: ReflectionEventing
+  href: ReflectionEventing.IEventBus.html
+  name: IEventBus
+  nameWithType: IEventBus
+  fullName: ReflectionEventing.IEventBus
+- uid: ReflectionEventing
+  commentId: N:ReflectionEventing
+  href: ReflectionEventing.html
+  name: ReflectionEventing
+  nameWithType: ReflectionEventing
+  fullName: ReflectionEventing

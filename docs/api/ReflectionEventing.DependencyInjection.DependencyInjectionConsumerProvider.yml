@@ -1,0 +1,551 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider
+  commentId: T:ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider
+  id: DependencyInjectionConsumerProvider
+  parent: ReflectionEventing.DependencyInjection
+  children:
+  - ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.#ctor(System.IServiceProvider)
+  - ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers(System.Type)
+  langs:
+  - csharp
+  - vb
+  name: DependencyInjectionConsumerProvider
+  nameWithType: DependencyInjectionConsumerProvider
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider
+  type: Class
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionConsumerProvider.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: DependencyInjectionConsumerProvider
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionConsumerProvider.cs
+    startLine: 10
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Represents a provider for retrieving event consumers from .NET Core's built-in dependency injection container.
+  example: []
+  syntax:
+    content: 'public class DependencyInjectionConsumerProvider : IConsumerProvider'
+    content.vb: Public Class DependencyInjectionConsumerProvider Implements IConsumerProvider
+  inheritance:
+  - System.Object
+  implements:
+  - ReflectionEventing.IConsumerProvider
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.#ctor(System.IServiceProvider)
+  commentId: M:ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.#ctor(System.IServiceProvider)
+  id: '#ctor(System.IServiceProvider)'
+  parent: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider
+  langs:
+  - csharp
+  - vb
+  name: DependencyInjectionConsumerProvider(IServiceProvider)
+  nameWithType: DependencyInjectionConsumerProvider.DependencyInjectionConsumerProvider(IServiceProvider)
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.DependencyInjectionConsumerProvider(System.IServiceProvider)
+  type: Constructor
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionConsumerProvider.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: .ctor
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionConsumerProvider.cs
+    startLine: 10
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Represents a provider for retrieving event consumers from .NET Core's built-in dependency injection container.
+  example: []
+  syntax:
+    content: public DependencyInjectionConsumerProvider(IServiceProvider serviceProvider)
+    parameters:
+    - id: serviceProvider
+      type: System.IServiceProvider
+    content.vb: Public Sub New(serviceProvider As IServiceProvider)
+  overload: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.#ctor*
+  nameWithType.vb: DependencyInjectionConsumerProvider.New(IServiceProvider)
+  fullName.vb: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.New(System.IServiceProvider)
+  name.vb: New(IServiceProvider)
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers(System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers(System.Type)
+  id: GetConsumers(System.Type)
+  parent: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider
+  langs:
+  - csharp
+  - vb
+  name: GetConsumers(Type)
+  nameWithType: DependencyInjectionConsumerProvider.GetConsumers(Type)
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionConsumerProvider.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: GetConsumers
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionConsumerProvider.cs
+    startLine: 14
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Gets the consumers objects for the specified event type.
+  example:
+  - >-
+    <pre><code class="lang-csharp">Type consumerType = typeof(MyEvent);
+
+    IEnumerable&lt;object&gt; consumerTypes = consumerProvider.GetConsumers(consumerType);</code></pre>
+  syntax:
+    content: public IEnumerable<object?> GetConsumers(Type consumerType)
+    parameters:
+    - id: consumerType
+      type: System.Type
+      description: The type of the event that the consumers handle.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Object}
+      description: An enumerable of <xref href="System.Object" data-throw-if-not-resolved="false"></xref>'s that are consumers of the specified event type.
+    content.vb: Public Function GetConsumers(consumerType As Type) As IEnumerable(Of Object)
+  overload: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers*
+  implements:
+  - ReflectionEventing.IConsumerProvider.GetConsumers(System.Type)
+references:
+- uid: ReflectionEventing.DependencyInjection
+  commentId: N:ReflectionEventing.DependencyInjection
+  href: ReflectionEventing.html
+  name: ReflectionEventing.DependencyInjection
+  nameWithType: ReflectionEventing.DependencyInjection
+  fullName: ReflectionEventing.DependencyInjection
+  spec.csharp:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection
+    name: DependencyInjection
+    href: ReflectionEventing.DependencyInjection.html
+  spec.vb:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection
+    name: DependencyInjection
+    href: ReflectionEventing.DependencyInjection.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: ReflectionEventing.IConsumerProvider
+  commentId: T:ReflectionEventing.IConsumerProvider
+  parent: ReflectionEventing
+  href: ReflectionEventing.IConsumerProvider.html
+  name: IConsumerProvider
+  nameWithType: IConsumerProvider
+  fullName: ReflectionEventing.IConsumerProvider
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: ReflectionEventing
+  commentId: N:ReflectionEventing
+  href: ReflectionEventing.html
+  name: ReflectionEventing
+  nameWithType: ReflectionEventing
+  fullName: ReflectionEventing
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.#ctor*
+  commentId: Overload:ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.#ctor
+  href: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.html#ReflectionEventing_DependencyInjection_DependencyInjectionConsumerProvider__ctor_System_IServiceProvider_
+  name: DependencyInjectionConsumerProvider
+  nameWithType: DependencyInjectionConsumerProvider.DependencyInjectionConsumerProvider
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.DependencyInjectionConsumerProvider
+  nameWithType.vb: DependencyInjectionConsumerProvider.New
+  fullName.vb: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.New
+  name.vb: New
+- uid: System.IServiceProvider
+  commentId: T:System.IServiceProvider
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iserviceprovider
+  name: IServiceProvider
+  nameWithType: IServiceProvider
+  fullName: System.IServiceProvider
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers*
+  commentId: Overload:ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers
+  href: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.html#ReflectionEventing_DependencyInjection_DependencyInjectionConsumerProvider_GetConsumers_System_Type_
+  name: GetConsumers
+  nameWithType: DependencyInjectionConsumerProvider.GetConsumers
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider.GetConsumers
+- uid: ReflectionEventing.IConsumerProvider.GetConsumers(System.Type)
+  commentId: M:ReflectionEventing.IConsumerProvider.GetConsumers(System.Type)
+  parent: ReflectionEventing.IConsumerProvider
+  isExternal: true
+  href: ReflectionEventing.IConsumerProvider.html#ReflectionEventing_IConsumerProvider_GetConsumers_System_Type_
+  name: GetConsumers(Type)
+  nameWithType: IConsumerProvider.GetConsumers(Type)
+  fullName: ReflectionEventing.IConsumerProvider.GetConsumers(System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.IConsumerProvider.GetConsumers(System.Type)
+    name: GetConsumers
+    href: ReflectionEventing.IConsumerProvider.html#ReflectionEventing_IConsumerProvider_GetConsumers_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.IConsumerProvider.GetConsumers(System.Type)
+    name: GetConsumers
+    href: ReflectionEventing.IConsumerProvider.html#ReflectionEventing_IConsumerProvider_GetConsumers_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: System.Collections.Generic.IEnumerable{System.Object}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<object>
+  nameWithType: IEnumerable<object>
+  fullName: System.Collections.Generic.IEnumerable<object>
+  nameWithType.vb: IEnumerable(Of Object)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Object)
+  name.vb: IEnumerable(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

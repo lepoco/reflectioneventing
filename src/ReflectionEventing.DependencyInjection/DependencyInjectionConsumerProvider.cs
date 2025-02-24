@@ -12,7 +12,7 @@ public class DependencyInjectionConsumerProvider(IServiceProvider serviceProvide
     : IConsumerProvider
 {
     /// <inheritdoc />
-    public IEnumerable<object> GetConsumers(Type consumerType)
+    public IEnumerable<object?> GetConsumers(Type consumerType)
     {
         if (consumerType is null)
         {

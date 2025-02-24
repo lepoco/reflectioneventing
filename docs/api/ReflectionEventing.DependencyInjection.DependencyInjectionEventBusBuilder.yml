@@ -1,0 +1,1329 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+  commentId: T:ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+  id: DependencyInjectionEventBusBuilder
+  parent: ReflectionEventing.DependencyInjection
+  children:
+  - ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  - ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type)
+  - ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  langs:
+  - csharp
+  - vb
+  name: DependencyInjectionEventBusBuilder
+  nameWithType: DependencyInjectionEventBusBuilder
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+  type: Class
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: DependencyInjectionEventBusBuilder
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+    startLine: 11
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Represents a builder for configuring the event bus with .NET Core's built-in dependency injection.
+  example: []
+  syntax:
+    content: 'public class DependencyInjectionEventBusBuilder : EventBusBuilder'
+    content.vb: Public Class DependencyInjectionEventBusBuilder Inherits EventBusBuilder
+  inheritance:
+  - System.Object
+  - ReflectionEventing.EventBusBuilder
+  inheritedMembers:
+  - ReflectionEventing.EventBusBuilder.Options
+  - ReflectionEventing.EventBusBuilder.BuildTypesProvider
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  extensionMethods:
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(System.Type)
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(System.Type)
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(System.Type)
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(System.Reflection.Assembly[])
+  - ReflectionEventing.EventBusBuilder.ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  commentId: M:ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  id: '#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)'
+  parent: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+  langs:
+  - csharp
+  - vb
+  name: DependencyInjectionEventBusBuilder(IServiceCollection)
+  nameWithType: DependencyInjectionEventBusBuilder.DependencyInjectionEventBusBuilder(IServiceCollection)
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.DependencyInjectionEventBusBuilder(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  type: Constructor
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: .ctor
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+    startLine: 11
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Represents a builder for configuring the event bus with .NET Core's built-in dependency injection.
+  example: []
+  syntax:
+    content: public DependencyInjectionEventBusBuilder(IServiceCollection services)
+    parameters:
+    - id: services
+      type: Microsoft.Extensions.DependencyInjection.IServiceCollection
+    content.vb: Public Sub New(services As IServiceCollection)
+  overload: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.#ctor*
+  nameWithType.vb: DependencyInjectionEventBusBuilder.New(IServiceCollection)
+  fullName.vb: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.New(Microsoft.Extensions.DependencyInjection.IServiceCollection)
+  name.vb: New(IServiceCollection)
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  commentId: M:ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  id: AddConsumer(System.Type,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  parent: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddConsumer(Type, ServiceLifetime)
+  nameWithType: DependencyInjectionEventBusBuilder.AddConsumer(Type, ServiceLifetime)
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: AddConsumer
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+    startLine: 22
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Adds a consumer to the event bus and <xref href="Microsoft.Extensions.DependencyInjection.IServiceCollection" data-throw-if-not-resolved="false"></xref> with a specified service lifetime.
+  example: []
+  syntax:
+    content: public virtual EventBusBuilder AddConsumer(Type consumerType, ServiceLifetime lifetime)
+    parameters:
+    - id: consumerType
+      type: System.Type
+      description: The type of the consumer to add.
+    - id: lifetime
+      type: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+      description: The service lifetime of the consumer.
+    return:
+      type: ReflectionEventing.EventBusBuilder
+      description: The current instance of <xref href="ReflectionEventing.EventBusBuilder" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Overridable Function AddConsumer(consumerType As Type, lifetime As ServiceLifetime) As EventBusBuilder
+  overload: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer*
+  exceptions:
+  - type: System.InvalidOperationException
+    commentId: T:System.InvalidOperationException
+    description: Thrown if the consumer is already registered with a different lifetime or if the consumer is not registered in the service collection.
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type)
+  id: AddConsumer(System.Type)
+  parent: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+  langs:
+  - csharp
+  - vb
+  name: AddConsumer(Type)
+  nameWithType: DependencyInjectionEventBusBuilder.AddConsumer(Type)
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer(System.Type)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: AddConsumer
+    path: ../src/ReflectionEventing.DependencyInjection/DependencyInjectionEventBusBuilder.cs
+    startLine: 50
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+  namespace: ReflectionEventing.DependencyInjection
+  summary: Adds a consumer to the builder.
+  remarks: >-
+    This method checks if the consumer is registered in the service collection and if it is not transient.
+
+    It then gets the interfaces of the consumer that are generic and have a generic type definition of <xref href="ReflectionEventing.IConsumer%601" data-throw-if-not-resolved="false"></xref>.
+
+    For each of these interfaces, it gets the generic argument and adds it to the classConsumers dictionary.
+  example: []
+  syntax:
+    content: public override EventBusBuilder AddConsumer(Type consumerType)
+    parameters:
+    - id: consumerType
+      type: System.Type
+      description: The type of the consumer to add.
+    return:
+      type: ReflectionEventing.EventBusBuilder
+    content.vb: Public Overrides Function AddConsumer(consumerType As Type) As EventBusBuilder
+  overridden: ReflectionEventing.EventBusBuilder.AddConsumer(System.Type)
+  overload: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer*
+references:
+- uid: ReflectionEventing.DependencyInjection
+  commentId: N:ReflectionEventing.DependencyInjection
+  href: ReflectionEventing.html
+  name: ReflectionEventing.DependencyInjection
+  nameWithType: ReflectionEventing.DependencyInjection
+  fullName: ReflectionEventing.DependencyInjection
+  spec.csharp:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection
+    name: DependencyInjection
+    href: ReflectionEventing.DependencyInjection.html
+  spec.vb:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection
+    name: DependencyInjection
+    href: ReflectionEventing.DependencyInjection.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: ReflectionEventing.EventBusBuilder
+  commentId: T:ReflectionEventing.EventBusBuilder
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusBuilder.html
+  name: EventBusBuilder
+  nameWithType: EventBusBuilder
+  fullName: ReflectionEventing.EventBusBuilder
+- uid: ReflectionEventing.EventBusBuilder.Options
+  commentId: P:ReflectionEventing.EventBusBuilder.Options
+  parent: ReflectionEventing.EventBusBuilder
+  href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_Options
+  name: Options
+  nameWithType: EventBusBuilder.Options
+  fullName: ReflectionEventing.EventBusBuilder.Options
+- uid: ReflectionEventing.EventBusBuilder.BuildTypesProvider
+  commentId: M:ReflectionEventing.EventBusBuilder.BuildTypesProvider
+  parent: ReflectionEventing.EventBusBuilder
+  href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_BuildTypesProvider
+  name: BuildTypesProvider()
+  nameWithType: EventBusBuilder.BuildTypesProvider()
+  fullName: ReflectionEventing.EventBusBuilder.BuildTypesProvider()
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusBuilder.BuildTypesProvider
+    name: BuildTypesProvider
+    href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_BuildTypesProvider
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusBuilder.BuildTypesProvider
+    name: BuildTypesProvider
+    href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_BuildTypesProvider
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  name: AddConsumer<TConsumer>(EventBusBuilder, ServiceLifetime)
+  nameWithType: EventBusBuilderExtensions.AddConsumer<TConsumer>(EventBusBuilder, ServiceLifetime)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer<TConsumer>(ReflectionEventing.EventBusBuilder, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  nameWithType.vb: EventBusBuilderExtensions.AddConsumer(Of TConsumer)(EventBusBuilder, ServiceLifetime)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  name.vb: AddConsumer(Of TConsumer)(EventBusBuilder, ServiceLifetime)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+    name: AddConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+    name: ServiceLifetime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicelifetime
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+    name: AddConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+    name: ServiceLifetime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicelifetime
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  name: AddScopedConsumer(EventBusBuilder, Type)
+  nameWithType: EventBusBuilderExtensions.AddScopedConsumer(EventBusBuilder, Type)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder, System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddScopedConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddScopedConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddScopedConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddScopedConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  name: AddSingletonConsumer(EventBusBuilder, Type)
+  nameWithType: EventBusBuilderExtensions.AddSingletonConsumer(EventBusBuilder, Type)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder, System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddSingletonConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddSingletonConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddSingletonConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddSingletonConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  name: AddTransientConsumer(EventBusBuilder, Type)
+  nameWithType: EventBusBuilderExtensions.AddTransientConsumer(EventBusBuilder, Type)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder, System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+  parent: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  definition: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddTransientConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddTransientConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddTransientConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddTransientConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(System.Reflection.Assembly[])
+  commentId: M:ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+  parent: ReflectionEventing.EventBusBuilderExtensions
+  definition: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+  href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddAllConsumers_ReflectionEventing_EventBusBuilder_System_Reflection_Assembly___
+  name: AddAllConsumers(EventBusBuilder, params Assembly[])
+  nameWithType: EventBusBuilderExtensions.AddAllConsumers(EventBusBuilder, params Assembly[])
+  fullName: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder, params System.Reflection.Assembly[])
+  nameWithType.vb: EventBusBuilderExtensions.AddAllConsumers(EventBusBuilder, ParamArray Assembly())
+  fullName.vb: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder, ParamArray System.Reflection.Assembly())
+  name.vb: AddAllConsumers(EventBusBuilder, ParamArray Assembly())
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+    name: AddAllConsumers
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddAllConsumers_ReflectionEventing_EventBusBuilder_System_Reflection_Assembly___
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Reflection.Assembly
+    name: Assembly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+    name: AddAllConsumers
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddAllConsumers_ReflectionEventing_EventBusBuilder_System_Reflection_Assembly___
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Reflection.Assembly
+    name: Assembly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  - name: (
+  - name: )
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1
+  commentId: M:ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+  parent: ReflectionEventing.EventBusBuilderExtensions
+  definition: ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.EventBusBuilderExtensions.AddConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.EventBusBuilderExtensions.AddConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddConsumer
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddConsumer
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: ReflectionEventing
+  commentId: N:ReflectionEventing
+  href: ReflectionEventing.html
+  name: ReflectionEventing
+  nameWithType: ReflectionEventing
+  fullName: ReflectionEventing
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  isExternal: true
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  name: AddConsumer<TConsumer>(EventBusBuilder, ServiceLifetime)
+  nameWithType: EventBusBuilderExtensions.AddConsumer<TConsumer>(EventBusBuilder, ServiceLifetime)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer<TConsumer>(ReflectionEventing.EventBusBuilder, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  nameWithType.vb: EventBusBuilderExtensions.AddConsumer(Of TConsumer)(EventBusBuilder, ServiceLifetime)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder, Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+  name.vb: AddConsumer(Of TConsumer)(EventBusBuilder, ServiceLifetime)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+    name: AddConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+    name: ServiceLifetime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicelifetime
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder,Microsoft.Extensions.DependencyInjection.ServiceLifetime)
+    name: AddConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+    name: ServiceLifetime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicelifetime
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  commentId: T:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+  parent: ReflectionEventing.DependencyInjection
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html
+  name: EventBusBuilderExtensions
+  nameWithType: EventBusBuilderExtensions
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  isExternal: true
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  name: AddScopedConsumer(EventBusBuilder, Type)
+  nameWithType: EventBusBuilderExtensions.AddScopedConsumer(EventBusBuilder, Type)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder, System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddScopedConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddScopedConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddScopedConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddScopedConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddScopedConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddScopedConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddScopedConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  isExternal: true
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  name: AddSingletonConsumer(EventBusBuilder, Type)
+  nameWithType: EventBusBuilderExtensions.AddSingletonConsumer(EventBusBuilder, Type)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder, System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddSingletonConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddSingletonConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddSingletonConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddSingletonConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddSingletonConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddSingletonConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddSingletonConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+  isExternal: true
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  name: AddTransientConsumer(EventBusBuilder, Type)
+  nameWithType: EventBusBuilderExtensions.AddTransientConsumer(EventBusBuilder, Type)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder, System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(ReflectionEventing.EventBusBuilder,System.Type)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer_ReflectionEventing_EventBusBuilder_System_Type_
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+  commentId: M:ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddTransientConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddTransientConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddTransientConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddTransientConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.AddTransientConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddTransientConsumer
+    href: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions.html#ReflectionEventing_DependencyInjection_EventBusBuilderExtensions_AddTransientConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+  commentId: M:ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+  isExternal: true
+  href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddAllConsumers_ReflectionEventing_EventBusBuilder_System_Reflection_Assembly___
+  name: AddAllConsumers(EventBusBuilder, params Assembly[])
+  nameWithType: EventBusBuilderExtensions.AddAllConsumers(EventBusBuilder, params Assembly[])
+  fullName: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder, params System.Reflection.Assembly[])
+  nameWithType.vb: EventBusBuilderExtensions.AddAllConsumers(EventBusBuilder, ParamArray Assembly())
+  fullName.vb: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder, ParamArray System.Reflection.Assembly())
+  name.vb: AddAllConsumers(EventBusBuilder, ParamArray Assembly())
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+    name: AddAllConsumers
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddAllConsumers_ReflectionEventing_EventBusBuilder_System_Reflection_Assembly___
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Reflection.Assembly
+    name: Assembly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddAllConsumers(ReflectionEventing.EventBusBuilder,System.Reflection.Assembly[])
+    name: AddAllConsumers
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddAllConsumers_ReflectionEventing_EventBusBuilder_System_Reflection_Assembly___
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Reflection.Assembly
+    name: Assembly
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.reflection.assembly
+  - name: (
+  - name: )
+  - name: )
+- uid: ReflectionEventing.EventBusBuilderExtensions
+  commentId: T:ReflectionEventing.EventBusBuilderExtensions
+  parent: ReflectionEventing
+  href: ReflectionEventing.EventBusBuilderExtensions.html
+  name: EventBusBuilderExtensions
+  nameWithType: EventBusBuilderExtensions
+  fullName: ReflectionEventing.EventBusBuilderExtensions
+- uid: ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+  commentId: M:ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+  href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_
+  name: AddConsumer<TConsumer>(EventBusBuilder)
+  nameWithType: EventBusBuilderExtensions.AddConsumer<TConsumer>(EventBusBuilder)
+  fullName: ReflectionEventing.EventBusBuilderExtensions.AddConsumer<TConsumer>(ReflectionEventing.EventBusBuilder)
+  nameWithType.vb: EventBusBuilderExtensions.AddConsumer(Of TConsumer)(EventBusBuilder)
+  fullName.vb: ReflectionEventing.EventBusBuilderExtensions.AddConsumer(Of TConsumer)(ReflectionEventing.EventBusBuilder)
+  name.vb: AddConsumer(Of TConsumer)(EventBusBuilder)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddConsumer
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: <
+  - name: TConsumer
+  - name: '>'
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusBuilderExtensions.AddConsumer``1(ReflectionEventing.EventBusBuilder)
+    name: AddConsumer
+    href: ReflectionEventing.EventBusBuilderExtensions.html#ReflectionEventing_EventBusBuilderExtensions_AddConsumer__1_ReflectionEventing_EventBusBuilder_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TConsumer
+  - name: )
+  - name: (
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    href: ReflectionEventing.EventBusBuilder.html
+  - name: )
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.#ctor*
+  commentId: Overload:ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.#ctor
+  href: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.html#ReflectionEventing_DependencyInjection_DependencyInjectionEventBusBuilder__ctor_Microsoft_Extensions_DependencyInjection_IServiceCollection_
+  name: DependencyInjectionEventBusBuilder
+  nameWithType: DependencyInjectionEventBusBuilder.DependencyInjectionEventBusBuilder
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.DependencyInjectionEventBusBuilder
+  nameWithType.vb: DependencyInjectionEventBusBuilder.New
+  fullName.vb: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.New
+  name.vb: New
+- uid: Microsoft.Extensions.DependencyInjection.IServiceCollection
+  commentId: T:Microsoft.Extensions.DependencyInjection.IServiceCollection
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection
+  name: IServiceCollection
+  nameWithType: IServiceCollection
+  fullName: Microsoft.Extensions.DependencyInjection.IServiceCollection
+- uid: Microsoft.Extensions.DependencyInjection
+  commentId: N:Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.DependencyInjection
+  nameWithType: Microsoft.Extensions.DependencyInjection
+  fullName: Microsoft.Extensions.DependencyInjection
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.DependencyInjection
+    name: DependencyInjection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection
+- uid: System.InvalidOperationException
+  commentId: T:System.InvalidOperationException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.invalidoperationexception
+  name: InvalidOperationException
+  nameWithType: InvalidOperationException
+  fullName: System.InvalidOperationException
+- uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer*
+  commentId: Overload:ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer
+  href: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.html#ReflectionEventing_DependencyInjection_DependencyInjectionEventBusBuilder_AddConsumer_System_Type_Microsoft_Extensions_DependencyInjection_ServiceLifetime_
+  name: AddConsumer
+  nameWithType: DependencyInjectionEventBusBuilder.AddConsumer
+  fullName: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder.AddConsumer
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+  commentId: T:Microsoft.Extensions.DependencyInjection.ServiceLifetime
+  parent: Microsoft.Extensions.DependencyInjection
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.servicelifetime
+  name: ServiceLifetime
+  nameWithType: ServiceLifetime
+  fullName: Microsoft.Extensions.DependencyInjection.ServiceLifetime
+- uid: ReflectionEventing.IConsumer`1
+  commentId: T:ReflectionEventing.IConsumer`1
+  href: ReflectionEventing.IConsumer-1.html
+  name: IConsumer<TEvent>
+  nameWithType: IConsumer<TEvent>
+  fullName: ReflectionEventing.IConsumer<TEvent>
+  nameWithType.vb: IConsumer(Of TEvent)
+  fullName.vb: ReflectionEventing.IConsumer(Of TEvent)
+  name.vb: IConsumer(Of TEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.IConsumer`1
+    name: IConsumer
+    href: ReflectionEventing.IConsumer-1.html
+  - name: <
+  - name: TEvent
+  - name: '>'
+  spec.vb:
+  - uid: ReflectionEventing.IConsumer`1
+    name: IConsumer
+    href: ReflectionEventing.IConsumer-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+- uid: ReflectionEventing.EventBusBuilder.AddConsumer(System.Type)
+  commentId: M:ReflectionEventing.EventBusBuilder.AddConsumer(System.Type)
+  parent: ReflectionEventing.EventBusBuilder
+  isExternal: true
+  href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_AddConsumer_System_Type_
+  name: AddConsumer(Type)
+  nameWithType: EventBusBuilder.AddConsumer(Type)
+  fullName: ReflectionEventing.EventBusBuilder.AddConsumer(System.Type)
+  spec.csharp:
+  - uid: ReflectionEventing.EventBusBuilder.AddConsumer(System.Type)
+    name: AddConsumer
+    href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_AddConsumer_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.EventBusBuilder.AddConsumer(System.Type)
+    name: AddConsumer
+    href: ReflectionEventing.EventBusBuilder.html#ReflectionEventing_EventBusBuilder_AddConsumer_System_Type_
+  - name: (
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )

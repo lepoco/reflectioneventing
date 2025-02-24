@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.DependencyInjection.Services
+  commentId: N:ReflectionEventing.DependencyInjection.Services
+  id: ReflectionEventing.DependencyInjection.Services
+  children:
+  - ReflectionEventing.DependencyInjection.Services.DependencyInjectionQueueProcessor
+  langs:
+  - csharp
+  - vb
+  name: ReflectionEventing.DependencyInjection.Services
+  nameWithType: ReflectionEventing.DependencyInjection.Services
+  fullName: ReflectionEventing.DependencyInjection.Services
+  type: Namespace
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+references:
+- uid: ReflectionEventing.DependencyInjection.Services.DependencyInjectionQueueProcessor
+  commentId: T:ReflectionEventing.DependencyInjection.Services.DependencyInjectionQueueProcessor
+  href: ReflectionEventing.DependencyInjection.Services.DependencyInjectionQueueProcessor.html
+  name: DependencyInjectionQueueProcessor
+  nameWithType: DependencyInjectionQueueProcessor
+  fullName: ReflectionEventing.DependencyInjection.Services.DependencyInjectionQueueProcessor

@@ -6,23 +6,26 @@
 namespace ReflectionEventing.DependencyInjection.Configuration;
 
 /// <summary>
-/// Provides configuration options for the event bus, specifically the tick rate.
+/// Provides configuration options for the queue processor.
 /// </summary>
-public sealed class QueueProcessorOptionsProvider(TimeSpan tickRate, TimeSpan errorTickRate)
+public sealed class QueueProcessorOptionsProvider(
+    EventBusBuilderOptions options,
+    object? serviceKey = null
+)
 {
     /// <summary>
-    /// Gets the tick rate for the event bus queue.
+    /// Gets the configuration options for the queue processor.
     /// </summary>
-    public TimeSpan TickRate
+    public EventBusBuilderOptions Value
     {
-        get => tickRate;
+        get => options;
     }
 
     /// <summary>
-    /// Gets the error tick rate for the event bus queue.
+    /// Gets the service key associated with the queue processor options.
     /// </summary>
-    public TimeSpan ErrorTickRate
+    public object? ServiceKey
     {
-        get => errorTickRate;
+        get => serviceKey;
     }
 }

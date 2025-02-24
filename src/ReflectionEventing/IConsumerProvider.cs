@@ -25,5 +25,5 @@ public interface IConsumerProvider
     /// IEnumerable&lt;object&gt; consumerTypes = consumerProvider.GetConsumers(consumerType);
     /// </code>
     /// </example>
-    IEnumerable<object> GetConsumers(Type consumerType);
+    IEnumerable<object?> GetConsumers(Type consumerType);
 }

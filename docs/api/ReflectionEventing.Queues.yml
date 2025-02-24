@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.Queues
+  commentId: N:ReflectionEventing.Queues
+  id: ReflectionEventing.Queues
+  children:
+  - ReflectionEventing.Queues.EventsQueue
+  - ReflectionEventing.Queues.FailedEvent
+  - ReflectionEventing.Queues.IEventsQueue
+  - ReflectionEventing.Queues.QueueException
+  langs:
+  - csharp
+  - vb
+  name: ReflectionEventing.Queues
+  nameWithType: ReflectionEventing.Queues
+  fullName: ReflectionEventing.Queues
+  type: Namespace
+  assemblies:
+  - ReflectionEventing
+references:
+- uid: ReflectionEventing.Queues.EventsQueue
+  commentId: T:ReflectionEventing.Queues.EventsQueue
+  href: ReflectionEventing.Queues.EventsQueue.html
+  name: EventsQueue
+  nameWithType: EventsQueue
+  fullName: ReflectionEventing.Queues.EventsQueue
+- uid: ReflectionEventing.Queues.FailedEvent
+  commentId: T:ReflectionEventing.Queues.FailedEvent
+  parent: ReflectionEventing.Queues
+  href: ReflectionEventing.Queues.FailedEvent.html
+  name: FailedEvent
+  nameWithType: FailedEvent
+  fullName: ReflectionEventing.Queues.FailedEvent
+- uid: ReflectionEventing.Queues.IEventsQueue
+  commentId: T:ReflectionEventing.Queues.IEventsQueue
+  parent: ReflectionEventing.Queues
+  href: ReflectionEventing.Queues.IEventsQueue.html
+  name: IEventsQueue
+  nameWithType: IEventsQueue
+  fullName: ReflectionEventing.Queues.IEventsQueue
+- uid: ReflectionEventing.Queues.QueueException
+  commentId: T:ReflectionEventing.Queues.QueueException
+  href: ReflectionEventing.Queues.QueueException.html
+  name: QueueException
+  nameWithType: QueueException
+  fullName: ReflectionEventing.Queues.QueueException
+- uid: ReflectionEventing.Queues
+  commentId: N:ReflectionEventing.Queues
+  href: ReflectionEventing.html
+  name: ReflectionEventing.Queues
+  nameWithType: ReflectionEventing.Queues
+  fullName: ReflectionEventing.Queues
+  spec.csharp:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.Queues
+    name: Queues
+    href: ReflectionEventing.Queues.html
+  spec.vb:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.Queues
+    name: Queues
+    href: ReflectionEventing.Queues.html

@@ -20,21 +20,21 @@ public interface IEventsQueue
         where TEvent : class;
 
     /// <summary>
-    /// Appends an event that failed processing to the error queue.
+    /// Appends a failed event to the error queue.
     /// </summary>
-    /// <param name="event">The event that failed processing.</param>
-    /// <param name="exception">The exception that occurred during processing.</param>
-    void EnqueueError(object @event, Exception exception);
+    /// <param name="fail">The failed event to append to the error queue.</param>
+    void EnqueueError(FailedEvent fail);
 
     /// <summary>
-    /// Gets a reader for the event queue.
+    /// Reads the events from the queue asynchronously.
     /// </summary>
-    /// <returns>A <see cref="ChannelReader{T}"/> that can be used to read events from the queue.</returns>
-    ChannelReader<object> GetReader();
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <returns>An <see cref="IAsyncEnumerable{T}"/> of events from the queue.</returns>
+    IAsyncEnumerable<object> ReadEventsAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Gets the events that failed processing from the error queue.
     /// </summary>
     /// <returns>An <see cref="IEnumerable{T}"/> of events that failed processing.</returns>
-    IEnumerable<FailedEvent> GetErrorQueue();
+    IEnumerable<FailedEvent> GetErrors();
 }

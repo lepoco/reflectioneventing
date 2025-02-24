@@ -1,0 +1,95 @@
+### YamlMime:TableOfContent
+items:
+- uid: ReflectionEventing
+  name: ReflectionEventing
+  type: Namespace
+  items:
+  - uid: ReflectionEventing.ConsumerTypesProviderExtensions
+    name: ConsumerTypesProviderExtensions
+    type: Class
+  - uid: ReflectionEventing.EventBus
+    name: EventBus
+    type: Class
+  - uid: ReflectionEventing.EventBusBuilder
+    name: EventBusBuilder
+    type: Class
+  - uid: ReflectionEventing.EventBusBuilderExtensions
+    name: EventBusBuilderExtensions
+    type: Class
+  - uid: ReflectionEventing.EventBusBuilderOptions
+    name: EventBusBuilderOptions
+    type: Class
+  - uid: ReflectionEventing.EventBusException
+    name: EventBusException
+    type: Class
+  - uid: ReflectionEventing.EventBusExtensions
+    name: EventBusExtensions
+    type: Class
+  - uid: ReflectionEventing.HashedConsumerTypesProvider
+    name: HashedConsumerTypesProvider
+    type: Class
+  - uid: ReflectionEventing.HashedPolymorphicConsumerTypesProvider
+    name: HashedPolymorphicConsumerTypesProvider
+    type: Class
+  - uid: ReflectionEventing.IConsumerProvider
+    name: IConsumerProvider
+    type: Interface
+  - uid: ReflectionEventing.IConsumerTypesProvider
+    name: IConsumerTypesProvider
+    type: Interface
+  - uid: ReflectionEventing.IConsumer`1
+    name: IConsumer<TEvent>
+    type: Interface
+  - uid: ReflectionEventing.IEventBus
+    name: IEventBus
+    type: Interface
+- uid: ReflectionEventing.DependencyInjection
+  name: ReflectionEventing.DependencyInjection
+  type: Namespace
+  items:
+  - uid: ReflectionEventing.DependencyInjection.DependencyInjectionConsumerProvider
+    name: DependencyInjectionConsumerProvider
+    type: Class
+  - uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBus
+    name: DependencyInjectionEventBus
+    type: Class
+  - uid: ReflectionEventing.DependencyInjection.DependencyInjectionEventBusBuilder
+    name: DependencyInjectionEventBusBuilder
+    type: Class
+  - uid: ReflectionEventing.DependencyInjection.EventBusBuilderExtensions
+    name: EventBusBuilderExtensions
+    type: Class
+  - uid: ReflectionEventing.DependencyInjection.ServiceCollectionExtensions
+    name: ServiceCollectionExtensions
+    type: Class
+- uid: ReflectionEventing.DependencyInjection.Configuration
+  name: ReflectionEventing.DependencyInjection.Configuration
+  type: Namespace
+  items:
+  - uid: ReflectionEventing.DependencyInjection.Configuration.QueueProcessorOptionsProvider
+    name: QueueProcessorOptionsProvider
+    type: Class
+- uid: ReflectionEventing.DependencyInjection.Services
+  name: ReflectionEventing.DependencyInjection.Services
+  type: Namespace
+  items:
+  - uid: ReflectionEventing.DependencyInjection.Services.DependencyInjectionQueueProcessor
+    name: DependencyInjectionQueueProcessor
+    type: Class
+- uid: ReflectionEventing.Queues
+  name: ReflectionEventing.Queues
+  type: Namespace
+  items:
+  - uid: ReflectionEventing.Queues.EventsQueue
+    name: EventsQueue
+    type: Class
+  - uid: ReflectionEventing.Queues.FailedEvent
+    name: FailedEvent
+    type: Class
+  - uid: ReflectionEventing.Queues.IEventsQueue
+    name: IEventsQueue
+    type: Interface
+  - uid: ReflectionEventing.Queues.QueueException
+    name: QueueException
+    type: Class
+memberLayout: SamePage

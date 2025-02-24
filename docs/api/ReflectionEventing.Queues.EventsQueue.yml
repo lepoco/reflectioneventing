@@ -1,0 +1,903 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.Queues.EventsQueue
+  commentId: T:ReflectionEventing.Queues.EventsQueue
+  id: EventsQueue
+  parent: ReflectionEventing.Queues
+  children:
+  - ReflectionEventing.Queues.EventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  - ReflectionEventing.Queues.EventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  - ReflectionEventing.Queues.EventsQueue.GetErrors
+  - ReflectionEventing.Queues.EventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  langs:
+  - csharp
+  - vb
+  name: EventsQueue
+  nameWithType: EventsQueue
+  fullName: ReflectionEventing.Queues.EventsQueue
+  type: Class
+  source:
+    remote:
+      path: src/ReflectionEventing/Queues/EventsQueue.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: EventsQueue
+    path: ../src/ReflectionEventing/Queues/EventsQueue.cs
+    startLine: 7
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing.Queues
+  syntax:
+    content: 'public class EventsQueue : IEventsQueue'
+    content.vb: Public Class EventsQueue Implements IEventsQueue
+  inheritance:
+  - System.Object
+  implements:
+  - ReflectionEventing.Queues.IEventsQueue
+  inheritedMembers:
+  - System.Object.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+- uid: ReflectionEventing.Queues.EventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.Queues.EventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  id: EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  parent: ReflectionEventing.Queues.EventsQueue
+  langs:
+  - csharp
+  - vb
+  name: EnqueueAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType: EventsQueue.EnqueueAsync<TEvent>(TEvent, CancellationToken)
+  fullName: ReflectionEventing.Queues.EventsQueue.EnqueueAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing/Queues/EventsQueue.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: EnqueueAsync
+    path: ../src/ReflectionEventing/Queues/EventsQueue.cs
+    startLine: 14
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing.Queues
+  summary: Appends an event to the queue asynchronously.
+  example: []
+  syntax:
+    content: 'public virtual Task EnqueueAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default) where TEvent : class'
+    parameters:
+    - id: event
+      type: '{TEvent}'
+      description: The event to append to the queue.
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A token to monitor for cancellation requests.
+    typeParameters:
+    - id: TEvent
+    return:
+      type: System.Threading.Tasks.Task
+      description: A task that represents the asynchronous append operation.
+    content.vb: Public Overridable Function EnqueueAsync(Of TEvent As Class)([event] As TEvent, cancellationToken As CancellationToken = Nothing) As Task
+  overload: ReflectionEventing.Queues.EventsQueue.EnqueueAsync*
+  implements:
+  - ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1({TEvent},System.Threading.CancellationToken)
+  nameWithType.vb: EventsQueue.EnqueueAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName.vb: ReflectionEventing.Queues.EventsQueue.EnqueueAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  name.vb: EnqueueAsync(Of TEvent)(TEvent, CancellationToken)
+- uid: ReflectionEventing.Queues.EventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.Queues.EventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  id: ReadEventsAsync(System.Threading.CancellationToken)
+  parent: ReflectionEventing.Queues.EventsQueue
+  langs:
+  - csharp
+  - vb
+  name: ReadEventsAsync(CancellationToken)
+  nameWithType: EventsQueue.ReadEventsAsync(CancellationToken)
+  fullName: ReflectionEventing.Queues.EventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing/Queues/EventsQueue.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: ReadEventsAsync
+    path: ../src/ReflectionEventing/Queues/EventsQueue.cs
+    startLine: 24
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing.Queues
+  summary: Reads the events from the queue asynchronously.
+  example: []
+  syntax:
+    content: public IAsyncEnumerable<object> ReadEventsAsync(CancellationToken cancellationToken)
+    parameters:
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+      description: A token to monitor for cancellation requests.
+    return:
+      type: System.Collections.Generic.IAsyncEnumerable{System.Object}
+      description: An <xref href="System.Collections.Generic.IAsyncEnumerable%601" data-throw-if-not-resolved="false"></xref> of events from the queue.
+    content.vb: Public Function ReadEventsAsync(cancellationToken As CancellationToken) As IAsyncEnumerable(Of Object)
+  overload: ReflectionEventing.Queues.EventsQueue.ReadEventsAsync*
+  implements:
+  - ReflectionEventing.Queues.IEventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+- uid: ReflectionEventing.Queues.EventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  commentId: M:ReflectionEventing.Queues.EventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  id: EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  parent: ReflectionEventing.Queues.EventsQueue
+  langs:
+  - csharp
+  - vb
+  name: EnqueueError(FailedEvent)
+  nameWithType: EventsQueue.EnqueueError(FailedEvent)
+  fullName: ReflectionEventing.Queues.EventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing/Queues/EventsQueue.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: EnqueueError
+    path: ../src/ReflectionEventing/Queues/EventsQueue.cs
+    startLine: 30
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing.Queues
+  summary: Appends a failed event to the error queue.
+  example: []
+  syntax:
+    content: public void EnqueueError(FailedEvent fail)
+    parameters:
+    - id: fail
+      type: ReflectionEventing.Queues.FailedEvent
+      description: The failed event to append to the error queue.
+    content.vb: Public Sub EnqueueError(fail As FailedEvent)
+  overload: ReflectionEventing.Queues.EventsQueue.EnqueueError*
+  implements:
+  - ReflectionEventing.Queues.IEventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+- uid: ReflectionEventing.Queues.EventsQueue.GetErrors
+  commentId: M:ReflectionEventing.Queues.EventsQueue.GetErrors
+  id: GetErrors
+  parent: ReflectionEventing.Queues.EventsQueue
+  langs:
+  - csharp
+  - vb
+  name: GetErrors()
+  nameWithType: EventsQueue.GetErrors()
+  fullName: ReflectionEventing.Queues.EventsQueue.GetErrors()
+  type: Method
+  source:
+    remote:
+      path: src/ReflectionEventing/Queues/EventsQueue.cs
+      branch: main
+      repo: https://github.com/lepoco/reflectioneventing.git
+    id: GetErrors
+    path: ../src/ReflectionEventing/Queues/EventsQueue.cs
+    startLine: 36
+  assemblies:
+  - ReflectionEventing
+  namespace: ReflectionEventing.Queues
+  summary: Gets the events that failed processing from the error queue.
+  example: []
+  syntax:
+    content: public IEnumerable<FailedEvent> GetErrors()
+    return:
+      type: System.Collections.Generic.IEnumerable{ReflectionEventing.Queues.FailedEvent}
+      description: An <xref href="System.Collections.Generic.IEnumerable%601" data-throw-if-not-resolved="false"></xref> of events that failed processing.
+    content.vb: Public Function GetErrors() As IEnumerable(Of FailedEvent)
+  overload: ReflectionEventing.Queues.EventsQueue.GetErrors*
+  implements:
+  - ReflectionEventing.Queues.IEventsQueue.GetErrors
+references:
+- uid: ReflectionEventing.Queues
+  commentId: N:ReflectionEventing.Queues
+  href: ReflectionEventing.html
+  name: ReflectionEventing.Queues
+  nameWithType: ReflectionEventing.Queues
+  fullName: ReflectionEventing.Queues
+  spec.csharp:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.Queues
+    name: Queues
+    href: ReflectionEventing.Queues.html
+  spec.vb:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.Queues
+    name: Queues
+    href: ReflectionEventing.Queues.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: ReflectionEventing.Queues.IEventsQueue
+  commentId: T:ReflectionEventing.Queues.IEventsQueue
+  parent: ReflectionEventing.Queues
+  href: ReflectionEventing.Queues.IEventsQueue.html
+  name: IEventsQueue
+  nameWithType: IEventsQueue
+  fullName: ReflectionEventing.Queues.IEventsQueue
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: ReflectionEventing.Queues.EventsQueue.EnqueueAsync*
+  commentId: Overload:ReflectionEventing.Queues.EventsQueue.EnqueueAsync
+  href: ReflectionEventing.Queues.EventsQueue.html#ReflectionEventing_Queues_EventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  name: EnqueueAsync
+  nameWithType: EventsQueue.EnqueueAsync
+  fullName: ReflectionEventing.Queues.EventsQueue.EnqueueAsync
+- uid: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1({TEvent},System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  parent: ReflectionEventing.Queues.IEventsQueue
+  definition: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  name: EnqueueAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType: IEventsQueue.EnqueueAsync<TEvent>(TEvent, CancellationToken)
+  fullName: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  nameWithType.vb: IEventsQueue.EnqueueAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName.vb: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  name.vb: EnqueueAsync(Of TEvent)(TEvent, CancellationToken)
+  spec.csharp:
+  - uid: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+    name: EnqueueAsync
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - name: TEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+    name: EnqueueAsync
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - name: TEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: '{TEvent}'
+  commentId: '!:TEvent'
+  definition: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+  isExternal: true
+  href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  name: EnqueueAsync<TEvent>(TEvent, CancellationToken)
+  nameWithType: IEventsQueue.EnqueueAsync<TEvent>(TEvent, CancellationToken)
+  fullName: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync<TEvent>(TEvent, System.Threading.CancellationToken)
+  nameWithType.vb: IEventsQueue.EnqueueAsync(Of TEvent)(TEvent, CancellationToken)
+  fullName.vb: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync(Of TEvent)(TEvent, System.Threading.CancellationToken)
+  name.vb: EnqueueAsync(Of TEvent)(TEvent, CancellationToken)
+  spec.csharp:
+  - uid: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+    name: EnqueueAsync
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  - name: <
+  - name: TEvent
+  - name: '>'
+  - name: (
+  - name: TEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.Queues.IEventsQueue.EnqueueAsync``1(``0,System.Threading.CancellationToken)
+    name: EnqueueAsync
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueAsync__1___0_System_Threading_CancellationToken_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TEvent
+  - name: )
+  - name: (
+  - name: TEvent
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: TEvent
+  name: TEvent
+  nameWithType: TEvent
+  fullName: TEvent
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: System.Collections.Generic.IAsyncEnumerable`1
+  commentId: T:System.Collections.Generic.IAsyncEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  name: IAsyncEnumerable<T>
+  nameWithType: IAsyncEnumerable<T>
+  fullName: System.Collections.Generic.IAsyncEnumerable<T>
+  nameWithType.vb: IAsyncEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IAsyncEnumerable(Of T)
+  name.vb: IAsyncEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: ReflectionEventing.Queues.EventsQueue.ReadEventsAsync*
+  commentId: Overload:ReflectionEventing.Queues.EventsQueue.ReadEventsAsync
+  href: ReflectionEventing.Queues.EventsQueue.html#ReflectionEventing_Queues_EventsQueue_ReadEventsAsync_System_Threading_CancellationToken_
+  name: ReadEventsAsync
+  nameWithType: EventsQueue.ReadEventsAsync
+  fullName: ReflectionEventing.Queues.EventsQueue.ReadEventsAsync
+- uid: ReflectionEventing.Queues.IEventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  commentId: M:ReflectionEventing.Queues.IEventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  parent: ReflectionEventing.Queues.IEventsQueue
+  isExternal: true
+  href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_ReadEventsAsync_System_Threading_CancellationToken_
+  name: ReadEventsAsync(CancellationToken)
+  nameWithType: IEventsQueue.ReadEventsAsync(CancellationToken)
+  fullName: ReflectionEventing.Queues.IEventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: ReflectionEventing.Queues.IEventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+    name: ReadEventsAsync
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_ReadEventsAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.Queues.IEventsQueue.ReadEventsAsync(System.Threading.CancellationToken)
+    name: ReadEventsAsync
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_ReadEventsAsync_System_Threading_CancellationToken_
+  - name: (
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Collections.Generic.IAsyncEnumerable{System.Object}
+  commentId: T:System.Collections.Generic.IAsyncEnumerable{System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IAsyncEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  name: IAsyncEnumerable<object>
+  nameWithType: IAsyncEnumerable<object>
+  fullName: System.Collections.Generic.IAsyncEnumerable<object>
+  nameWithType.vb: IAsyncEnumerable(Of Object)
+  fullName.vb: System.Collections.Generic.IAsyncEnumerable(Of Object)
+  name.vb: IAsyncEnumerable(Of Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IAsyncEnumerable`1
+    name: IAsyncEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.iasyncenumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: ReflectionEventing.Queues.EventsQueue.EnqueueError*
+  commentId: Overload:ReflectionEventing.Queues.EventsQueue.EnqueueError
+  href: ReflectionEventing.Queues.EventsQueue.html#ReflectionEventing_Queues_EventsQueue_EnqueueError_ReflectionEventing_Queues_FailedEvent_
+  name: EnqueueError
+  nameWithType: EventsQueue.EnqueueError
+  fullName: ReflectionEventing.Queues.EventsQueue.EnqueueError
+- uid: ReflectionEventing.Queues.IEventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  commentId: M:ReflectionEventing.Queues.IEventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  parent: ReflectionEventing.Queues.IEventsQueue
+  href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueError_ReflectionEventing_Queues_FailedEvent_
+  name: EnqueueError(FailedEvent)
+  nameWithType: IEventsQueue.EnqueueError(FailedEvent)
+  fullName: ReflectionEventing.Queues.IEventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+  spec.csharp:
+  - uid: ReflectionEventing.Queues.IEventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+    name: EnqueueError
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueError_ReflectionEventing_Queues_FailedEvent_
+  - name: (
+  - uid: ReflectionEventing.Queues.FailedEvent
+    name: FailedEvent
+    href: ReflectionEventing.Queues.FailedEvent.html
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.Queues.IEventsQueue.EnqueueError(ReflectionEventing.Queues.FailedEvent)
+    name: EnqueueError
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_EnqueueError_ReflectionEventing_Queues_FailedEvent_
+  - name: (
+  - uid: ReflectionEventing.Queues.FailedEvent
+    name: FailedEvent
+    href: ReflectionEventing.Queues.FailedEvent.html
+  - name: )
+- uid: ReflectionEventing.Queues.FailedEvent
+  commentId: T:ReflectionEventing.Queues.FailedEvent
+  parent: ReflectionEventing.Queues
+  href: ReflectionEventing.Queues.FailedEvent.html
+  name: FailedEvent
+  nameWithType: FailedEvent
+  fullName: ReflectionEventing.Queues.FailedEvent
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: ReflectionEventing.Queues.EventsQueue.GetErrors*
+  commentId: Overload:ReflectionEventing.Queues.EventsQueue.GetErrors
+  href: ReflectionEventing.Queues.EventsQueue.html#ReflectionEventing_Queues_EventsQueue_GetErrors
+  name: GetErrors
+  nameWithType: EventsQueue.GetErrors
+  fullName: ReflectionEventing.Queues.EventsQueue.GetErrors
+- uid: ReflectionEventing.Queues.IEventsQueue.GetErrors
+  commentId: M:ReflectionEventing.Queues.IEventsQueue.GetErrors
+  parent: ReflectionEventing.Queues.IEventsQueue
+  href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_GetErrors
+  name: GetErrors()
+  nameWithType: IEventsQueue.GetErrors()
+  fullName: ReflectionEventing.Queues.IEventsQueue.GetErrors()
+  spec.csharp:
+  - uid: ReflectionEventing.Queues.IEventsQueue.GetErrors
+    name: GetErrors
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_GetErrors
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: ReflectionEventing.Queues.IEventsQueue.GetErrors
+    name: GetErrors
+    href: ReflectionEventing.Queues.IEventsQueue.html#ReflectionEventing_Queues_IEventsQueue_GetErrors
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{ReflectionEventing.Queues.FailedEvent}
+  commentId: T:System.Collections.Generic.IEnumerable{ReflectionEventing.Queues.FailedEvent}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<FailedEvent>
+  nameWithType: IEnumerable<FailedEvent>
+  fullName: System.Collections.Generic.IEnumerable<ReflectionEventing.Queues.FailedEvent>
+  nameWithType.vb: IEnumerable(Of FailedEvent)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of ReflectionEventing.Queues.FailedEvent)
+  name.vb: IEnumerable(Of FailedEvent)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: ReflectionEventing.Queues.FailedEvent
+    name: FailedEvent
+    href: ReflectionEventing.Queues.FailedEvent.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: ReflectionEventing.Queues.FailedEvent
+    name: FailedEvent
+    href: ReflectionEventing.Queues.FailedEvent.html
+  - name: )

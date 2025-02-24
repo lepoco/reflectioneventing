@@ -1,0 +1,54 @@
+### YamlMime:ManagedReference
+items:
+- uid: ReflectionEventing.DependencyInjection.Configuration
+  commentId: N:ReflectionEventing.DependencyInjection.Configuration
+  id: ReflectionEventing.DependencyInjection.Configuration
+  children:
+  - ReflectionEventing.DependencyInjection.Configuration.QueueProcessorOptionsProvider
+  langs:
+  - csharp
+  - vb
+  name: ReflectionEventing.DependencyInjection.Configuration
+  nameWithType: ReflectionEventing.DependencyInjection.Configuration
+  fullName: ReflectionEventing.DependencyInjection.Configuration
+  type: Namespace
+  assemblies:
+  - ReflectionEventing.DependencyInjection
+references:
+- uid: ReflectionEventing.DependencyInjection.Configuration.QueueProcessorOptionsProvider
+  commentId: T:ReflectionEventing.DependencyInjection.Configuration.QueueProcessorOptionsProvider
+  parent: ReflectionEventing.DependencyInjection.Configuration
+  href: ReflectionEventing.DependencyInjection.Configuration.QueueProcessorOptionsProvider.html
+  name: QueueProcessorOptionsProvider
+  nameWithType: QueueProcessorOptionsProvider
+  fullName: ReflectionEventing.DependencyInjection.Configuration.QueueProcessorOptionsProvider
+- uid: ReflectionEventing.DependencyInjection.Configuration
+  commentId: N:ReflectionEventing.DependencyInjection.Configuration
+  href: ReflectionEventing.html
+  name: ReflectionEventing.DependencyInjection.Configuration
+  nameWithType: ReflectionEventing.DependencyInjection.Configuration
+  fullName: ReflectionEventing.DependencyInjection.Configuration
+  spec.csharp:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection
+    name: DependencyInjection
+    href: ReflectionEventing.DependencyInjection.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection.Configuration
+    name: Configuration
+    href: ReflectionEventing.DependencyInjection.Configuration.html
+  spec.vb:
+  - uid: ReflectionEventing
+    name: ReflectionEventing
+    href: ReflectionEventing.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection
+    name: DependencyInjection
+    href: ReflectionEventing.DependencyInjection.html
+  - name: .
+  - uid: ReflectionEventing.DependencyInjection.Configuration
+    name: Configuration
+    href: ReflectionEventing.DependencyInjection.Configuration.html

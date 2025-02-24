@@ -26,6 +26,11 @@ public abstract class ViewModel : ObservableObject
             return;
         }
 
+        if (Application.Current is null)
+        {
+            return;
+        }
+
         await Application.Current.Dispatcher.InvokeAsync(action);
     }
 }

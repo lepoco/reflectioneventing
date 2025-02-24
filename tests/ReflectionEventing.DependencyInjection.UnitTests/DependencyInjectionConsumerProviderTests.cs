@@ -3,8 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace ReflectionEventing.DependencyInjection.UnitTests;
 
 public sealed class DependencyInjectionConsumerProviderTests
@@ -30,7 +28,7 @@ public sealed class DependencyInjectionConsumerProviderTests
         _ = services.AddSingleton<TestConsumer>();
         DependencyInjectionConsumerProvider consumerProvider = new(services.BuildServiceProvider());
 
-        IEnumerable<object> actualConsumers = consumerProvider.GetConsumers(typeof(TestConsumer));
+        IEnumerable<object?> actualConsumers = consumerProvider.GetConsumers(typeof(TestConsumer));
 
         _ = actualConsumers.Should().HaveCount(2);
     }

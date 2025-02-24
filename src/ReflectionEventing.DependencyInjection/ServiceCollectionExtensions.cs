@@ -4,6 +4,7 @@
 // All Rights Reserved.
 
 using ReflectionEventing.DependencyInjection.Configuration;
+using ReflectionEventing.DependencyInjection.Services;
 using ReflectionEventing.Queues;
 
 namespace ReflectionEventing.DependencyInjection;
@@ -40,7 +41,14 @@ public static class ServiceCollectionExtensions
         _ = services.AddKeyedScoped<IConsumerProvider, DependencyInjectionConsumerProvider>(
             serviceKey
         );
-        _ = services.AddKeyedScoped<IEventBus, EventBus>(serviceKey);
+        _ = services.AddKeyedScoped<IEventBus, DependencyInjectionEventBus>(serviceKey);
+
+        _ = services.AddSingleton(new QueueProcessorOptionsProvider(builder.Options, serviceKey));
+
+        if (builder.Options.UseEventsQueue)
+        {
+            _ = services.AddHostedService<DependencyInjectionQueueProcessor>();
+        }
 
         return services;
     }
@@ -68,15 +76,14 @@ public static class ServiceCollectionExtensions
         _ = services.AddSingleton(builder.BuildTypesProvider());
         _ = services.AddSingleton<IEventsQueue, EventsQueue>();
         _ = services.AddScoped<IConsumerProvider, DependencyInjectionConsumerProvider>();
-        _ = services.AddScoped<IEventBus, EventBus>();
+        _ = services.AddScoped<IEventBus, DependencyInjectionEventBus>();
 
-        _ = services.AddSingleton(
-            new QueueProcessorOptionsProvider(
-                builder.Options.QueueTickRate,
-                builder.Options.ErrorTickRate
-            )
-        );
-        _ = services.AddHostedService<DependencyInjectionQueueProcessor>();
+        _ = services.AddSingleton(new QueueProcessorOptionsProvider(builder.Options));
+
+        if (builder.Options.UseEventsQueue)
+        {
+            _ = services.AddHostedService<DependencyInjectionQueueProcessor>();
+        }
 
         return services;
     }

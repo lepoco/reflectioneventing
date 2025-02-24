@@ -24,7 +24,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a transient consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a transient consumer."
             );
         }
 
@@ -50,7 +50,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a transient consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a transient consumer."
             );
         }
 
@@ -77,7 +77,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a scoped consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a scoped consumer."
             );
         }
 
@@ -100,7 +100,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a scoped consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a scoped consumer."
             );
         }
 
@@ -127,7 +127,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a singleton consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a singleton consumer."
             );
         }
 
@@ -153,7 +153,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a singleton consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a singleton consumer."
             );
         }
 
@@ -180,7 +180,7 @@ public static class EventBusBuilderExtensions
         if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
         {
             throw new InvalidOperationException(
-                "The event bus builder must be of type DependencyInjectionEventBusBuilder to add a transient consumer."
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to add a transient consumer."
             );
         }
 

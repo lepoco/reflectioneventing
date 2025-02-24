@@ -3,8 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace ReflectionEventing.DependencyInjection.UnitTests;
 
 public sealed class EventBusBuilderExtensionsTests

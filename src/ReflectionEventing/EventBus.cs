@@ -30,19 +30,24 @@ public class EventBus(
     );
 
     /// <inheritdoc />
-    public async Task SendAsync<TEvent>(
+    public virtual async Task SendAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )
         where TEvent : class
     {
+        if (eventItem is null)
+        {
+            throw new ArgumentNullException(nameof(eventItem));
+        }
+
         using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
 
         activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
 
         if (eventItem is null)
         {
-            throw new ArgumentNullException(nameof(eventItem));
+            throw new EventBusException(nameof(eventItem));
         }
 
         Type eventType = typeof(TEvent);
@@ -51,8 +56,13 @@ public class EventBus(
 
         foreach (Type consumerType in consumerTypes)
         {
-            foreach (object consumer in consumerProviders.GetConsumers(consumerType))
+            foreach (object? consumer in consumerProviders.GetConsumers(consumerType))
             {
+                if (consumer is null)
+                {
+                    return;
+                }
+
                 tasks.Add(((IConsumer<TEvent>)consumer).ConsumeAsync(eventItem, cancellationToken));
             }
         }
@@ -63,7 +73,7 @@ public class EventBus(
     }
 
     /// <inheritdoc />
-    public async Task PublishAsync<TEvent>(
+    public virtual async Task PublishAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )

@@ -5,10 +5,6 @@ ReflectionEventing is a powerful tool for developers looking to create decoupled
 
 [![GitHub license](https://img.shields.io/github/license/lepoco/reflectioneventing)](https://github.com/lepoco/reflectioneventing/blob/master/LICENSE) [![Nuget](https://img.shields.io/nuget/v/ReflectionEventing)](https://www.nuget.org/packages/ReflectionEventing/) [![Nuget](https://img.shields.io/nuget/dt/ReflectionEventing?label=nuget)](https://www.nuget.org/packages/ReflectionEventing/) [![Sponsors](https://img.shields.io/github/sponsors/lepoco)](https://github.com/sponsors/lepoco)
 
-## 👀 What does this repo contain?
-
-This repository houses the source code for the ReflectionEventing NuGet package. The package utilizes C# reflection to register services that can listen for and respond to local events.
-
 ## 🛟 Support plans
 
 To ensure you receive the expert guidance you need, we offer a variety of support plans designed to meet the diverse needs of our community. Whether you are looking to in memory eventing or need assistance with our other libraries, our tailored support solutions are here to help. From priority email support to 24/7 dedicated assistance, we provide flexible plans to suit your project requirements.
@@ -24,12 +20,12 @@ Support the development of Reflection Eventing and other innovative projects by 
 ## Gettings started
 
 ReflectionEventing is available as NuGet package on NuGet.org:  
-https://www.nuget.org/packages/ReflectionEventing  
-https://www.nuget.org/packages/ReflectionEventing.Autofac  
-https://www.nuget.org/packages/ReflectionEventing.Castle.Windsor  
-https://www.nuget.org/packages/ReflectionEventing.DependencyInjection  
-https://www.nuget.org/packages/ReflectionEventing.Ninject  
-https://www.nuget.org/packages/ReflectionEventing.Unity
+<https://www.nuget.org/packages/ReflectionEventing>  
+<https://www.nuget.org/packages/ReflectionEventing.Autofac>  
+<https://www.nuget.org/packages/ReflectionEventing.Castle.Windsor>  
+<https://www.nuget.org/packages/ReflectionEventing.DependencyInjection>  
+<https://www.nuget.org/packages/ReflectionEventing.Ninject>  
+<https://www.nuget.org/packages/ReflectionEventing.Unity>
 
 You can add it to your project using .NET CLI:
 
@@ -101,8 +97,8 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
 JetBrains was kind enough to lend a license for the open-source **dotUltimate** for _ReflectionEventing_ development.  
 Learn more here:
 
- - https://www.jetbrains.com/dotnet/
- - https://www.jetbrains.com/opensource/
+- <https://www.jetbrains.com/dotnet/>
+- <https://www.jetbrains.com/opensource/>
 
 ## Compilation
 

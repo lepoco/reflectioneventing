@@ -3,8 +3,6 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace ReflectionEventing.DependencyInjection.UnitTests;
 
 public sealed class ServiceCollectionExtensionsTests
@@ -12,7 +10,7 @@ public sealed class ServiceCollectionExtensionsTests
     [Fact]
     public void AddEventBus_RegistersServicesAndAddsConsumer()
     {
-        ServiceCollection services = new();
+        ServiceCollection services = [];
 
         _ = services.AddScoped<TestConsumer>();
         _ = services.AddEventBus(builder =>
@@ -33,7 +31,7 @@ public sealed class ServiceCollectionExtensionsTests
 
         IEventBus? eventBus = serviceProvider.GetService<IEventBus>();
         _ = eventBus.Should().NotBeNull();
-        _ = eventBus.Should().BeOfType<EventBus>();
+        _ = eventBus.Should().BeOfType<DependencyInjectionEventBus>();
 
         IEnumerable<Type> consumers = consumerTypesProvider!.GetConsumerTypes<TestEvent>();
         _ = consumers.First().Should().Be(typeof(TestConsumer));
