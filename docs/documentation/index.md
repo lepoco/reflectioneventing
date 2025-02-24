@@ -1,121 +1,56 @@
-# Reflection Eventing Docs
+# Reflection Eventing Documentation
 
-[Created with ❤ in Poland by lepo.co](https://dev.lepo.co/)  
-ReflectionEventing is a powerful tool for developers looking to create decoupled designs in WPF, WinForms, or CLI applications. By leveraging the power of Dependency Injection (DI) and eventing, ReflectionEventing promotes better Inversion of Control (IoC), reducing coupling and enhancing the modularity and flexibility of your applications.
+Welcome to the documentation for the Reflection Eventing project. This documentation provides detailed information on how to configure and use the various components of the Reflection Eventing library.
 
-[![GitHub license](https://img.shields.io/github/license/lepoco/reflectioneventing)](https://github.com/lepoco/reflectioneventing/blob/master/LICENSE) [![Nuget](https://img.shields.io/nuget/v/ReflectionEventing)](https://www.nuget.org/packages/ReflectionEventing/) [![Nuget](https://img.shields.io/nuget/dt/ReflectionEventing?label=nuget)](https://www.nuget.org/packages/ReflectionEventing/) [![Sponsors](https://img.shields.io/github/sponsors/lepoco)](https://github.com/sponsors/lepoco)
+## Table of Contents
 
-## 👀 What does this repo contain?
+1. [Getting Started](/documentation/getting-started.html)
+2. [Configuration](/documentation/configuration.html)
+3. [EventBusBuilder](/documentation/eventbusbuilder.html)
+4. [Consumers](/documentation/consumers.html)
+5. [Error Handling](/documentation/error-handling.html)
+6. [Advanced Topics](/documentation/advanced-topics.html)
+7. [API Reference](/api/ReflectionEventing.html)
 
-This repository houses the source code for the ReflectionEventing NuGet package. The package utilizes C# reflection to register services that can listen for and respond to local events.
+## Overview
 
-## 🛟 Support plans
+The Reflection Eventing library provides a flexible and powerful way to handle events in your application. It allows you to define event consumers, configure event buses, and manage event processing with ease.
 
-To ensure you receive the expert guidance you need, we offer a variety of support plans designed to meet the diverse needs of our community. Whether you are looking to in memory eventing or need assistance with our other libraries, our tailored support solutions are here to help. From priority email support to 24/7 dedicated assistance, we provide flexible plans to suit your project requirements.
+### Key Features
 
-[Take a look at the lepo.co support plans](https://lepo.co/support)
+- **EventBusBuilder**: A class to configure and build an event bus with a specific set of consumers.
+- **Consumers**: Define consumers that handle specific event types.
+- **Configuration Options**: Various options to control the behavior of the event bus, including event polymorphism, background queues, and error handling.
+- **Error Handling**: Mechanisms to handle events that fail processing, including the use of error queues.
 
-## 🤝 Help us keep working on this project
+## Getting Started
 
-Support the development of Reflection Eventing and other innovative projects by becoming a sponsor on GitHub! Your monthly or one-time contributions help us continue to deliver high-quality, open-source solutions that empower developers worldwide.
+To get started with Reflection Eventing, refer to the [Getting Started](/documentation/getting-started.html) guide. This guide will walk you through the initial setup and basic usage of the library.
 
-[Sponsor Reflection Eventing on GitHub](https://github.com/sponsors/lepoco)
+## Configuration
 
-## Gettings started
+Learn how to configure the event bus and its components in the [Configuration](/documentation/configuration.html) section. This includes details on the `EventBusBuilder` and its options.
 
-ReflectionEventing is available as NuGet package on NuGet.org:  
-<https://www.nuget.org/packages/ReflectionEventing>  
-<https://www.nuget.org/packages/ReflectionEventing.Autofac>  
-<https://www.nuget.org/packages/ReflectionEventing.Castle.Windsor>  
-<https://www.nuget.org/packages/ReflectionEventing.DependencyInjection>  
-<https://www.nuget.org/packages/ReflectionEventing.Ninject>  
-<https://www.nuget.org/packages/ReflectionEventing.Unity>
+## EventBusBuilder
 
-You can add it to your project using .NET CLI:
+The [EventBusBuilder](/documentation/eventbusbuilder.html) section provides an in-depth look at how to use the `EventBusBuilder` class to configure and build your event bus.
 
-```powershell
-dotnet add package ReflectionEventing.DependencyInjection
-```
+## Consumers
 
-, or package manager console:
+The [Consumers](/documentation/consumers.html) section explains how to define and register consumers that handle specific event types.
 
-```powershell
-NuGet\Install-Package ReflectionEventing.DependencyInjection
-```
+## Error Handling
 
-### 🛠️ How to Use ReflectionEventing
+Understand how to handle errors in event processing in the [Error Handling](/documentation/error-handling.html) section. This includes using error queues and handling consumer exceptions.
 
-#### 1. Register Consumers and the Event Bus
+## Advanced Topics
 
-In this step, we register our ViewModel as a singleton and add it as a consumer to the event bus. This allows the ViewModel to listen for events published on the bus.
+Explore advanced topics and best practices in the [Advanced Topics](/documentation/advanced-topics.html) section.
 
-```csharp
-IHost host = Host.CreateDefaultBuilder()
-  .ConfigureServices((context, services) =>
-    {
-      services.AddSingleton<MainWindowViewModel>();
-      services.AddEventBus(e =>
-      {
-        e.AddConsumer<MainWindowViewModel>();
-      });
-    }
-  )
-  .Build();
-```
+## API Reference
 
-#### 2. Publish Events
+For detailed API documentation, refer to the [API Reference](/api/ReflectionEventing.html).
 
-Here, we create a background service that publishes an event on the event bus. This event could be anything - in this case, we're publishing a `BackgroundTicked` event.
+---
 
-```csharp
-public class MyBackgroundService(IEventBus eventBus)
-{
-    public void PublishEvent()
-    {
-        eventBus.Publish(new BackgroundTicked());
-    }
-}
-```
-
-#### 3. Listen for Events
-
-Finally, we implement the `IConsumer<T>` interface in our ViewModel. This allows the ViewModel to consume `BackgroundTicked` events. When a `BackgroundTicked` event is published, the `ConsumeAsync` method is called, and we update the `CurrentTick` property.
-
-```csharp
-public partial class MainWindowViewModel : ObservableObject, IConsumer<BackgroundTicked>
-{
-    [ObservableProperty]
-    private int _currentTick = 0;
-
-    public Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
-    {
-        CurrentTick = payload.Value;
-
-        return Task.CompletedTask;
-    }
-}
-```
-
-## Special thanks
-
-JetBrains was kind enough to lend a license for the open-source **dotUltimate** for _ReflectionEventing_ development.  
-Learn more here:
-
-- <https://www.jetbrains.com/dotnet/>
-- <https://www.jetbrains.com/opensource/>
-
-## Compilation
-
-To build the project, use Visual Studio 2022 and open the .sln file.
-
-Visual Studio  
-**ReflectionEventing** is an Open Source project. You are entitled to download and use the freely available Visual Studio Community Edition to build, run or develop for ReflectionEventing. As per the Visual Studio Community Edition license, this applies regardless of whether you are an individual or a corporate user.
-
-## Code of Conduct
-
-This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community.
-
-## License
-
-**ReflectionEventing** is free and open source software licensed under **MIT License**. You can use it in private and commercial projects.  
-Keep in mind that you must include a copy of the license in your project.
+For more information and examples, please refer to the individual sections listed above.

@@ -4,7 +4,11 @@ items:
   - name: Documentation
     href: /documentation
     items:
+    - name: Getting started
+      href: documentation/getting-started.md
     - name: Configuration
       href: documentation/configuration.md
+    - name: Consumers
+      href: documentation/consumers.md
   - name: API
     href: api/
