@@ -4,7 +4,6 @@
 // All Rights Reserved.
 
 using ReflectionEventing.DependencyInjection.Configuration;
-using ReflectionEventing.DependencyInjection.Services;
 using ReflectionEventing.Queues;
 
 namespace ReflectionEventing.DependencyInjection;
@@ -47,7 +46,7 @@ public static class ServiceCollectionExtensions
 
         if (builder.Options.UseEventsQueue)
         {
-            _ = services.AddHostedService<DependencyInjectionQueueProcessor>();
+            _ = services.AddSingleton(typeof(IHostedService), builder.QueueBackgroundService);
         }
 
         return services;
@@ -82,7 +81,7 @@ public static class ServiceCollectionExtensions
 
         if (builder.Options.UseEventsQueue)
         {
-            _ = services.AddHostedService<DependencyInjectionQueueProcessor>();
+            _ = services.AddSingleton(typeof(IHostedService), builder.QueueBackgroundService);
         }
 
         return services;

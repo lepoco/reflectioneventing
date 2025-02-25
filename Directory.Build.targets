@@ -1,8 +1,7 @@
 <Project>
 
-  <PropertyGroup>
-    <!-- TODO: Dynamically generate Title if one wasn't set -->
-    <Title Condition="'$(Title)' == ''">$(Product) Asset</Title>
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -11,7 +10,17 @@
     <PackageTags Condition="'$(PackageTags)' == ''">$(CommonTags)</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Condition="$(IsPackable)">
+  <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <DeterministicSourcePaths Condition="'$(SourceLinkEnabled)' == 'true'">true</DeterministicSourcePaths>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
     <None Include="$(BuildToolsDirectory)nuget.png" Pack="true" PackagePath="\Icon.png" Visible="False" />
     <None Include="$(RepositoryDirectory)ThirdPartyNotices.txt" Pack="true" PackagePath="\" Visible="False" />
     <None Include="$(RepositoryDirectory)LICENSE.md" Pack="true" PackagePath="\LICENSE.md" Visible="False" />
@@ -27,13 +36,8 @@
     </ItemGroup>
   </Target>
 
-  <!-- Define NETSTANDARD2_1_OR_GREATER for .NET Standard 2.1 targets and above -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net7.0'">
-    <DefineConstants>NETSTANDARD2_1_OR_GREATER</DefineConstants>
-  </PropertyGroup>
-
   <!-- Configure trimming for projects on .NET 6 and above -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net8.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0'">
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <EnableAotAnalyzer>true</EnableAotAnalyzer>
@@ -44,4 +48,19 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>$(RepositoryDirectory)\src\lepo.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+
+  <Target Name="WpfSourceLinkWorkaround" BeforeTargets="InitializeSourceRootMappedPaths" Condition="'$(UseWPF)' == 'true'">
+    <!-- WPF causes an error with SourceLink because its build targets create a temporary project without a PackageReference to SourceLink, see https://github.com/dotnet/sourcelink/issues/91,
+         causing the @SourceRoot property to be unexpectedly empty for the MapSourceRoot task
+        
+         For context, see https://github.com/dotnet/roslyn/blob/main/src/Compilers/Core/MSBuildTask/Microsoft.Managed.Core.targets
+         and https://github.com/dotnet/roslyn/blob/main/src/Compilers/Core/MSBuildTask/MapSourceRoots.cs
+         
+         This workaround sets the SourceRoot manually to some deterministic value to keep the promise given by having DeterministicSourcePaths set to true -->
+    <Message Text="using deterministic source path workaround for WPF project instead of SourceLink" />
+    <ItemGroup>
+      <!-- There needs to be at least one SourceRoot defined, its value does not seem to matter as long as it ends with a directory separator -->
+      <SourceRoot Include="\" />
+    </ItemGroup>
+  </Target>
 </Project>

@@ -36,6 +36,21 @@ public class EventBusBuilderOptions
     public bool UseErrorQueue { get; set; } = false;
 
     /// <summary>
+    /// Gets or sets the mode in which events in the queue are processed.
+    /// If set to <see cref="ProcessingMode.Sequential"/>, events are processed one at a time in the order they are received.
+    /// If set to <see cref="ProcessingMode.Parallel"/>, events are processed concurrently, allowing multiple events to be handled at the same time.
+    /// The default value is <see cref="ProcessingMode.Sequential"/>.
+    /// </summary>
+    public ProcessingMode QueueMode { get; set; } = ProcessingMode.Sequential;
+
+    /// <summary>
+    /// Gets or sets the maximum number of concurrent tasks that can be processed.
+    /// This value is used to limit the number of tasks running in parallel when <see cref="QueueMode"/> is set to <see cref="ProcessingMode.Parallel"/>.
+    /// The default value is 100.
+    /// </summary>
+    public int ConcurrentTaskLimit { get; set; } = 100;
+
+    /// <summary>
     /// Gets or sets the rate at which the event queue is processed.
     /// The default value is 20ms.
     /// </summary>
