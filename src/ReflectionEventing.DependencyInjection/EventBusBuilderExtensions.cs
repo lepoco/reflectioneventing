@@ -8,6 +8,28 @@ namespace ReflectionEventing.DependencyInjection;
 public static class EventBusBuilderExtensions
 {
     /// <summary>
+    /// Configures the event bus to use a custom background service for processing events.
+    /// </summary>
+    /// <typeparam name="TQueueBackgroundService">The type of the background service to use. This type must implement <see cref="IHostedService"/>.</typeparam>
+    /// <returns>The current instance of <see cref="EventBusBuilder"/>.</returns>
+    public static EventBusBuilder UseBackgroundService<TQueueBackgroundService>(
+        this EventBusBuilder builder
+    )
+        where TQueueBackgroundService : class, IHostedService
+    {
+        if (builder is not DependencyInjectionEventBusBuilder dependencyInjectionEventBusBuilder)
+        {
+            throw new InvalidOperationException(
+                $"The event bus builder must be of type {nameof(DependencyInjectionEventBusBuilder)} to define background service."
+            );
+        }
+
+        dependencyInjectionEventBusBuilder.QueueBackgroundService = typeof(TQueueBackgroundService);
+
+        return dependencyInjectionEventBusBuilder;
+    }
+
+    /// <summary>
     /// Adds a consumer to the event bus builder and <see cref="IServiceCollection"/>.
     /// </summary>
     /// <param name="builder">The event bus builder to add the consumer to.</param>

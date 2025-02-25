@@ -3,6 +3,8 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
+using ReflectionEventing.DependencyInjection.Services;
+
 namespace ReflectionEventing.DependencyInjection;
 
 /// <summary>
@@ -11,6 +13,8 @@ namespace ReflectionEventing.DependencyInjection;
 // ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
 public class DependencyInjectionEventBusBuilder(IServiceCollection services) : EventBusBuilder
 {
+    internal Type QueueBackgroundService { get; set; } = typeof(DependencyInjectionQueueProcessor);
+
     /// <summary>
     /// Adds a consumer to the event bus and <see cref="IServiceCollection"/> with a specified service lifetime.
     /// </summary>

@@ -6,6 +6,7 @@
 using ReflectionEventing.Demo.Wpf.Services;
 using ReflectionEventing.Demo.Wpf.ViewModels;
 using ReflectionEventing.DependencyInjection;
+using ReflectionEventing.DependencyInjection.Services;
 
 namespace ReflectionEventing.Demo.Wpf;
 
@@ -33,8 +34,11 @@ public partial class App : Application
                 _ = services.AddEventBus(e =>
                 {
                     e.Options.UseEventPolymorphism = true;
+                    e.Options.UseEventsQueue = true;
+                    e.Options.QueueMode = ProcessingMode.Parallel;
 
-                    _ = e.AddAllConsumers(Assembly.GetExecutingAssembly());
+                    e.UseBackgroundService<DependencyInjectionQueueProcessor>();
+                    e.AddAllConsumers(Assembly.GetExecutingAssembly());
                 });
             }
         )

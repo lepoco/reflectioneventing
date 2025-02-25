@@ -31,6 +31,8 @@ public class DependencyInjectionQueueProcessor(
 
     private readonly TimeSpan errorTickRate = options.Value.ErrorTickRate;
 
+    private readonly SemaphoreSlim semaphore = new(options.Value.ConcurrentTaskLimit);
+
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
         await BackgroundProcessing(cancellationToken);
@@ -114,60 +116,118 @@ public class DependencyInjectionQueueProcessor(
                     return;
                 }
 
-                MethodInfo? consumeMethod = consumerType.GetMethod(
-                    "ConsumeAsync",
-                    [@event.GetType(), typeof(CancellationToken)]
-                );
-
-                if (consumeMethod != null)
+                if (options.Value.QueueMode == ProcessingMode.Sequential)
                 {
-                    try
-                    {
-                        await (Task)consumeMethod.Invoke(consumer, [@event, cancellationToken])!;
-                    }
-                    catch (Exception e)
-                    {
-                        //activity?.AddException(e);
-                        activity?.SetStatus(ActivityStatusCode.Error);
+                    await ExecuteConsumerAsync(
+                        @event,
+                        consumerType,
+                        eventType,
+                        consumer,
+                        activity,
+                        cancellationToken
+                    );
+                }
+                else if (options.Value.QueueMode == ProcessingMode.Parallel)
+                {
+                    await semaphore.WaitAsync(cancellationToken);
 
-                        logger.LogError(
-                            new EventId(75001, "ReflectionEventingQueueProcessingFailed"),
-                            e,
-                            "Error processing event of type {EventName}",
-                            @event.GetType().Name
-                        );
-
-                        if (options.Value.UseErrorQueue)
+                    _ = Task.Run(
+                        async () =>
                         {
-                            queue.EnqueueError(
-                                new FailedEvent
-                                {
-                                    Data = @event,
-                                    Exception = e,
-                                    Timestamp = DateTimeOffset.UtcNow,
-                                    FailedConsumer = consumerType,
-                                }
-                            );
-                        }
-
-                        EventsFailed.Add(
-                            1,
-                            new KeyValuePair<string, object?>("message_type", eventType.Name)
-                        );
-                    }
+                            try
+                            {
+                                await ExecuteConsumerAsync(
+                                    @event,
+                                    consumerType,
+                                    eventType,
+                                    consumer,
+                                    activity,
+                                    cancellationToken
+                                );
+                            }
+                            catch (Exception e)
+                            {
+                                logger.LogError(e, "Error occurred during consumer execution");
+                            }
+                            finally
+                            {
+                                semaphore.Release();
+                            }
+                        },
+                        cancellationToken
+                    );
                 }
                 else
                 {
-                    logger.LogError(
-                        new EventId(75002, "ReflectionEventingConsumerMissing"),
-                        "ConsumeAsync method not found on consumer {ConsumerType} for event type {EventName}",
-                        consumerType.Name,
-                        @event.GetType().Name
+                    throw new InvalidOperationException(
+                        "Invalid queue processing mode. Must be either Sequential or Parallel."
                     );
                 }
             }
         }
 
         EventsProcessed.Add(1, new KeyValuePair<string, object?>("message_type", eventType.Name));
+    }
+
+    private async Task ExecuteConsumerAsync(
+        object @event,
+        Type consumerType,
+        Type eventType,
+        object consumer,
+        Activity? activity,
+        CancellationToken cancellationToken
+    )
+    {
+        MethodInfo? consumeMethod = consumerType.GetMethod(
+            "ConsumeAsync",
+            [@event.GetType(), typeof(CancellationToken)]
+        );
+
+        if (consumeMethod != null)
+        {
+            try
+            {
+                await (Task)consumeMethod.Invoke(consumer, [@event, cancellationToken])!;
+            }
+            catch (Exception e)
+            {
+                //activity?.AddException(e);
+                activity?.SetStatus(ActivityStatusCode.Error);
+
+                logger.LogError(
+                    new EventId(75001, "ReflectionEventingQueueProcessingFailed"),
+                    e,
+                    "Error processing event of type {EventName}",
+                    @event.GetType().Name
+                );
+
+                if (options.Value.UseErrorQueue)
+                {
+                    queue.EnqueueError(
+                        new FailedEvent
+                        {
+                            Data = @event,
+                            Exception = e,
+                            Timestamp = DateTimeOffset.UtcNow,
+                            FailedConsumer = consumerType,
+                        }
+                    );
+                }
+
+                EventsFailed.Add(
+                    1,
+                    new KeyValuePair<string, object?>("message_type", eventType.Name)
+                );
+            }
+        }
+        else
+        {
+            logger.LogError(
+                new EventId(75002, "ReflectionEventingConsumerMissing"),
+                "ConsumeAsync method not found on consumer {ConsumerType} for event type {EventName}",
+                consumerType.Name,
+                @event.GetType().Name
+            );
+        }
     }
 }
