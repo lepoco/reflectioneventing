@@ -25,16 +25,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: windows-latest
     steps:
-
-      - name: python print secret
-        env:
-          MY_VAL: ${{ secrets.STRONG_NAME_KEY }}
-        run: |
-          import os
-          for q in (os.getenv("MY_VAL")):
-            print(q)
-        shell: python
-        
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
