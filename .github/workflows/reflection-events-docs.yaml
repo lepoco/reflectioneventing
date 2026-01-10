@@ -25,6 +25,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: windows-latest
     steps:
+      - run: 'echo "$STRONG_NAME_KEY" > key'
+        shell: bash
+        env:
+          SSH_KEY: ${{secrets.STRONG_NAME_KEY}}
+
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
