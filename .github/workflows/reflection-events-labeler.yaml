@@ -13,7 +13,3 @@ jobs:
       - uses: actions/labeler@v5
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
-      - run: 'echo "$STRONG_NAME_KEY" > key'
-        shell: bash
-        env:
-          SSH_KEY: ${{secrets.STRONG_NAME_KEY}}
