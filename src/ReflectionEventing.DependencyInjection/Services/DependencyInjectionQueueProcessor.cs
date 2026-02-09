@@ -187,7 +187,17 @@ public class DependencyInjectionQueueProcessor(
         {
             try
             {
-                await (Task)consumeMethod.Invoke(consumer, [@event, cancellationToken])!;
+                object? result = consumeMethod.Invoke(consumer, [@event, cancellationToken]);
+
+                // Handle ValueTask return type
+                if (result is ValueTask valueTask)
+                {
+                    await valueTask.ConfigureAwait(false);
+                }
+                else if (result is Task task)
+                {
+                    await task.ConfigureAwait(false);
+                }
             }
             catch (Exception e)
             {
@@ -229,5 +239,13 @@ public class DependencyInjectionQueueProcessor(
                 @event.GetType().Name
             );
         }
+    }
+
+    /// <inheritdoc />
+    public override void Dispose()
+    {
+        semaphore.Dispose();
+
+        base.Dispose();
     }
 }

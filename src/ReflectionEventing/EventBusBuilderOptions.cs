@@ -44,6 +44,14 @@ public class EventBusBuilderOptions
     public ProcessingMode QueueMode { get; set; } = ProcessingMode.Sequential;
 
     /// <summary>
+    /// Gets or sets the mode in which consumers are executed when sending events via <see cref="IEventBus.SendAsync{TEvent}"/>.
+    /// If set to <see cref="ProcessingMode.Sequential"/>, consumers are executed one at a time in sequence.
+    /// If set to <see cref="ProcessingMode.Parallel"/>, consumers are executed concurrently using Task.WhenAll.
+    /// The default value is <see cref="ProcessingMode.Parallel"/>.
+    /// </summary>
+    public ProcessingMode ConsumerExecutionMode { get; set; } = ProcessingMode.Parallel;
+
+    /// <summary>
     /// Gets or sets the maximum number of concurrent tasks that can be processed.
     /// This value is used to limit the number of tasks running in parallel when <see cref="QueueMode"/> is set to <see cref="ProcessingMode.Parallel"/>.
     /// The default value is 100.

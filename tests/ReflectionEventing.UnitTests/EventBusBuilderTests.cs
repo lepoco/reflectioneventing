@@ -3,7 +3,7 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using FluentAssertions.Collections;
+using AwesomeAssertions.Collections;
 
 namespace ReflectionEventing.UnitTests;
 
@@ -83,24 +83,24 @@ public sealed class EventBusBuilderTests
 
     public sealed record MySampleConsumer : IConsumer<ITestEvent>, IConsumer<IBaseEvent>
     {
-        public Task ConsumeAsync(ITestEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(ITestEvent payload, CancellationToken cancellationToken)
         {
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
 
         /// <inheritdoc />
-        public Task ConsumeAsync(IBaseEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(IBaseEvent payload, CancellationToken cancellationToken)
         {
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
     }
 
     public sealed record MySecondarySampleConsumer : IConsumer<IBaseEvent>
     {
         /// <inheritdoc />
-        public Task ConsumeAsync(IBaseEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(IBaseEvent payload, CancellationToken cancellationToken)
         {
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
     }
 }

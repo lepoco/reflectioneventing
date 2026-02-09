@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
     /// <returns>The same service collection so that multiple calls can be chained.</returns>
     /// <remarks>
     /// This method adds a singleton service of type <see cref="IConsumerTypesProvider"/> that uses a <see cref="HashedConsumerTypesProvider"/> with the consumers from the event bus builder.
-    /// It also adds a scoped service of type <see cref="IEventBus"/> that uses the <see cref="EventBus"/> class.
+    /// It also adds a transient service of type <see cref="IEventBus"/> that uses the <see cref="EventBus"/> class.
     /// </remarks>
     public static IServiceCollection AddEventBus(
         this IServiceCollection services,
@@ -40,8 +40,9 @@ public static class ServiceCollectionExtensions
         _ = services.AddKeyedScoped<IConsumerProvider, DependencyInjectionConsumerProvider>(
             serviceKey
         );
-        _ = services.AddKeyedScoped<IEventBus, DependencyInjectionEventBus>(serviceKey);
+        _ = services.AddKeyedTransient<IEventBus, DependencyInjectionEventBus>(serviceKey);
 
+        _ = services.AddSingleton(builder.Options);
         _ = services.AddSingleton(new QueueProcessorOptionsProvider(builder.Options, serviceKey));
 
         if (builder.Options.UseEventsQueue)
@@ -61,7 +62,7 @@ public static class ServiceCollectionExtensions
     /// <returns>The same service collection so that multiple calls can be chained.</returns>
     /// <remarks>
     /// This method adds a singleton service of type <see cref="IConsumerTypesProvider"/> that uses a <see cref="HashedConsumerTypesProvider"/> with the consumers from the event bus builder.
-    /// It also adds a scoped service of type <see cref="IEventBus"/> that uses the <see cref="EventBus"/> class.
+    /// It also adds a transient service of type <see cref="IEventBus"/> that uses the <see cref="EventBus"/> class.
     /// </remarks>
     public static IServiceCollection AddEventBus(
         this IServiceCollection services,
@@ -75,8 +76,9 @@ public static class ServiceCollectionExtensions
         _ = services.AddSingleton(builder.BuildTypesProvider());
         _ = services.AddSingleton<IEventsQueue, EventsQueue>();
         _ = services.AddScoped<IConsumerProvider, DependencyInjectionConsumerProvider>();
-        _ = services.AddScoped<IEventBus, DependencyInjectionEventBus>();
+        _ = services.AddTransient<IEventBus, DependencyInjectionEventBus>();
 
+        _ = services.AddSingleton(builder.Options);
         _ = services.AddSingleton(new QueueProcessorOptionsProvider(builder.Options));
 
         if (builder.Options.UseEventsQueue)

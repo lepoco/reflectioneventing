@@ -1,5 +1,4 @@
 <Project>
-
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
@@ -13,7 +12,9 @@
   <PropertyGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <DeterministicSourcePaths Condition="'$(SourceLinkEnabled)' == 'true'">true</DeterministicSourcePaths>
+    <DeterministicSourcePaths Condition="'$(SourceLinkEnabled)' == 'true'"
+      >true</DeterministicSourcePaths
+    >
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -21,15 +22,38 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(GeneratePackageOnBuild)' == 'true'">
-    <None Include="$(BuildToolsDirectory)nuget.png" Pack="true" PackagePath="\Icon.png" Visible="False" />
-    <None Include="$(RepositoryDirectory)ThirdPartyNotices.txt" Pack="true" PackagePath="\" Visible="False" />
-    <None Include="$(RepositoryDirectory)LICENSE.md" Pack="true" PackagePath="\LICENSE.md" Visible="False" />
-    <None Include="$(RepositoryDirectory)README.md" Pack="true" PackagePath="\README.md" Visible="False" />
+    <None
+      Include="$(BuildToolsDirectory)nuget.png"
+      Pack="true"
+      PackagePath="\Icon.png"
+      Visible="False"
+    />
+    <None
+      Include="$(RepositoryDirectory)ThirdPartyNotices.txt"
+      Pack="true"
+      PackagePath="\"
+      Visible="False"
+    />
+    <None
+      Include="$(RepositoryDirectory)LICENSE.md"
+      Pack="true"
+      PackagePath="\LICENSE.md"
+      Visible="False"
+    />
+    <None
+      Include="$(RepositoryDirectory)README.md"
+      Pack="true"
+      PackagePath="\README.md"
+      Visible="False"
+    />
   </ItemGroup>
 
   <Target Name="AddCommitHashToAssemblyAttributes" BeforeTargets="GetAssemblyAttributes">
     <ItemGroup>
-      <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute" Condition="'$(SourceRevisionId)' != ''">
+      <AssemblyAttribute
+        Include="System.Reflection.AssemblyMetadataAttribute"
+        Condition="'$(SourceRevisionId)' != ''"
+      >
         <_Parameter1>CommitHash</_Parameter1>
         <_Parameter2>$(SourceRevisionId)</_Parameter2>
       </AssemblyAttribute>
@@ -37,7 +61,7 @@
   </Target>
 
   <!-- Configure trimming for projects on .NET 6 and above -->
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' OR '$(TargetFramework)' == 'net8.0' OR '$(TargetFramework)' == 'net9.0' OR '$(TargetFramework)' == 'net10.0'">
     <IsTrimmable>true</IsTrimmable>
     <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
     <EnableAotAnalyzer>true</EnableAotAnalyzer>
@@ -49,7 +73,11 @@
     <AssemblyOriginatorKeyFile>$(RepositoryDirectory)\src\lepo.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <Target Name="WpfSourceLinkWorkaround" BeforeTargets="InitializeSourceRootMappedPaths" Condition="'$(UseWPF)' == 'true'">
+  <Target
+    Name="WpfSourceLinkWorkaround"
+    BeforeTargets="InitializeSourceRootMappedPaths"
+    Condition="'$(UseWPF)' == 'true'"
+  >
     <!-- WPF causes an error with SourceLink because its build targets create a temporary project without a PackageReference to SourceLink, see https://github.com/dotnet/sourcelink/issues/91,
          causing the @SourceRoot property to be unexpectedly empty for the MapSourceRoot task
         

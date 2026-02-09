@@ -35,6 +35,7 @@ public partial class App : Application
                 {
                     e.Options.UseEventPolymorphism = true;
                     e.Options.UseEventsQueue = true;
+                    e.Options.ConsumerExecutionMode = ProcessingMode.Sequential;
                     e.Options.QueueMode = ProcessingMode.Parallel;
 
                     e.UseBackgroundService<DependencyInjectionQueueProcessor>();

@@ -59,6 +59,31 @@ IHost host = Host.CreateDefaultBuilder()
   .Build();
 ```
 
+#### 1.1 Configure Consumer Execution Mode
+
+By default, when multiple consumers are registered for the same event, they are executed in parallel. You can configure the execution mode to be sequential if you need consumers to execute one at a time in order:
+
+```csharp
+services.AddEventBus(e =>
+{
+  e.AddConsumer<FirstConsumer>();
+  e.AddConsumer<SecondConsumer>();
+  e.AddConsumer<ThirdConsumer>();
+  
+  // Configure sequential execution (default is Parallel)
+  e.Options.ConsumerExecutionMode = ProcessingMode.Sequential;
+});
+```
+
+**Execution Modes:**
+- `ProcessingMode.Parallel` (default) - Consumers execute concurrently using `Task.WhenAll`
+- `ProcessingMode.Sequential` - Consumers execute one at a time in registration order
+
+Use sequential mode when:
+- Order of execution matters for your business logic
+- Consumers modify shared state that should not be accessed concurrently
+- You need predictable execution flow for testing or debugging
+
 #### 2. Publish Events
 
 Here, we create a background service that publishes an event on the event bus. This event could be anything - in this case, we're publishing a `BackgroundTicked` event.
@@ -83,11 +108,11 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
     [ObservableProperty]
     private int _currentTick = 0;
 
-    public Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
     {
         CurrentTick = payload.Value;
 
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 ```

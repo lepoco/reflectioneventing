@@ -36,19 +36,19 @@ public sealed class HashedConsumerTypesProviderTests
 
     private sealed record PrimarySampleConsumer : IConsumer<PrimaryTestEvent>
     {
-        public Task ConsumeAsync(PrimaryTestEvent payload, CancellationToken cancellationToken) =>
-            Task.CompletedTask;
+        public ValueTask ConsumeAsync(PrimaryTestEvent payload, CancellationToken cancellationToken) =>
+            ValueTask.CompletedTask;
     }
 
     private sealed record SecondarySampleConsumer : IConsumer<PrimaryTestEvent>
     {
-        public Task ConsumeAsync(PrimaryTestEvent payload, CancellationToken cancellationToken) =>
-            Task.CompletedTask;
+        public ValueTask ConsumeAsync(PrimaryTestEvent payload, CancellationToken cancellationToken) =>
+            ValueTask.CompletedTask;
     }
 
     private sealed record TertiarySampleConsumer : IConsumer<SecondaryTestEvent>
     {
-        public Task ConsumeAsync(SecondaryTestEvent payload, CancellationToken cancellationToken) =>
-            Task.CompletedTask;
+        public ValueTask ConsumeAsync(SecondaryTestEvent payload, CancellationToken cancellationToken) =>
+            ValueTask.CompletedTask;
     }
 }

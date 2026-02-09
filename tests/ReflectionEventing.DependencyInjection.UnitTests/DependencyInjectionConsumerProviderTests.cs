@@ -23,7 +23,7 @@ public sealed class DependencyInjectionConsumerProviderTests
     [Fact]
     public void GetConsumerTypes_ShouldReturnServicesOfConsumerType()
     {
-        IServiceCollection services = new ServiceCollection();
+        ServiceCollection services = [];
         _ = services.AddSingleton<TestConsumer>();
         _ = services.AddSingleton<TestConsumer>();
         DependencyInjectionConsumerProvider consumerProvider = new(services.BuildServiceProvider());
@@ -37,7 +37,7 @@ public sealed class DependencyInjectionConsumerProviderTests
 
     public class TestConsumer : IConsumer<TestEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken) =>
-            Task.CompletedTask;
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken) =>
+            ValueTask.CompletedTask;
     }
 }

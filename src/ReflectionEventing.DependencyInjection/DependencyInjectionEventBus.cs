@@ -9,19 +9,19 @@ using ReflectionEventing.Queues;
 namespace ReflectionEventing.DependencyInjection;
 
 public class DependencyInjectionEventBus(
-    QueueProcessorOptionsProvider options,
+    EventBusBuilderOptions options,
     IConsumerProvider consumerProviders,
     IConsumerTypesProvider consumerTypesProvider,
     IEventsQueue queue
-) : EventBus(consumerProviders, consumerTypesProvider, queue)
+) : EventBus(options, consumerProviders, consumerTypesProvider, queue)
 {
     /// <inheritdoc />
-    public override Task PublishAsync<TEvent>(
+    public override ValueTask PublishAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )
     {
-        if (!options.Value.UseEventsQueue)
+        if (!options.UseEventsQueue)
         {
             throw new QueueException("The background queue processor is disabled.");
         }

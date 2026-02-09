@@ -14,6 +14,7 @@ namespace ReflectionEventing;
 /// This class uses a service provider to get required services and a consumer provider to get consumers for a specific event type.
 /// </remarks>
 public class EventBus(
+    EventBusBuilderOptions options,
     IConsumerProvider consumerProviders,
     IConsumerTypesProvider consumerTypesProvider,
     IEventsQueue queue
@@ -30,7 +31,7 @@ public class EventBus(
     );
 
     /// <inheritdoc />
-    public virtual async Task SendAsync<TEvent>(
+    public virtual ValueTask SendAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )
@@ -43,16 +44,14 @@ public class EventBus(
 
         using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
 
-        activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
-
-        if (eventItem is null)
-        {
-            throw new EventBusException(nameof(eventItem));
-        }
+        _ = activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
 
         Type eventType = typeof(TEvent);
-        List<Task> tasks = [];
         IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes(eventType);
+
+        // Defer List allocation: track first consumer in a local variable
+        object? singleConsumer = null;
+        List<object>? consumers = null;
 
         foreach (Type consumerType in consumerTypes)
         {
@@ -60,20 +59,42 @@ public class EventBus(
             {
                 if (consumer is null)
                 {
-                    return;
+                    continue;
                 }
 
-                tasks.Add(((IConsumer<TEvent>)consumer).ConsumeAsync(eventItem, cancellationToken));
+                if (singleConsumer is null)
+                {
+                    singleConsumer = consumer;
+                }
+                else
+                {
+                    consumers ??= new List<object> { singleConsumer };
+                    consumers.Add(consumer);
+                }
             }
         }
 
-        await Task.WhenAll(tasks).ConfigureAwait(false);
-
         SentCounter.Add(1, new KeyValuePair<string, object?>("message_type", eventType.Name));
+
+        // Execute based on consumer count - optimized paths
+        if (singleConsumer is null)
+        {
+            return default;
+        }
+
+        if (consumers is null)
+        {
+            return ((IConsumer<TEvent>)singleConsumer).ConsumeAsync(eventItem, cancellationToken);
+        }
+
+        // Multiple consumers - execute based on configured mode
+        return options.ConsumerExecutionMode == ProcessingMode.Sequential
+            ? ExecuteSequentialAsync(consumers, eventItem, cancellationToken)
+            : ExecuteParallelAsync(consumers, eventItem, cancellationToken);
     }
 
     /// <inheritdoc />
-    public virtual async Task PublishAsync<TEvent>(
+    public virtual ValueTask PublishAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )
@@ -81,13 +102,88 @@ public class EventBus(
     {
         using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
 
-        activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
-
-        await queue.EnqueueAsync(eventItem, cancellationToken);
+        _ = activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
 
         PublishedCounter.Add(
             1,
             new KeyValuePair<string, object?>("message_type", typeof(TEvent).Name)
         );
+
+        return queue.EnqueueAsync(eventItem, cancellationToken);
+    }
+
+    /// <summary>
+    /// Executes consumers sequentially, one at a time.
+    /// </summary>
+    /// <typeparam name="TEvent">The type of the event.</typeparam>
+    /// <param name="consumers">The list of consumers to execute.</param>
+    /// <param name="eventItem">The event to consume.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A ValueTask that completes when all consumers have completed.</returns>
+    private static async ValueTask ExecuteSequentialAsync<TEvent>(
+        List<object> consumers,
+        TEvent eventItem,
+        CancellationToken cancellationToken
+    )
+        where TEvent : class
+    {
+        foreach (object consumer in consumers)
+        {
+            await ((IConsumer<TEvent>)consumer)
+                .ConsumeAsync(eventItem, cancellationToken)
+                .ConfigureAwait(false);
+        }
+    }
+
+    /// <summary>
+    /// Executes consumers in parallel using Task.WhenAll.
+    /// </summary>
+    /// <typeparam name="TEvent">The type of the event.</typeparam>
+    /// <param name="consumers">The list of consumers to execute.</param>
+    /// <param name="eventItem">The event to consume.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A ValueTask that completes when all consumers have completed.</returns>
+    private static ValueTask ExecuteParallelAsync<TEvent>(
+        List<object> consumers,
+        TEvent eventItem,
+        CancellationToken cancellationToken
+    )
+        where TEvent : class
+    {
+        List<ValueTask>? asyncTasks = null;
+
+        // First pass: execute all synchronous completions
+        foreach (object consumer in consumers)
+        {
+            ValueTask task = ((IConsumer<TEvent>)consumer).ConsumeAsync(
+                eventItem,
+                cancellationToken
+            );
+
+            if (task.IsCompletedSuccessfully)
+            {
+                // Ensure pooled IValueTaskSource is properly returned
+                task.GetAwaiter().GetResult();
+            }
+            else
+            {
+                asyncTasks ??= new List<ValueTask>(consumers.Count);
+                asyncTasks.Add(task);
+            }
+        }
+
+        // Only allocate Task objects for truly async operations
+        if (asyncTasks is null)
+        {
+            return default;
+        }
+
+        Task[] tasks = new Task[asyncTasks.Count];
+        for (int i = 0; i < asyncTasks.Count; i++)
+        {
+            tasks[i] = asyncTasks[i].AsTask();
+        }
+
+        return new ValueTask(Task.WhenAll(tasks));
     }
 }

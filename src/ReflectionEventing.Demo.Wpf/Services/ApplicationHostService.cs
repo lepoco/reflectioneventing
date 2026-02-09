@@ -11,9 +11,9 @@ internal sealed class ApplicationHostService(IServiceProvider serviceProvider) :
     /// Triggered when the application host is ready to start the service.
     /// </summary>
     /// <param name="cancellationToken">Indicates that the start process has been aborted.</param>
-    public async Task StartAsync(CancellationToken cancellationToken)
+    public Task StartAsync(CancellationToken cancellationToken)
     {
-        await HandleActivationAsync();
+        return HandleActivationAsync();
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ internal sealed class ApplicationHostService(IServiceProvider serviceProvider) :
     /// <summary>
     /// Creates main window during activation.
     /// </summary>
-    private async Task HandleActivationAsync()
+    private Task HandleActivationAsync()
     {
         if (!Application.Current.Windows.OfType<MainWindow>().Any())
         {
@@ -36,6 +36,6 @@ internal sealed class ApplicationHostService(IServiceProvider serviceProvider) :
             mainWindow!.Show();
         }
 
-        await Task.CompletedTask;
+        return Task.CompletedTask;
     }
 }

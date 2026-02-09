@@ -27,7 +27,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build ReflectionEventing.sln --configuration Release --no-restore
+        run: dotnet build ReflectionEventing.slnx --configuration Release --no-restore
 
       - name: Run tests
-        run: dotnet test ReflectionEventing.sln --configuration Release --no-restore --no-build --verbosity quiet
+        run: dotnet test ReflectionEventing.slnx --configuration Release --no-restore --no-build --verbosity quiet

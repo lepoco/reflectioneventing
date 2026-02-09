@@ -9,6 +9,8 @@ src/lepo.snk
 # DocFX
 docs/api/
 
+docs/board.md
+
 # User-specific files
 *.rsuser
 *.suo

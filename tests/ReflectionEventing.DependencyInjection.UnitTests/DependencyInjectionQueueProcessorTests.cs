@@ -30,7 +30,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new VoidEvent());
 
@@ -67,9 +68,10 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
-        Func<Task> action = () => bus.PublishAsync(new OtherEvent());
+        Func<Task> action = async () => await bus.PublishAsync(new OtherEvent());
 
         await action
             .Should()
@@ -98,7 +100,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new OtherEvent());
 
@@ -134,7 +137,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new TestEvent());
         await bus.PublishAsync(new OtherEvent());
@@ -172,7 +176,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new TestEvent());
 
@@ -208,7 +213,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new TestEvent());
 
@@ -240,28 +246,28 @@ public sealed class DependencyInjectionQueueProcessorTests
         public bool OtherEventConsumed { get; private set; }
         public bool AsyncQueuedEventConsumed { get; private set; }
 
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
         {
             TestEventConsumed = true;
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
 
-        public Task ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
         {
             OtherEventConsumed = true;
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
 
-        public Task ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
         {
             AsyncQueuedEventConsumed = true;
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
     }
 
     public class FailingConsumer : IConsumer<TestEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
         {
             throw new Exception("Consumer failed.");
         }

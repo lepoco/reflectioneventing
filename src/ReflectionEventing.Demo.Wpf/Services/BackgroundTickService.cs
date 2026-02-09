@@ -34,12 +34,11 @@ internal sealed class BackgroundTickService(IEventBus eventBus) : IHostedService
 
         while (!cancellationToken.IsCancellationRequested)
         {
-            await eventBus.SendAsync(
-                new BackgroundTicked(random.Next(10, 1001)),
-                cancellationToken
-            );
+            await Task.Delay(TickRateInMilliseconds, cancellationToken).ConfigureAwait(false);
 
-            await Task.Delay(TickRateInMilliseconds, cancellationToken);
+            await eventBus
+                .SendAsync(new BackgroundTicked(random.Next(10, 1001)), cancellationToken)
+                .ConfigureAwait(false);
         }
     }
 }
