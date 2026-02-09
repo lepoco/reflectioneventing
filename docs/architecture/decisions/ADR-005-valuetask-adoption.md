@@ -186,7 +186,7 @@ Expected improvements primarily in sync completion paths.
 **Rejected** - Doubles API surface, confusing for users
 
 ### Alternative 3: Sequential execution in SendAsync
-**Rejected** - Changes semantics, breaks parallel execution assumption
+**Revisited in v5.1.0** - Originally rejected to maintain backward compatibility. Later implemented as a configurable option via `EventBusBuilderOptions.ConsumerExecutionMode` to provide flexibility for use cases where execution order matters or where parallel execution causes issues.
 
 ## References
 

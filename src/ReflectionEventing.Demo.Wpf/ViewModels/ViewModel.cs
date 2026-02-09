@@ -3,6 +3,8 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
+using System.Windows.Threading;
+
 namespace ReflectionEventing.Demo.Wpf.ViewModels;
 
 /// <summary>
@@ -14,23 +16,44 @@ namespace ReflectionEventing.Demo.Wpf.ViewModels;
 public abstract class ViewModel : ObservableObject
 {
     /// <summary>
-    /// Dispatches the specified action on the UI thread.
+    /// Invokes the specified action on the UI thread asynchronously.
+    /// If already on the UI thread, executes synchronously.
     /// </summary>
-    /// <param name="action">The action to be dispatched.</param>
-    /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
-    protected static async Task DispatchAsync(Action action, CancellationToken cancellationToken)
+    /// <param name="action">The action to execute on the UI thread.</param>
+    /// <param name="cancellationToken">A token to cancel the operation.</param>
+    /// <param name="priority">The priority at which to invoke the action.</param>
+    /// <returns>A ValueTask representing the asynchronous operation.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="action"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when no WPF Dispatcher is available.</exception>
+    protected static ValueTask DispatchAsync(
+        Action action,
+        CancellationToken cancellationToken = default,
+        DispatcherPriority priority = DispatcherPriority.Normal
+    )
     {
+        ArgumentNullException.ThrowIfNull(action);
+
+        if (Application.Current?.Dispatcher is not { } dispatcher)
+        {
+            throw new InvalidOperationException(
+                "No WPF Dispatcher available. Ensure Application.Current is initialized."
+            );
+        }
+
         if (cancellationToken.IsCancellationRequested)
         {
-            return;
+            return ValueTask.FromCanceled(cancellationToken);
         }
 
-        if (Application.Current is null)
+        // Fast path: already on UI thread
+        if (dispatcher.CheckAccess())
         {
-            return;
+            action();
+
+            return ValueTask.CompletedTask;
         }
 
-        await Application.Current.Dispatcher.InvokeAsync(action);
+        // Slow path: dispatch to UI thread
+        return new ValueTask(dispatcher.InvokeAsync(action, priority, cancellationToken).Task);
     }
 }

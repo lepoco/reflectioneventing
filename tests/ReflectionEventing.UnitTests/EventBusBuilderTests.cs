@@ -3,7 +3,7 @@
 // Copyright (C) Leszek Pomianowski and ReflectionEventing Contributors.
 // All Rights Reserved.
 
-using FluentAssertions.Collections;
+using AwesomeAssertions.Collections;
 
 namespace ReflectionEventing.UnitTests;
 

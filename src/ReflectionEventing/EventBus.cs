@@ -14,6 +14,7 @@ namespace ReflectionEventing;
 /// This class uses a service provider to get required services and a consumer provider to get consumers for a specific event type.
 /// </remarks>
 public class EventBus(
+    EventBusBuilderOptions options,
     IConsumerProvider consumerProviders,
     IConsumerTypesProvider consumerTypesProvider,
     IEventsQueue queue
@@ -74,14 +75,10 @@ public class EventBus(
             return ((IConsumer<TEvent>)consumers[0]).ConsumeAsync(eventItem, cancellationToken);
         }
 
-        // Multiple consumers - collect tasks and await all
-        List<ValueTask> tasks = new(consumers.Count);
-        foreach (object consumer in consumers)
-        {
-            tasks.Add(((IConsumer<TEvent>)consumer).ConsumeAsync(eventItem, cancellationToken));
-        }
-
-        return WhenAll(tasks);
+        // Multiple consumers - execute based on configured mode
+        return options.ConsumerExecutionMode == ProcessingMode.Sequential
+            ? ExecuteSequentialAsync(consumers, eventItem, cancellationToken)
+            : ExecuteParallelAsync(consumers, eventItem, cancellationToken);
     }
 
     /// <inheritdoc />
@@ -104,10 +101,63 @@ public class EventBus(
     }
 
     /// <summary>
-    /// Waits for all ValueTasks to complete in parallel.
+    /// Executes consumers sequentially, one at a time.
     /// </summary>
-    /// <param name="tasks">The list of ValueTasks to wait for (must contain 2 or more tasks).</param>
-    /// <returns>A ValueTask that completes when all tasks have completed.</returns>
-    private static ValueTask WhenAll(List<ValueTask> tasks) =>
-        new(Task.WhenAll(tasks.Select(t => t.AsTask())));
+    /// <typeparam name="TEvent">The type of the event.</typeparam>
+    /// <param name="consumers">The list of consumers to execute.</param>
+    /// <param name="eventItem">The event to consume.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A ValueTask that completes when all consumers have completed.</returns>
+    private static async ValueTask ExecuteSequentialAsync<TEvent>(
+        List<object> consumers,
+        TEvent eventItem,
+        CancellationToken cancellationToken
+    )
+        where TEvent : class
+    {
+        foreach (object consumer in consumers)
+        {
+            await ((IConsumer<TEvent>)consumer)
+                .ConsumeAsync(eventItem, cancellationToken)
+                .ConfigureAwait(false);
+        }
+    }
+
+    /// <summary>
+    /// Executes consumers in parallel using Task.WhenAll.
+    /// </summary>
+    /// <typeparam name="TEvent">The type of the event.</typeparam>
+    /// <param name="consumers">The list of consumers to execute.</param>
+    /// <param name="eventItem">The event to consume.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A ValueTask that completes when all consumers have completed.</returns>
+    private static ValueTask ExecuteParallelAsync<TEvent>(
+        List<object> consumers,
+        TEvent eventItem,
+        CancellationToken cancellationToken
+    )
+        where TEvent : class
+    {
+        List<ValueTask>? asyncTasks = null;
+
+        // First pass: execute all synchronous completions
+        foreach (object consumer in consumers)
+        {
+            ValueTask task = ((IConsumer<TEvent>)consumer).ConsumeAsync(
+                eventItem,
+                cancellationToken
+            );
+
+            if (!task.IsCompletedSuccessfully)
+            {
+                asyncTasks ??= new List<ValueTask>(consumers.Count);
+                asyncTasks.Add(task);
+            }
+        }
+
+        // Only allocate Task objects for truly async operations
+        return asyncTasks == null
+            ? default
+            : new ValueTask(Task.WhenAll(asyncTasks.Select(t => t.AsTask())));
+    }
 }

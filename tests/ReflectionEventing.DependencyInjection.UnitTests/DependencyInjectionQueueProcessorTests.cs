@@ -30,7 +30,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new VoidEvent());
 
@@ -67,7 +68,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         Func<Task> action = async () => await bus.PublishAsync(new OtherEvent());
 
@@ -98,7 +100,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new OtherEvent());
 
@@ -134,7 +137,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new TestEvent());
         await bus.PublishAsync(new OtherEvent());
@@ -172,7 +176,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new TestEvent());
 
@@ -208,7 +213,8 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         await host.StartAsync();
 
-        IEventBus bus = host.Services.GetRequiredService<IEventBus>();
+        await using AsyncServiceScope scope = host.Services.CreateAsyncScope();
+        IEventBus bus = scope.ServiceProvider.GetRequiredService<IEventBus>();
 
         await bus.PublishAsync(new TestEvent());
 
