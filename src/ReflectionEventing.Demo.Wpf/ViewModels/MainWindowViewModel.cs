@@ -43,9 +43,9 @@ public partial class MainWindowViewModel(IEventBus eventBus, ILogger<MainWindowV
     }
 
     /// <inheritdoc />
-    public async ValueTask ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
     {
-        await DispatchAsync(
+        return DispatchAsync(
             () =>
             {
                 QueueCount++;

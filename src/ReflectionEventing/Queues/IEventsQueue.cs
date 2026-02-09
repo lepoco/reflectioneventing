@@ -8,7 +8,7 @@ namespace ReflectionEventing.Queues;
 /// <summary>
 /// Defines a contract for an event queue that supports asynchronous operations for appending and retrieving events.
 /// </summary>
-public interface IEventsQueue
+public interface IEventsQueue : IAsyncDisposable
 {
     /// <summary>
     /// Appends an event to the queue asynchronously.
@@ -31,6 +31,11 @@ public interface IEventsQueue
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <returns>An <see cref="IAsyncEnumerable{T}"/> of events from the queue.</returns>
     IAsyncEnumerable<object> ReadEventsAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Signals that no more events will be written to the queue, allowing readers to drain remaining events and complete.
+    /// </summary>
+    void Complete();
 
     /// <summary>
     /// Gets the events that failed processing from the error queue.

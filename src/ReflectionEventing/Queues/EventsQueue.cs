@@ -28,6 +28,12 @@ public class EventsQueue : IEventsQueue
     }
 
     /// <inheritdoc />
+    public void Complete()
+    {
+        events.Writer.TryComplete();
+    }
+
+    /// <inheritdoc />
     public void EnqueueError(FailedEvent fail)
     {
         errorQueue.Enqueue(fail);
@@ -37,5 +43,15 @@ public class EventsQueue : IEventsQueue
     public IEnumerable<FailedEvent> GetErrors()
     {
         return errorQueue;
+    }
+
+    /// <inheritdoc />
+    public ValueTask DisposeAsync()
+    {
+        Complete();
+
+        GC.SuppressFinalize(this);
+
+        return default;
     }
 }

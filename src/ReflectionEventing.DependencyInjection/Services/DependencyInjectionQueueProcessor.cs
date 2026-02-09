@@ -240,4 +240,12 @@ public class DependencyInjectionQueueProcessor(
             );
         }
     }
+
+    /// <inheritdoc />
+    public override void Dispose()
+    {
+        semaphore.Dispose();
+
+        base.Dispose();
+    }
 }

@@ -49,14 +49,26 @@ public class EventBus(
         Type eventType = typeof(TEvent);
         IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes(eventType);
 
-        // Collect all consumers first
-        List<object> consumers = [];
+        // Defer List allocation: track first consumer in a local variable
+        object? singleConsumer = null;
+        List<object>? consumers = null;
+
         foreach (Type consumerType in consumerTypes)
         {
             foreach (object? consumer in consumerProviders.GetConsumers(consumerType))
             {
-                if (consumer is not null)
+                if (consumer is null)
                 {
+                    continue;
+                }
+
+                if (singleConsumer is null)
+                {
+                    singleConsumer = consumer;
+                }
+                else
+                {
+                    consumers ??= new List<object> { singleConsumer };
                     consumers.Add(consumer);
                 }
             }
@@ -65,14 +77,14 @@ public class EventBus(
         SentCounter.Add(1, new KeyValuePair<string, object?>("message_type", eventType.Name));
 
         // Execute based on consumer count - optimized paths
-        if (consumers.Count == 0)
+        if (singleConsumer is null)
         {
             return default;
         }
 
-        if (consumers.Count == 1)
+        if (consumers is null)
         {
-            return ((IConsumer<TEvent>)consumers[0]).ConsumeAsync(eventItem, cancellationToken);
+            return ((IConsumer<TEvent>)singleConsumer).ConsumeAsync(eventItem, cancellationToken);
         }
 
         // Multiple consumers - execute based on configured mode
@@ -156,8 +168,17 @@ public class EventBus(
         }
 
         // Only allocate Task objects for truly async operations
-        return asyncTasks == null
-            ? default
-            : new ValueTask(Task.WhenAll(asyncTasks.Select(t => t.AsTask())));
+        if (asyncTasks is null)
+        {
+            return default;
+        }
+
+        Task[] tasks = new Task[asyncTasks.Count];
+        for (int i = 0; i < asyncTasks.Count; i++)
+        {
+            tasks[i] = asyncTasks[i].AsTask();
+        }
+
+        return new ValueTask(Task.WhenAll(tasks));
     }
 }
