@@ -69,7 +69,7 @@ public sealed class DependencyInjectionQueueProcessorTests
 
         IEventBus bus = host.Services.GetRequiredService<IEventBus>();
 
-        Func<Task> action = () => bus.PublishAsync(new OtherEvent());
+        Func<Task> action = async () => await bus.PublishAsync(new OtherEvent());
 
         await action
             .Should()
@@ -193,7 +193,7 @@ public sealed class DependencyInjectionQueueProcessorTests
             .ConfigureServices(
                 (_, services) =>
                 {
-                    _ = services.AddEventBus(builder =>
+                    services.AddEventBus(builder =>
                     {
                         builder.Options.QueueTickRate = TimeSpan.FromTicks(10_000);
                         builder.Options.ErrorTickRate = TimeSpan.FromTicks(10_000);
@@ -240,28 +240,28 @@ public sealed class DependencyInjectionQueueProcessorTests
         public bool OtherEventConsumed { get; private set; }
         public bool AsyncQueuedEventConsumed { get; private set; }
 
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
         {
             TestEventConsumed = true;
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
 
-        public Task ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
         {
             OtherEventConsumed = true;
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
 
-        public Task ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
         {
             AsyncQueuedEventConsumed = true;
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
     }
 
     public class FailingConsumer : IConsumer<TestEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
         {
             throw new Exception("Consumer failed.");
         }

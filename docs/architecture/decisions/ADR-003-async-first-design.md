@@ -2,6 +2,8 @@
 
 ## Status
 
+**Superseded by [ADR-005](ADR-005-valuetask-adoption.md)** - Return types changed from `Task` to `ValueTask` in v5.0.0
+
 **Accepted**
 
 ## Date

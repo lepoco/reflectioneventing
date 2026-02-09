@@ -31,10 +31,10 @@ A component that handles a specific type of event. Consumers implement `IConsume
 ```csharp
 public class MyConsumer : IConsumer<BackgroundTicked>
 {
-    public Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
     {
         // Handle the event
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 ```

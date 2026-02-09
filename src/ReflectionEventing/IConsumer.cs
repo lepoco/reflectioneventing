@@ -19,6 +19,6 @@ public interface IConsumer<in TEvent>
     /// </summary>
     /// <param name="payload">The event to consume.</param>
     /// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
-    Task ConsumeAsync(TEvent payload, CancellationToken cancellationToken);
+    /// <returns>A value task that represents the asynchronous operation.</returns>
+    ValueTask ConsumeAsync(TEvent payload, CancellationToken cancellationToken);
 }

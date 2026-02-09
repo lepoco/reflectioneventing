@@ -21,7 +21,7 @@ public partial class MainWindowViewModel(IEventBus eventBus, ILogger<MainWindowV
     private int _queueCount;
 
     /// <inheritdoc />
-    public async Task ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
+    public async ValueTask ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
     {
         int tickValue = payload.Value;
 
@@ -35,15 +35,15 @@ public partial class MainWindowViewModel(IEventBus eventBus, ILogger<MainWindowV
     }
 
     /// <inheritdoc />
-    public async Task ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
+    public async ValueTask ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
     {
         logger.LogInformation("Received {Event} event.", nameof(OtherEvent));
 
-        await Task.CompletedTask;
+        await ValueTask.CompletedTask;
     }
 
     /// <inheritdoc />
-    public async Task ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
+    public async ValueTask ConsumeAsync(AsyncQueuedEvent payload, CancellationToken cancellationToken)
     {
         await DispatchAsync(
             () =>

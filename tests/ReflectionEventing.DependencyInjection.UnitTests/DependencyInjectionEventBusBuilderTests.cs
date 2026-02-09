@@ -42,7 +42,7 @@ public sealed class DependencyInjectionEventBusBuilderTests
 
     public class TestConsumer : IConsumer<TestEvent>
     {
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken) =>
-            Task.CompletedTask;
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken) =>
+            ValueTask.CompletedTask;
     }
 }

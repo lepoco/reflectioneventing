@@ -87,11 +87,11 @@ public partial class MainWindowViewModel : ObservableObject, IConsumer<Backgroun
     [ObservableProperty]
     private int _currentTick = 0;
 
-    public Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
     {
         CurrentTick = payload.Value;
 
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 ```

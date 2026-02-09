@@ -16,7 +16,7 @@ public class DependencyInjectionEventBus(
 ) : EventBus(consumerProviders, consumerTypesProvider, queue)
 {
     /// <inheritdoc />
-    public override Task PublishAsync<TEvent>(
+    public override ValueTask PublishAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )

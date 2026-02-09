@@ -85,7 +85,7 @@ public class LoggingConsumer<TEvent> : IConsumer<TEvent>
 {
     private readonly ILogger<LoggingConsumer<TEvent>> _logger;
     
-    public async Task ConsumeAsync(TEvent payload, CancellationToken cancellationToken)
+    public async ValueTask ConsumeAsync(TEvent payload, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Processing event: {EventType}", typeof(TEvent).Name);
         // ... process event

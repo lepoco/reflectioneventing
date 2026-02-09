@@ -103,10 +103,10 @@ classDiagram
 // Consumer for any ITickedEvent
 public class AnyTickEventConsumer : IConsumer<ITickedEvent>
 {
-    public Task ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
     {
         Console.WriteLine($"Received tick: {payload.TickCount}");
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 
@@ -151,10 +151,10 @@ Each consumer processes the event:
 ```csharp
 public class MyConsumer : IConsumer<BackgroundTicked>
 {
-    public Task ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(BackgroundTicked payload, CancellationToken cancellationToken)
     {
         // Handle the event
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 ```

@@ -28,10 +28,10 @@ public record TestEvent;
 
 public class TestConsumer : IConsumer<TestEvent>
 {
-    public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
     {
         // Handle the event
-        return Task.CompletedTask;
+        return ValueTask.CompletedTask;
     }
 }
 ```

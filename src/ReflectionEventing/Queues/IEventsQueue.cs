@@ -15,8 +15,8 @@ public interface IEventsQueue
     /// </summary>
     /// <param name="event">The event to append to the queue.</param>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
-    /// <returns>A task that represents the asynchronous append operation.</returns>
-    Task EnqueueAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
+    /// <returns>A value task that represents the asynchronous append operation.</returns>
+    ValueTask EnqueueAsync<TEvent>(TEvent @event, CancellationToken cancellationToken = default)
         where TEvent : class;
 
     /// <summary>

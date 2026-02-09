@@ -30,7 +30,7 @@ public class EventBus(
     );
 
     /// <inheritdoc />
-    public virtual async Task SendAsync<TEvent>(
+    public virtual ValueTask SendAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )
@@ -43,37 +43,49 @@ public class EventBus(
 
         using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
 
-        activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
-
-        if (eventItem is null)
-        {
-            throw new EventBusException(nameof(eventItem));
-        }
+        _ = activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
 
         Type eventType = typeof(TEvent);
-        List<Task> tasks = [];
         IEnumerable<Type> consumerTypes = consumerTypesProvider.GetConsumerTypes(eventType);
 
+        // Collect all consumers first
+        List<object> consumers = [];
         foreach (Type consumerType in consumerTypes)
         {
             foreach (object? consumer in consumerProviders.GetConsumers(consumerType))
             {
-                if (consumer is null)
+                if (consumer is not null)
                 {
-                    return;
+                    consumers.Add(consumer);
                 }
-
-                tasks.Add(((IConsumer<TEvent>)consumer).ConsumeAsync(eventItem, cancellationToken));
             }
         }
 
-        await Task.WhenAll(tasks).ConfigureAwait(false);
-
         SentCounter.Add(1, new KeyValuePair<string, object?>("message_type", eventType.Name));
+
+        // Execute based on consumer count - optimized paths
+        if (consumers.Count == 0)
+        {
+            return default;
+        }
+
+        if (consumers.Count == 1)
+        {
+            return ((IConsumer<TEvent>)consumers[0]).ConsumeAsync(eventItem, cancellationToken);
+        }
+
+        // Multiple consumers - collect tasks and await all
+        List<ValueTask> tasks = new(consumers.Count);
+        foreach (object consumer in consumers)
+        {
+            tasks.Add(((IConsumer<TEvent>)consumer).ConsumeAsync(eventItem, cancellationToken));
+        }
+
+        return WhenAll(tasks);
     }
 
     /// <inheritdoc />
-    public virtual async Task PublishAsync<TEvent>(
+    public virtual ValueTask PublishAsync<TEvent>(
         TEvent eventItem,
         CancellationToken cancellationToken = default
     )
@@ -81,13 +93,21 @@ public class EventBus(
     {
         using Activity? activity = ActivitySource.StartActivity(ActivityKind.Producer);
 
-        activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
-
-        await queue.EnqueueAsync(eventItem, cancellationToken);
+        _ = activity?.AddTag("co.lepo.reflection.eventing.message", typeof(TEvent).Name);
 
         PublishedCounter.Add(
             1,
             new KeyValuePair<string, object?>("message_type", typeof(TEvent).Name)
         );
+
+        return queue.EnqueueAsync(eventItem, cancellationToken);
     }
+
+    /// <summary>
+    /// Waits for all ValueTasks to complete in parallel.
+    /// </summary>
+    /// <param name="tasks">The list of ValueTasks to wait for (must contain 2 or more tasks).</param>
+    /// <returns>A ValueTask that completes when all tasks have completed.</returns>
+    private static ValueTask WhenAll(List<ValueTask> tasks) =>
+        new(Task.WhenAll(tasks.Select(t => t.AsTask())));
 }

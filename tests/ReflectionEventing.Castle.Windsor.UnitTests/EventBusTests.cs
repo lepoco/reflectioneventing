@@ -46,11 +46,11 @@ public sealed class EventBusTests : IDisposable
     {
         public int ReceivedEvents { get; private set; } = 0;
 
-        public Task ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
+        public ValueTask ConsumeAsync(TestEvent payload, CancellationToken cancellationToken)
         {
             ReceivedEvents++;
 
-            return Task.CompletedTask;
+            return ValueTask.CompletedTask;
         }
     }
 

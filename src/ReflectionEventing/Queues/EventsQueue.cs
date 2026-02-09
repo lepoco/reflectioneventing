@@ -12,13 +12,13 @@ public class EventsQueue : IEventsQueue
     private readonly ConcurrentQueue<FailedEvent> errorQueue = new();
 
     /// <inheritdoc />
-    public virtual async Task EnqueueAsync<TEvent>(
+    public virtual ValueTask EnqueueAsync<TEvent>(
         TEvent @event,
         CancellationToken cancellationToken = default
     )
         where TEvent : class
     {
-        await events.Writer.WriteAsync(@event, cancellationToken);
+        return events.Writer.WriteAsync(@event, cancellationToken);
     }
 
     /// <inheritdoc />
