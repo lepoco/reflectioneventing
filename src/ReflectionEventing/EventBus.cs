@@ -160,7 +160,12 @@ public class EventBus(
                 cancellationToken
             );
 
-            if (!task.IsCompletedSuccessfully)
+            if (task.IsCompletedSuccessfully)
+            {
+                // Ensure pooled IValueTaskSource is properly returned
+                task.GetAwaiter().GetResult();
+            }
+            else
             {
                 asyncTasks ??= new List<ValueTask>(consumers.Count);
                 asyncTasks.Add(task);

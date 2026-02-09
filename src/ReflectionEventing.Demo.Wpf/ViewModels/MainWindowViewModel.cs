@@ -21,11 +21,11 @@ public partial class MainWindowViewModel(IEventBus eventBus, ILogger<MainWindowV
     private int _queueCount;
 
     /// <inheritdoc />
-    public async ValueTask ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(ITickedEvent payload, CancellationToken cancellationToken)
     {
         int tickValue = payload.Value;
 
-        await DispatchAsync(
+        return DispatchAsync(
             () =>
             {
                 CurrentTick = tickValue;
@@ -35,11 +35,11 @@ public partial class MainWindowViewModel(IEventBus eventBus, ILogger<MainWindowV
     }
 
     /// <inheritdoc />
-    public async ValueTask ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
+    public ValueTask ConsumeAsync(OtherEvent payload, CancellationToken cancellationToken)
     {
         logger.LogInformation("Received {Event} event.", nameof(OtherEvent));
 
-        await ValueTask.CompletedTask;
+        return default;
     }
 
     /// <inheritdoc />
