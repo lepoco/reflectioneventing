@@ -193,7 +193,7 @@ public sealed class DependencyInjectionQueueProcessorTests
             .ConfigureServices(
                 (_, services) =>
                 {
-                    services.AddEventBus(builder =>
+                    _ = services.AddEventBus(builder =>
                     {
                         builder.Options.QueueTickRate = TimeSpan.FromTicks(10_000);
                         builder.Options.ErrorTickRate = TimeSpan.FromTicks(10_000);

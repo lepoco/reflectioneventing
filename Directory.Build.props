@@ -1,5 +1,4 @@
 <Project>
-
   <PropertyGroup>
     <RepositoryDirectory>$(MSBuildThisFileDirectory)</RepositoryDirectory>
     <BuildToolsDirectory>$(RepositoryDirectory)build\</BuildToolsDirectory>
@@ -53,14 +52,17 @@
     <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
     <IsCoreProject Condition="$(IsTestProject)">False</IsCoreProject>
     <IsCoreProject Condition="'$(IsCoreProject)' == ''">True</IsCoreProject>
-    <IsBelowNet8 Condition="'$(TargetFramework)' == 'netstandard2.0'
+    <IsBelowNet8
+      Condition="'$(TargetFramework)' == 'netstandard2.0'
                  Or '$(TargetFramework)' == 'netstandard2.1'
                  Or '$(TargetFramework)' == 'net462'
                  Or '$(TargetFramework)' == 'net472'
                  Or '$(TargetFramework)' == 'net481'
                  Or '$(TargetFramework)' == 'net5.0'
                  Or '$(TargetFramework)' == 'net6.0'
-                 Or '$(TargetFramework)' == 'net7.0'">True</IsBelowNet8>
+                 Or '$(TargetFramework)' == 'net7.0'"
+      >True</IsBelowNet8
+    >
   </PropertyGroup>
 
   <PropertyGroup>
@@ -112,5 +114,4 @@
       </ItemGroup>
     </When>
   </Choose>
-
 </Project>
